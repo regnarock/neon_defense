@@ -9,7 +9,10 @@ impl Plugin for MenuPlugin {
     fn build(&self, app: &mut App) {
         app.init_resource::<ButtonColors>()
             .add_systems(OnEnter(GameState::Menu), setup_menu)
-            .add_systems(Update, click_play_button.run_if(in_state(GameState::Menu)))
+            .add_systems(
+                Update,
+                (click_play_button, enter_button).run_if(in_state(GameState::Menu)),
+            )
             .add_systems(OnExit(GameState::Menu), cleanup_menu);
     }
 }
@@ -30,7 +33,6 @@ impl Default for ButtonColors {
 }
 
 fn setup_menu(mut commands: Commands, button_colors: Res<ButtonColors>) {
-    commands.spawn(Camera2dBundle::default());
     commands
         .spawn(ButtonBundle {
             style: Style {
@@ -76,6 +78,12 @@ fn click_play_button(
                 *color = button_colors.normal.into();
             }
         }
+    }
+}
+
+pub fn enter_button(mut state: ResMut<NextState<GameState>>, keyboard_input: Res<Input<KeyCode>>) {
+    if keyboard_input.just_pressed(KeyCode::Return) || keyboard_input.just_pressed(KeyCode::Space) {
+        state.set(GameState::Playing);
     }
 }
 

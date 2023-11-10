@@ -1,9 +1,6 @@
 use bevy::prelude::*;
 
-use crate::actions::game_control::{get_movement, GameControl};
-
-use crate::GameState;
-
+pub mod cursor;
 mod game_control;
 
 pub const FOLLOW_EPSILON: f32 = 5.;

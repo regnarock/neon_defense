@@ -1,0 +1,1000 @@
+  "message": "[INFO] [default] [2023-11-02T08:57:14.871Z] [fetchCompletions] engine https://copilot-proxy.githubusercontent.com/v1/engines/copilot-codex",
+  "metadataStr": "[INFO] [default] [2023-11-02T08:57:14.871Z]",
+  "extra": [
+    "[fetchCompletions] engine https://copilot-proxy.githubusercontent.com/v1/engines/copilot-codex"
+  ]
+}
+2023-11-02T08:57:15 [INFO] 0 unhandled notification LogMessage:
+{
+  "level": 1,
+  "message": "[INFO] [default] [2023-11-02T08:57:15.551Z] request.response: [https://copilot-proxy.githubusercontent.com/v1/engines/copilot-codex/completions] took 680 ms",
+  "metadataStr": "[INFO] [default] [2023-11-02T08:57:15.551Z]",
+  "extra": [
+    "request.response: [https://copilot-proxy.githubusercontent.com/v1/engines/copilot-codex/completions] took 680 ms"
+  ]
+}
+2023-11-02T08:57:15 [INFO] 0 unhandled notification LogMessage:
+{
+  "level": 1,
+  "message": "[INFO] [streamChoices] [2023-11-02T08:57:15.552Z] solution 0 returned. finish reason: [stop]",
+  "metadataStr": "[INFO] [streamChoices] [2023-11-02T08:57:15.552Z]",
+  "extra": [
+    "solution 0 returned. finish reason: [stop]"
+  ]
+}
+2023-11-02T08:57:15 [INFO] 0 unhandled notification LogMessage:
+{
+  "level": 1,
+  "message": "[INFO] [streamChoices] [2023-11-02T08:57:15.552Z] request done: headerRequestId: [6fef1e8a-182b-4131-86eb-9c10d622da20] model deployment ID: [x8d972952f61]",
+  "metadataStr": "[INFO] [streamChoices] [2023-11-02T08:57:15.552Z]",
+  "extra": [
+    "request done: headerRequestId: [6fef1e8a-182b-4131-86eb-9c10d622da20] model deployment ID: [x8d972952f61]"
+  ]
+}
+2023-11-02T08:57:16 [INFO] 0 unhandled notification LogMessage:
+{
+  "level": 1,
+  "message": "[INFO] [default] [2023-11-02T08:57:16.444Z] [fetchCompletions] engine https://copilot-proxy.githubusercontent.com/v1/engines/copilot-codex",
+  "metadataStr": "[INFO] [default] [2023-11-02T08:57:16.444Z]",
+  "extra": [
+    "[fetchCompletions] engine https://copilot-proxy.githubusercontent.com/v1/engines/copilot-codex"
+  ]
+}
+2023-11-02T08:57:17 [INFO] 0 unhandled notification LogMessage:
+{
+  "level": 1,
+  "message": "[INFO] [default] [2023-11-02T08:57:17.138Z] request.response: [https://copilot-proxy.githubusercontent.com/v1/engines/copilot-codex/completions] took 694 ms",
+  "metadataStr": "[INFO] [default] [2023-11-02T08:57:17.138Z]",
+  "extra": [
+    "request.response: [https://copilot-proxy.githubusercontent.com/v1/engines/copilot-codex/completions] took 694 ms"
+  ]
+}
+2023-11-02T08:57:17 [INFO] 0 unhandled notification LogMessage:
+{
+  "level": 1,
+  "message": "[INFO] [streamChoices] [2023-11-02T08:57:17.262Z] solution 0 returned. finish reason: [stop]",
+  "metadataStr": "[INFO] [streamChoices] [2023-11-02T08:57:17.262Z]",
+  "extra": [
+    "solution 0 returned. finish reason: [stop]"
+  ]
+}
+2023-11-02T08:57:17 [INFO] 0 unhandled notification LogMessage:
+{
+  "level": 1,
+  "message": "[INFO] [streamChoices] [2023-11-02T08:57:17.262Z] request done: headerRequestId: [646afe0c-d3f8-474c-ac56-4eae6393bb27] model deployment ID: [x8d972952f61]",
+  "metadataStr": "[INFO] [streamChoices] [2023-11-02T08:57:17.262Z]",
+  "extra": [
+    "request done: headerRequestId: [646afe0c-d3f8-474c-ac56-4eae6393bb27] model deployment ID: [x8d972952f61]"
+  ]
+}
+2023-11-02T08:57:28 [INFO] 0 unhandled notification LogMessage:
+{
+  "level": 1,
+  "message": "[INFO] [default] [2023-11-02T08:57:28.964Z] [fetchCompletions] engine https://copilot-proxy.githubusercontent.com/v1/engines/copilot-codex",
+  "metadataStr": "[INFO] [default] [2023-11-02T08:57:28.964Z]",
+  "extra": [
+    "[fetchCompletions] engine https://copilot-proxy.githubusercontent.com/v1/engines/copilot-codex"
+  ]
+}
+2023-11-02T08:57:29 [INFO] 0 unhandled notification LogMessage:
+{
+  "level": 1,
+  "message": "[INFO] [default] [2023-11-02T08:57:29.321Z] request.response: [https://copilot-proxy.githubusercontent.com/v1/engines/copilot-codex/completions] took 357 ms",
+  "metadataStr": "[INFO] [default] [2023-11-02T08:57:29.321Z]",
+  "extra": [
+    "request.response: [https://copilot-proxy.githubusercontent.com/v1/engines/copilot-codex/completions] took 357 ms"
+  ]
+}
+2023-11-02T08:57:29 [INFO] 0 unhandled notification LogMessage:
+{
+  "level": 1,
+  "message": "[INFO] [streamChoices] [2023-11-02T08:57:29.322Z] solution 0 returned. finish reason: [stop]",
+  "metadataStr": "[INFO] [streamChoices] [2023-11-02T08:57:29.322Z]",
+  "extra": [
+    "solution 0 returned. finish reason: [stop]"
+  ]
+}
+2023-11-02T08:57:29 [INFO] 0 unhandled notification LogMessage:
+{
+  "level": 1,
+  "message": "[INFO] [streamChoices] [2023-11-02T08:57:29.323Z] request done: headerRequestId: [3143c259-981d-48f0-b70d-61a9b01e6ec0] model deployment ID: [x8d972952f61]",
+  "metadataStr": "[INFO] [streamChoices] [2023-11-02T08:57:29.323Z]",
+  "extra": [
+    "request done: headerRequestId: [3143c259-981d-48f0-b70d-61a9b01e6ec0] model deployment ID: [x8d972952f61]"
+  ]
+}
+2023-11-02T08:57:29 [INFO] 0 unhandled notification LogMessage:
+{
+  "level": 1,
+  "message": "[INFO] [default] [2023-11-02T08:57:29.726Z] [fetchCompletions] engine https://copilot-proxy.githubusercontent.com/v1/engines/copilot-codex",
+  "metadataStr": "[INFO] [default] [2023-11-02T08:57:29.726Z]",
+  "extra": [
+    "[fetchCompletions] engine https://copilot-proxy.githubusercontent.com/v1/engines/copilot-codex"
+  ]
+}
+2023-11-02T08:57:29 [INFO] 0 unhandled notification LogMessage:
+{
+  "level": 1,
+  "message": "[INFO] [default] [2023-11-02T08:57:29.884Z] [fetchCompletions] engine https://copilot-proxy.githubusercontent.com/v1/engines/copilot-codex",
+  "metadataStr": "[INFO] [default] [2023-11-02T08:57:29.884Z]",
+  "extra": [
+    "[fetchCompletions] engine https://copilot-proxy.githubusercontent.com/v1/engines/copilot-codex"
+  ]
+}
+2023-11-02T08:57:30 [INFO] 0 unhandled notification LogMessage:
+{
+  "level": 1,
+  "message": "[INFO] [default] [2023-11-02T08:57:30.156Z] request.response: [https://copilot-proxy.githubusercontent.com/v1/engines/copilot-codex/completions] took 272 ms",
+  "metadataStr": "[INFO] [default] [2023-11-02T08:57:30.156Z]",
+  "extra": [
+    "request.response: [https://copilot-proxy.githubusercontent.com/v1/engines/copilot-codex/completions] took 272 ms"
+  ]
+}
+2023-11-02T08:57:30 [INFO] 0 unhandled notification LogMessage:
+{
+  "level": 1,
+  "message": "[INFO] [streamChoices] [2023-11-02T08:57:30.157Z] solution 0 returned. finish reason: [stop]",
+  "metadataStr": "[INFO] [streamChoices] [2023-11-02T08:57:30.157Z]",
+  "extra": [
+    "solution 0 returned. finish reason: [stop]"
+  ]
+}
+2023-11-02T08:57:30 [INFO] 0 unhandled notification LogMessage:
+{
+  "level": 1,
+  "message": "[INFO] [streamChoices] [2023-11-02T08:57:30.157Z] request done: headerRequestId: [724c1c44-67ad-48ac-bb00-80ad5f250188] model deployment ID: [x8d972952f61]",
+  "metadataStr": "[INFO] [streamChoices] [2023-11-02T08:57:30.157Z]",
+  "extra": [
+    "request done: headerRequestId: [724c1c44-67ad-48ac-bb00-80ad5f250188] model deployment ID: [x8d972952f61]"
+  ]
+}
+2023-11-02T08:57:32 [INFO] 0 unhandled notification LogMessage:
+{
+  "level": 1,
+  "message": "[INFO] [default] [2023-11-02T08:57:32.414Z] [fetchCompletions] engine https://copilot-proxy.githubusercontent.com/v1/engines/copilot-codex",
+  "metadataStr": "[INFO] [default] [2023-11-02T08:57:32.414Z]",
+  "extra": [
+    "[fetchCompletions] engine https://copilot-proxy.githubusercontent.com/v1/engines/copilot-codex"
+  ]
+}
+2023-11-02T08:57:32 [INFO] 0 unhandled notification LogMessage:
+{
+  "level": 1,
+  "message": "[INFO] [default] [2023-11-02T08:57:32.827Z] request.response: [https://copilot-proxy.githubusercontent.com/v1/engines/copilot-codex/completions] took 413 ms",
+  "metadataStr": "[INFO] [default] [2023-11-02T08:57:32.827Z]",
+  "extra": [
+    "request.response: [https://copilot-proxy.githubusercontent.com/v1/engines/copilot-codex/completions] took 413 ms"
+  ]
+}
+2023-11-02T08:57:32 [INFO] 0 unhandled notification LogMessage:
+{
+  "level": 1,
+  "message": "[INFO] [streamChoices] [2023-11-02T08:57:32.829Z] solution 0 returned. finish reason: [stop]",
+  "metadataStr": "[INFO] [streamChoices] [2023-11-02T08:57:32.829Z]",
+  "extra": [
+    "solution 0 returned. finish reason: [stop]"
+  ]
+}
+2023-11-02T08:57:32 [INFO] 0 unhandled notification LogMessage:
+{
+  "level": 1,
+  "message": "[INFO] [streamChoices] [2023-11-02T08:57:32.830Z] request done: headerRequestId: [69d88c38-d049-48a9-868a-caddbcfb2c17] model deployment ID: [x8d972952f61]",
+  "metadataStr": "[INFO] [streamChoices] [2023-11-02T08:57:32.830Z]",
+  "extra": [
+    "request done: headerRequestId: [69d88c38-d049-48a9-868a-caddbcfb2c17] model deployment ID: [x8d972952f61]"
+  ]
+}
+2023-11-02T08:57:33 [INFO] 0 unhandled notification LogMessage:
+{
+  "level": 1,
+  "message": "[INFO] [default] [2023-11-02T08:57:33.066Z] [fetchCompletions] engine https://copilot-proxy.githubusercontent.com/v1/engines/copilot-codex",
+  "metadataStr": "[INFO] [default] [2023-11-02T08:57:33.066Z]",
+  "extra": [
+    "[fetchCompletions] engine https://copilot-proxy.githubusercontent.com/v1/engines/copilot-codex"
+  ]
+}
+2023-11-02T08:57:33 [INFO] 0 unhandled notification LogMessage:
+{
+  "level": 1,
+  "message": "[INFO] [default] [2023-11-02T08:57:33.257Z] request.response: [https://copilot-proxy.githubusercontent.com/v1/engines/copilot-codex/completions] took 191 ms",
+  "metadataStr": "[INFO] [default] [2023-11-02T08:57:33.257Z]",
+  "extra": [
+    "request.response: [https://copilot-proxy.githubusercontent.com/v1/engines/copilot-codex/completions] took 191 ms"
+  ]
+}
+2023-11-02T08:57:33 [INFO] 0 unhandled notification LogMessage:
+{
+  "level": 1,
+  "message": "[INFO] [streamChoices] [2023-11-02T08:57:33.258Z] solution 0 returned. finish reason: [stop]",
+  "metadataStr": "[INFO] [streamChoices] [2023-11-02T08:57:33.258Z]",
+  "extra": [
+    "solution 0 returned. finish reason: [stop]"
+  ]
+}
+2023-11-02T08:57:33 [INFO] 0 unhandled notification LogMessage:
+{
+  "level": 1,
+  "message": "[INFO] [streamChoices] [2023-11-02T08:57:33.259Z] request done: headerRequestId: [d6cb1f07-6df9-45c9-929e-fb4701e2b57d] model deployment ID: [x8d972952f61]",
+  "metadataStr": "[INFO] [streamChoices] [2023-11-02T08:57:33.259Z]",
+  "extra": [
+    "request done: headerRequestId: [d6cb1f07-6df9-45c9-929e-fb4701e2b57d] model deployment ID: [x8d972952f61]"
+  ]
+}
+2023-11-02T08:57:44 [WARN] Generic lsp request to rust-analyzer failed: Invalid Range
+2023-11-02T08:57:44 [ERROR] inlay hint update task for range Anchor { timestamp: Lamport {0: 3701}, offset: 4, bias: Right, buffer_id: Some(9) }..Anchor { timestamp: Lamport {0: 3048}, offset: 941, bias: Right, buffer_id: Some(9) } failed: inlay hint fetch task: inlay hints LSP request: Invalid Range
+2023-11-02T08:57:44 [WARN] Generic lsp request to rust-analyzer failed: Invalid Range
+2023-11-02T08:57:44 [WARN] Generic lsp request to rust-analyzer failed: Invalid Range
+2023-11-02T08:57:44 [ERROR] inlay hint update task for range Anchor { timestamp: Lamport {0: 3048}, offset: 1, bias: Right, buffer_id: Some(9) }..Anchor { timestamp: Lamport {0: 1}, offset: 236, bias: Right, buffer_id: Some(9) } failed: inlay hint fetch task: inlay hints LSP request: Invalid Range
+2023-11-02T08:57:44 [WARN] Generic lsp request to rust-analyzer failed: Invalid Range
+2023-11-02T08:57:44 [ERROR] inlay hint update task for range Anchor { timestamp: Lamport {0: 3146}, offset: 463, bias: Right, buffer_id: Some(9) }..Anchor { timestamp: Lamport {0: 1}, offset: 898, bias: Right, buffer_id: Some(9) } failed: inlay hint fetch task: inlay hints LSP request: Invalid Range
+2023-11-02T08:57:44 [ERROR] inlay hint update task for range Anchor { timestamp: Lamport {0: 3149}, offset: 56, bias: Right, buffer_id: Some(9) }..Anchor { timestamp: Lamport {0: 3048}, offset: 78, bias: Right, buffer_id: Some(9) } failed: inlay hint fetch task: inlay hints LSP request: Invalid Range
+2023-11-02T08:58:46 [ERROR] crates/project/src/project.rs:2938: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_ecs-0.11.3/src/event.rs"
+2023-11-02T08:59:28 [ERROR] unexpected item event after pane was dropped
+2023-11-02T08:59:28 [ERROR] crates/project/src/project.rs:2938: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_input-0.11.3/src/mouse.rs"
+2023-11-02T08:59:28 [INFO] 0 unhandled notification LogMessage:
+{
+  "level": 1,
+  "message": "[INFO] [ghostText] [2023-11-02T08:59:28.381Z] Found inline suggestions locally",
+  "metadataStr": "[INFO] [ghostText] [2023-11-02T08:59:28.381Z]",
+  "extra": [
+    "Found inline suggestions locally"
+  ]
+}
+2023-11-02T08:59:28 [INFO] 0 unhandled notification LogMessage:
+{
+  "level": 1,
+  "message": "[INFO] [ghostText] [2023-11-02T08:59:28.452Z] Cancelled during debounce",
+  "metadataStr": "[INFO] [ghostText] [2023-11-02T08:59:28.452Z]",
+  "extra": [
+    "Cancelled during debounce"
+  ]
+}
+2023-11-02T09:05:04 [INFO] 6 unhandled notification experimental/serverStatus:
+{
+  "health": "ok",
+  "quiescent": false,
+  "message": null
+}
+2023-11-02T09:05:12 [WARN] Generic lsp request to rust-analyzer failed: content modified
+2023-11-02T09:05:12 [WARN] Generic lsp request to rust-analyzer failed: content modified
+2023-11-02T09:05:12 [WARN] Generic lsp request to rust-analyzer failed: content modified
+2023-11-02T09:05:12 [ERROR] inlay hint update task for range Anchor { timestamp: Lamport {0: 0}, offset: 0, bias: Left, buffer_id: None }..Anchor { timestamp: Lamport {65535: 4294967295}, offset: 18446744073709551615, bias: Right, buffer_id: None } failed: inlay hint fetch task: inlay hints LSP request: content modified
+2023-11-02T09:05:12 [ERROR] inlay hint update task for range Anchor { timestamp: Lamport {0: 1}, offset: 4552, bias: Left, buffer_id: Some(29) }..Anchor { timestamp: Lamport {0: 1}, offset: 6103, bias: Right, buffer_id: Some(29) } failed: inlay hint fetch task: inlay hints LSP request: content modified
+2023-11-02T09:05:12 [WARN] Generic lsp request to rust-analyzer failed: content modified
+2023-11-02T09:05:12 [WARN] Generic lsp request to rust-analyzer failed: content modified
+2023-11-02T09:05:12 [ERROR] inlay hint update task for range Anchor { timestamp: Lamport {0: 1}, offset: 915, bias: Left, buffer_id: Some(13) }..Anchor { timestamp: Lamport {65535: 4294967295}, offset: 18446744073709551615, bias: Right, buffer_id: None } failed: inlay hint fetch task: inlay hints LSP request: content modified
+2023-11-02T09:05:12 [WARN] Generic lsp request to rust-analyzer failed: content modified
+2023-11-02T09:05:12 [ERROR] inlay hint update task for range Anchor { timestamp: Lamport {0: 1}, offset: 1237, bias: Left, buffer_id: Some(41) }..Anchor { timestamp: Lamport {0: 1}, offset: 2469, bias: Right, buffer_id: Some(41) } failed: inlay hint fetch task: inlay hints LSP request: content modified
+2023-11-02T09:05:12 [WARN] Generic lsp request to rust-analyzer failed: content modified
+2023-11-02T09:05:12 [ERROR] inlay hint update task for range Anchor { timestamp: Lamport {0: 1}, offset: 31057, bias: Left, buffer_id: Some(37) }..Anchor { timestamp: Lamport {0: 1}, offset: 32487, bias: Right, buffer_id: Some(37) } failed: inlay hint fetch task: inlay hints LSP request: content modified
+2023-11-02T09:05:12 [WARN] Generic lsp request to rust-analyzer failed: content modified
+2023-11-02T09:05:12 [ERROR] inlay hint update task for range Anchor { timestamp: Lamport {0: 0}, offset: 0, bias: Left, buffer_id: None }..Anchor { timestamp: Lamport {0: 1}, offset: 2133, bias: Right, buffer_id: Some(43) } failed: inlay hint fetch task: inlay hints LSP request: content modified
+2023-11-02T09:05:12 [WARN] Generic lsp request to rust-analyzer failed: content modified
+2023-11-02T09:05:12 [ERROR] inlay hint update task for range Anchor { timestamp: Lamport {0: 1}, offset: 303, bias: Left, buffer_id: Some(44) }..Anchor { timestamp: Lamport {0: 1}, offset: 644, bias: Right, buffer_id: Some(44) } failed: inlay hint fetch task: inlay hints LSP request: content modified
+2023-11-02T09:05:12 [WARN] Generic lsp request to rust-analyzer failed: content modified
+2023-11-02T09:05:12 [ERROR] inlay hint update task for range Anchor { timestamp: Lamport {0: 0}, offset: 0, bias: Left, buffer_id: None }..Anchor { timestamp: Lamport {65535: 4294967295}, offset: 18446744073709551615, bias: Right, buffer_id: None } failed: inlay hint fetch task: inlay hints LSP request: content modified
+2023-11-02T09:05:12 [WARN] Generic lsp request to rust-analyzer failed: content modified
+2023-11-02T09:05:12 [ERROR] inlay hint update task for range Anchor { timestamp: Lamport {0: 1}, offset: 25050, bias: Left, buffer_id: Some(89) }..Anchor { timestamp: Lamport {0: 1}, offset: 26227, bias: Right, buffer_id: Some(89) } failed: inlay hint fetch task: inlay hints LSP request: content modified
+2023-11-02T09:05:12 [WARN] Generic lsp request to rust-analyzer failed: content modified
+2023-11-02T09:05:12 [ERROR] inlay hint update task for range Anchor { timestamp: Lamport {0: 1}, offset: 831, bias: Left, buffer_id: Some(84) }..Anchor { timestamp: Lamport {65535: 4294967295}, offset: 18446744073709551615, bias: Right, buffer_id: None } failed: inlay hint fetch task: inlay hints LSP request: content modified
+2023-11-02T09:05:12 [WARN] Generic lsp request to rust-analyzer failed: content modified
+2023-11-02T09:05:12 [ERROR] inlay hint update task for range Anchor { timestamp: Lamport {0: 1}, offset: 2305, bias: Left, buffer_id: Some(9) }..Anchor { timestamp: Lamport {65535: 4294967295}, offset: 18446744073709551615, bias: Right, buffer_id: None } failed: inlay hint fetch task: inlay hints LSP request: content modified
+2023-11-02T09:05:12 [WARN] Generic lsp request to rust-analyzer failed: content modified
+2023-11-02T09:05:12 [ERROR] inlay hint update task for range Anchor { timestamp: Lamport {0: 1}, offset: 2427, bias: Left, buffer_id: Some(101) }..Anchor { timestamp: Lamport {0: 1}, offset: 4765, bias: Right, buffer_id: Some(101) } failed: inlay hint fetch task: inlay hints LSP request: content modified
+2023-11-02T09:05:12 [WARN] Generic lsp request to rust-analyzer failed: content modified
+2023-11-02T09:05:12 [ERROR] inlay hint update task for range Anchor { timestamp: Lamport {0: 1}, offset: 1795, bias: Left, buffer_id: Some(13) }..Anchor { timestamp: Lamport {65535: 4294967295}, offset: 18446744073709551615, bias: Right, buffer_id: None } failed: inlay hint fetch task: inlay hints LSP request: content modified
+2023-11-02T09:05:12 [WARN] Generic lsp request to rust-analyzer failed: content modified
+2023-11-02T09:05:12 [ERROR] inlay hint update task for range Anchor { timestamp: Lamport {0: 1}, offset: 155, bias: Left, buffer_id: Some(122) }..Anchor { timestamp: Lamport {0: 1}, offset: 1230, bias: Right, buffer_id: Some(122) } failed: inlay hint fetch task: inlay hints LSP request: content modified
+2023-11-02T09:05:12 [WARN] Generic lsp request to rust-analyzer failed: content modified
+2023-11-02T09:05:12 [ERROR] inlay hint update task for range Anchor { timestamp: Lamport {0: 1}, offset: 2078, bias: Left, buffer_id: Some(126) }..Anchor { timestamp: Lamport {0: 1}, offset: 3515, bias: Right, buffer_id: Some(126) } failed: inlay hint fetch task: inlay hints LSP request: content modified
+2023-11-02T09:05:12 [WARN] Generic lsp request to rust-analyzer failed: content modified
+2023-11-02T09:05:12 [ERROR] inlay hint update task for range Anchor { timestamp: Lamport {0: 1}, offset: 7927, bias: Left, buffer_id: Some(144) }..Anchor { timestamp: Lamport {0: 1}, offset: 9109, bias: Right, buffer_id: Some(144) } failed: inlay hint fetch task: inlay hints LSP request: content modified
+2023-11-02T09:05:12 [WARN] Generic lsp request to rust-analyzer failed: content modified
+2023-11-02T09:05:12 [ERROR] inlay hint update task for range Anchor { timestamp: Lamport {0: 0}, offset: 0, bias: Left, buffer_id: None }..Anchor { timestamp: Lamport {0: 3119}, offset: 244, bias: Right, buffer_id: Some(107) } failed: inlay hint fetch task: inlay hints LSP request: content modified
+2023-11-02T09:05:12 [WARN] Generic lsp request to rust-analyzer failed: content modified
+2023-11-02T09:05:12 [ERROR] inlay hint update task for range Anchor { timestamp: Lamport {0: 1}, offset: 3421, bias: Left, buffer_id: Some(147) }..Anchor { timestamp: Lamport {0: 1}, offset: 4619, bias: Right, buffer_id: Some(147) } failed: inlay hint fetch task: inlay hints LSP request: content modified
+2023-11-02T09:05:12 [WARN] Generic lsp request to rust-analyzer failed: content modified
+2023-11-02T09:05:12 [ERROR] inlay hint update task for range Anchor { timestamp: Lamport {0: 3434}, offset: 1, bias: Left, buffer_id: Some(82) }..Anchor { timestamp: Lamport {0: 5149}, offset: 64, bias: Right, buffer_id: Some(82) } failed: inlay hint fetch task: inlay hints LSP request: content modified
+2023-11-02T09:05:12 [WARN] Generic lsp request to rust-analyzer failed: content modified
+2023-11-02T09:05:12 [ERROR] inlay hint update task for range Anchor { timestamp: Lamport {0: 1}, offset: 652, bias: Left, buffer_id: Some(155) }..Anchor { timestamp: Lamport {65535: 4294967295}, offset: 18446744073709551615, bias: Right, buffer_id: None } failed: inlay hint fetch task: inlay hints LSP request: content modified
+2023-11-02T09:05:12 [WARN] Generic lsp request to rust-analyzer failed: content modified
+2023-11-02T09:05:12 [ERROR] inlay hint update task for range Anchor { timestamp: Lamport {0: 0}, offset: 0, bias: Left, buffer_id: None }..Anchor { timestamp: Lamport {0: 43}, offset: 569, bias: Right, buffer_id: Some(174) } failed: inlay hint fetch task: inlay hints LSP request: content modified
+2023-11-02T09:05:12 [WARN] Generic lsp request to rust-analyzer failed: content modified
+2023-11-02T09:05:12 [ERROR] inlay hint update task for range Anchor { timestamp: Lamport {0: 0}, offset: 0, bias: Left, buffer_id: None }..Anchor { timestamp: Lamport {65535: 4294967295}, offset: 18446744073709551615, bias: Right, buffer_id: None } failed: inlay hint fetch task: inlay hints LSP request: content modified
+2023-11-02T09:05:12 [ERROR] inlay hint update task for range Anchor { timestamp: Lamport {0: 1}, offset: 2987, bias: Left, buffer_id: Some(221) }..Anchor { timestamp: Lamport {0: 1}, offset: 4106, bias: Right, buffer_id: Some(221) } failed: inlay hint fetch task: inlay hints LSP request: content modified
+2023-11-02T09:05:12 [ERROR] inlay hint update task for range Anchor { timestamp: Lamport {0: 1}, offset: 8163, bias: Left, buffer_id: Some(219) }..Anchor { timestamp: Lamport {0: 1}, offset: 9444, bias: Right, buffer_id: Some(219) } failed: inlay hint fetch task: inlay hints LSP request: content modified
+2023-11-02T09:06:09 [INFO] 6 unhandled notification experimental/serverStatus:
+{
+  "health": "ok",
+  "quiescent": true,
+  "message": null
+}
+2023-11-02T09:06:09 [ERROR] crates/project/src/project.rs:2938: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_ecs-0.11.3/src/event.rs"
+2023-11-02T09:06:09 [ERROR] crates/project/src/project.rs:2938: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_ecs-0.11.3/src/event.rs"
+2023-11-02T09:08:48 [INFO] 0 unhandled notification LogMessage:
+{
+  "level": 1,
+  "message": "[INFO] [default] [2023-11-02T09:08:48.546Z] [fetchCompletions] engine https://copilot-proxy.githubusercontent.com/v1/engines/copilot-codex",
+  "metadataStr": "[INFO] [default] [2023-11-02T09:08:48.546Z]",
+  "extra": [
+    "[fetchCompletions] engine https://copilot-proxy.githubusercontent.com/v1/engines/copilot-codex"
+  ]
+}
+2023-11-02T09:08:48 [INFO] 0 unhandled notification LogMessage:
+{
+  "level": 1,
+  "message": "[INFO] [default] [2023-11-02T09:08:48.736Z] request.response: [https://copilot-proxy.githubusercontent.com/v1/engines/copilot-codex/completions] took 190 ms",
+  "metadataStr": "[INFO] [default] [2023-11-02T09:08:48.736Z]",
+  "extra": [
+    "request.response: [https://copilot-proxy.githubusercontent.com/v1/engines/copilot-codex/completions] took 190 ms"
+  ]
+}
+2023-11-02T09:08:48 [INFO] 0 unhandled notification LogMessage:
+{
+  "level": 1,
+  "message": "[INFO] [streamChoices] [2023-11-02T09:08:48.737Z] solution 0 returned. finish reason: [stop]",
+  "metadataStr": "[INFO] [streamChoices] [2023-11-02T09:08:48.737Z]",
+  "extra": [
+    "solution 0 returned. finish reason: [stop]"
+  ]
+}
+2023-11-02T09:08:48 [INFO] 0 unhandled notification LogMessage:
+{
+  "level": 1,
+  "message": "[INFO] [streamChoices] [2023-11-02T09:08:48.737Z] request done: headerRequestId: [2e733c76-e800-48c9-bcd1-333487127333] model deployment ID: [x8d972952f61]",
+  "metadataStr": "[INFO] [streamChoices] [2023-11-02T09:08:48.737Z]",
+  "extra": [
+    "request done: headerRequestId: [2e733c76-e800-48c9-bcd1-333487127333] model deployment ID: [x8d972952f61]"
+  ]
+}
+2023-11-02T09:08:49 [ERROR] crates/project/src/project.rs:2938: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_ecs-0.11.3/src/event.rs"
+2023-11-02T09:08:52 [ERROR] crates/project/src/project.rs:2938: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_internal-0.11.3/src/default_plugins.rs"
+2023-11-02T09:08:52 [ERROR] crates/project/src/project.rs:2938: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_ecs-0.11.3/src/event.rs"
+2023-11-02T09:09:11 [ERROR] crates/project/src/project.rs:2938: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_internal-0.11.3/src/default_plugins.rs"
+2023-11-02T09:09:11 [ERROR] crates/project/src/project.rs:2938: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_ecs-0.11.3/src/event.rs"
+2023-11-02T09:09:13 [ERROR] crates/project/src/project.rs:2938: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_ecs-0.11.3/src/event.rs"
+2023-11-02T09:09:14 [ERROR] crates/project/src/project.rs:2938: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_ecs-0.11.3/src/event.rs"
+2023-11-02T09:09:15 [ERROR] crates/project/src/project.rs:2938: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_ecs-0.11.3/src/event.rs"
+2023-11-02T09:09:16 [ERROR] oneshot canceled
+2023-11-02T09:09:16 [ERROR] oneshot canceled
+2023-11-02T09:09:20 [INFO] ========== starting zed ==========
+2023-11-02T09:09:20 [INFO] Opening main db
+2023-11-02T09:09:20 [INFO] Opening main db
+2023-11-02T09:09:20 [INFO] set status on client 0: Authenticating
+2023-11-02T09:09:20 [INFO] set status on client 83703: Connecting
+2023-11-02T09:09:20 [INFO] build git repository ".git"
+2023-11-02T09:09:20 [INFO] Opening main db
+2023-11-02T09:09:20 [INFO] Opening main db
+2023-11-02T09:09:21 [ERROR] crates/workspace/src/persistence/model.rs:260: No worktree for path: "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_derive-0.11.3/src/lib.rs/"
+2023-11-02T09:09:21 [ERROR] crates/workspace/src/persistence/model.rs:260: No worktree for path: "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_ecs-0.11.3/src/system/query.rs/"
+2023-11-02T09:09:21 [ERROR] crates/workspace/src/persistence/model.rs:260: No worktree for path: "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_ecs_macros-0.11.3/src/lib.rs/"
+2023-11-02T09:09:21 [ERROR] crates/workspace/src/persistence/model.rs:260: No worktree for path: "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_ecs-0.11.3/src/system/commands/mod.rs/"
+2023-11-02T09:09:21 [ERROR] crates/workspace/src/persistence/model.rs:260: No worktree for path: "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_time-0.11.3/src/timer.rs/"
+2023-11-02T09:09:21 [INFO] Node runtime install_if_needed
+2023-11-02T09:09:21 [ERROR] crates/workspace/src/persistence/model.rs:260: No path stored for this editor
+2023-11-02T09:09:21 [ERROR] crates/workspace/src/persistence/model.rs:260: No worktree for path: "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_time-0.11.3/src/stopwatch.rs/"
+2023-11-02T09:09:21 [ERROR] crates/workspace/src/persistence/model.rs:260: No worktree for path: "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_easings-0.11.1/src/lib.rs/"
+2023-11-02T09:09:21 [ERROR] crates/workspace/src/persistence/model.rs:260: No worktree for path: "/Users/widgethiro/.rustup/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/library/core/src/time.rs/"
+2023-11-02T09:09:21 [ERROR] crates/workspace/src/persistence/model.rs:260: Deserializer does not exist for item kind: diagnostics
+2023-11-02T09:09:21 [ERROR] crates/workspace/src/persistence/model.rs:260: No worktree for path: "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_ecs-0.11.3/src/query/iter.rs/"
+2023-11-02T09:09:21 [ERROR] crates/workspace/src/persistence/model.rs:260: No worktree for path: "/Users/widgethiro/.rustup/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/library/core/src/ops/deref.rs/"
+2023-11-02T09:09:21 [INFO] connected to rpc endpoint https://collab.zed.dev/rpc
+2023-11-02T09:09:21 [INFO] starting language server "rust-analyzer", path: "/Users/widgethiro/projets/neon_defense", id: 1
+2023-11-02T09:09:21 [ERROR] crates/workspace/src/persistence/model.rs:260: No worktree for path: "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_ecs-0.11.3/src/schedule/config.rs/"
+2023-11-02T09:09:21 [ERROR] crates/workspace/src/persistence/model.rs:260: No worktree for path: "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_ecs-0.11.3/src/schedule/condition.rs/"
+2023-11-02T09:09:21 [INFO] add connection to peer
+2023-11-02T09:09:21 [INFO] waiting for server hello
+2023-11-02T09:09:21 [INFO] got server hello
+2023-11-02T09:09:21 [INFO] set status to connected (connection id: ConnectionId { owner_id: 0, id: 0 }, peer id: PeerId { owner_id: 234, id: 6573 })
+2023-11-02T09:09:21 [INFO] set status on client 83703: Connected { peer_id: PeerId { owner_id: 234, id: 6573 }, connection_id: ConnectionId { owner_id: 0, id: 0 } }
+2023-11-02T09:09:22 [INFO] 0 unhandled notification LogMessage:
+{
+  "level": 0,
+  "message": "[DEBUG] [agent] [2023-11-02T09:09:22.433Z] Agent service starting",
+  "metadataStr": "[DEBUG] [agent] [2023-11-02T09:09:22.433Z]",
+  "extra": [
+    "Agent service starting"
+  ]
+}
+2023-11-02T09:09:22 [INFO] 0 unhandled notification client/registerCapability:
+{
+  "registrations": [
+    {
+      "id": "eb34b3a5-ad26-4e8f-aadf-7b01644ad489",
+      "method": "workspace/didChangeWorkspaceFolders",
+      "registerOptions": {}
+    }
+  ]
+}
+2023-11-02T09:09:22 [INFO] 0 unhandled notification LogMessage:
+{
+  "level": 0,
+  "message": "[DEBUG] [agent] [2023-11-02T09:09:22.943Z] Telemetry initialized",
+  "metadataStr": "[DEBUG] [agent] [2023-11-02T09:09:22.943Z]",
+  "extra": [
+    "Telemetry initialized"
+  ]
+}
+2023-11-02T09:09:25 [INFO] set environment variables from shell:/bin/zsh, path:/Users/widgethiro/.rd/bin:/usr/local/Cellar/pyenv-virtualenv/1.2.1/shims:/Users/widgethiro/.pyenv/shims:/Users/widgethiro/.nvm/versions/node/v8.0.0/bin:/Users/widgethiro/.jenv/shims:/Users/widgethiro/.jenv/bin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/MacGPG2/bin:/Library/Apple/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/Users/widgethiro/.rd/bin:/usr/local/Cellar/pyenv-virtualenv/1.2.1/shims:/Users/widgethiro/.nvm/versions/node/v8.0.0/bin:/Users/widgethiro/.jenv/shims:/Users/widgethiro/.jenv/bin:/Users/widgethiro/.cargo/bin:/usr/local/bin
+2023-11-02T09:09:26 [INFO] 1 unhandled notification experimental/serverStatus:
+{
+  "health": "ok",
+  "quiescent": false,
+  "message": null
+}
+2023-11-02T09:09:27 [WARN] Generic lsp request to rust-analyzer failed: content modified
+2023-11-02T09:09:27 [ERROR] inlay hint update task for range Anchor { timestamp: Lamport {0: 0}, offset: 0, bias: Left, buffer_id: None }..Anchor { timestamp: Lamport {0: 1}, offset: 865, bias: Right, buffer_id: Some(17) } failed: inlay hint fetch task: inlay hints LSP request: content modified
+2023-11-02T09:09:30 [WARN] Generic lsp request to rust-analyzer failed: content modified
+2023-11-02T09:09:30 [ERROR] inlay hint update task for range Anchor { timestamp: Lamport {0: 1}, offset: 866, bias: Left, buffer_id: Some(17) }..Anchor { timestamp: Lamport {0: 1}, offset: 1731, bias: Right, buffer_id: Some(17) } failed: inlay hint fetch task: inlay hints LSP request: content modified
+2023-11-02T09:09:42 [INFO] 1 unhandled notification experimental/serverStatus:
+{
+  "health": "ok",
+  "quiescent": true,
+  "message": null
+}
+2023-11-02T09:09:42 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_ecs-0.11.3/src/event.rs"
+2023-11-02T09:11:11 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_ecs-0.11.3/src/event.rs"
+2023-11-02T09:11:12 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_ecs-0.11.3/src/event.rs"
+2023-11-02T09:11:14 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_ecs-0.11.3/src/event.rs"
+2023-11-02T09:11:15 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_ecs-0.11.3/src/event.rs"
+2023-11-02T09:11:30 [INFO] 1 unhandled notification experimental/serverStatus:
+{
+  "health": "ok",
+  "quiescent": false,
+  "message": null
+}
+2023-11-02T09:11:31 [INFO] 1 unhandled notification experimental/serverStatus:
+{
+  "health": "ok",
+  "quiescent": true,
+  "message": null
+}
+2023-11-02T09:11:32 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_ecs-0.11.3/src/event.rs"
+2023-11-02T09:11:33 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_ecs-0.11.3/src/event.rs"
+2023-11-02T09:11:39 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_ecs-0.11.3/src/event.rs"
+2023-11-02T09:11:39 [ERROR] unexpected item event after pane was dropped
+2023-11-02T09:11:40 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_ecs-0.11.3/src/event.rs"
+2023-11-02T09:11:45 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_ecs-0.11.3/src/event.rs"
+2023-11-02T09:11:46 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_ecs-0.11.3/src/event.rs"
+2023-11-02T09:11:50 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_ecs-0.11.3/src/event.rs"
+2023-11-02T09:11:59 [WARN] Generic lsp request to rust-analyzer failed: content modified
+2023-11-02T09:12:00 [WARN] Generic lsp request to rust-analyzer failed: content modified
+2023-11-02T09:12:00 [WARN] Generic lsp request to rust-analyzer failed: content modified
+2023-11-02T09:12:35 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_ecs-0.11.3/src/event.rs"
+2023-11-02T09:12:36 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_ecs-0.11.3/src/event.rs"
+2023-11-02T09:12:37 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_ecs-0.11.3/src/event.rs"
+2023-11-02T09:12:52 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_ecs-0.11.3/src/event.rs"
+2023-11-02T09:12:53 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_ecs-0.11.3/src/event.rs"
+2023-11-02T09:13:13 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_ecs-0.11.3/src/event.rs"
+2023-11-02T09:13:14 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_ecs-0.11.3/src/event.rs"
+2023-11-02T09:13:29 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_ecs-0.11.3/src/event.rs"
+2023-11-02T09:13:30 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_ecs-0.11.3/src/event.rs"
+2023-11-02T09:13:36 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_ecs-0.11.3/src/event.rs"
+2023-11-02T09:13:37 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_ecs-0.11.3/src/event.rs"
+2023-11-02T09:13:37 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_ecs-0.11.3/src/system/commands/mod.rs"
+2023-11-02T09:13:55 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_ecs-0.11.3/src/event.rs"
+2023-11-02T09:13:55 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_transform-0.11.3/src/components/transform.rs"
+2023-11-02T09:13:56 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_ecs-0.11.3/src/event.rs"
+2023-11-02T09:14:04 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_ecs-0.11.3/src/event.rs"
+2023-11-02T09:14:05 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_ecs-0.11.3/src/event.rs"
+2023-11-02T09:14:08 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_ecs-0.11.3/src/event.rs"
+2023-11-02T09:14:09 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_ecs-0.11.3/src/event.rs"
+2023-11-02T09:14:09 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_ecs-0.11.3/src/event.rs"
+2023-11-02T09:14:10 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_ecs-0.11.3/src/event.rs"
+2023-11-02T09:15:06 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_ecs-0.11.3/src/event.rs"
+2023-11-02T09:15:07 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_ecs-0.11.3/src/event.rs"
+2023-11-02T09:15:12 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/glam-0.24.1/src/f32/vec3.rs"
+2023-11-02T09:15:12 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_ecs-0.11.3/src/event.rs"
+2023-11-02T09:15:12 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_transform-0.11.3/src/components/transform.rs"
+2023-11-02T09:15:13 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_ecs-0.11.3/src/event.rs"
+2023-11-02T09:15:17 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_ecs-0.11.3/src/event.rs"
+2023-11-02T09:15:18 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_ecs-0.11.3/src/event.rs"
+2023-11-02T09:15:27 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_ecs-0.11.3/src/event.rs"
+2023-11-02T09:15:28 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_ecs-0.11.3/src/event.rs"
+2023-11-02T09:15:29 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_ecs-0.11.3/src/event.rs"
+2023-11-02T09:15:30 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_ecs-0.11.3/src/event.rs"
+2023-11-02T09:15:33 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_ecs-0.11.3/src/event.rs"
+2023-11-02T09:15:34 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_ecs-0.11.3/src/event.rs"
+2023-11-02T09:15:36 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_ecs-0.11.3/src/event.rs"
+2023-11-02T09:15:37 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_ecs-0.11.3/src/event.rs"
+2023-11-02T09:16:57 [INFO] open paths ["/Users/widgethiro/projets/neon_defense/src/actions/cursor.rs"]
+2023-11-02T09:16:58 [WARN] Generic lsp request to rust-analyzer failed: content modified
+2023-11-02T09:17:03 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_ecs-0.11.3/src/event.rs"
+2023-11-02T09:19:39 [INFO] open paths ["/Users/widgethiro/projets/neon_defense/src/board.rs"]
+2023-11-02T09:19:58 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_asset-0.11.3/src/assets.rs"
+2023-11-02T09:19:59 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_transform-0.11.3/src/components/transform.rs"
+2023-11-02T09:19:59 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_pbr-0.11.3/src/bundle.rs"
+2023-11-02T09:20:15 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_asset-0.11.3/src/assets.rs"
+2023-11-02T09:20:16 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_asset-0.11.3/src/assets.rs"
+2023-11-02T09:20:24 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_render-0.11.3/src/color/mod.rs"
+2023-11-02T09:20:28 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_asset-0.11.3/src/assets.rs"
+2023-11-02T09:20:29 [ERROR] unexpected item event after pane was dropped
+2023-11-02T09:20:29 [ERROR] /Users/administrator/actions-runner-2/_work/zed/zed/crates/gpui/src/elements/tooltip.rs:123: window was removed
+2023-11-02T09:20:49 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_asset-0.11.3/src/assets.rs"
+2023-11-02T09:20:49 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_pbr-0.11.3/src/bundle.rs"
+2023-11-02T09:20:49 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_ecs-0.11.3/src/system/commands/mod.rs"
+2023-11-02T09:20:57 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_pbr-0.11.3/src/bundle.rs"
+2023-11-02T09:21:23 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_ecs-0.11.3/src/system/commands/mod.rs"
+2023-11-02T09:21:23 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_asset-0.11.3/src/assets.rs"
+2023-11-02T09:21:24 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_asset-0.11.3/src/assets.rs"
+2023-11-02T09:21:24 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_ecs-0.11.3/src/system/commands/mod.rs"
+2023-11-02T09:21:28 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_asset-0.11.3/src/assets.rs"
+2023-11-02T09:21:50 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_ecs-0.11.3/src/system/commands/mod.rs"
+2023-11-02T09:21:50 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_asset-0.11.3/src/assets.rs"
+2023-11-02T09:21:51 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_asset-0.11.3/src/assets.rs"
+2023-11-02T09:21:51 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_ecs-0.11.3/src/system/commands/mod.rs"
+2023-11-02T09:22:10 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_ecs-0.11.3/src/system/commands/mod.rs"
+2023-11-02T09:22:10 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_asset-0.11.3/src/assets.rs"
+2023-11-02T09:22:13 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_asset-0.11.3/src/assets.rs"
+2023-11-02T09:22:13 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_ecs-0.11.3/src/system/commands/mod.rs"
+2023-11-02T09:22:22 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/glam-0.24.1/src/f32/vec3.rs"
+2023-11-02T09:22:22 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_ecs-0.11.3/src/system/commands/mod.rs"
+2023-11-02T09:22:22 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_asset-0.11.3/src/assets.rs"
+2023-11-02T09:22:23 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_asset-0.11.3/src/assets.rs"
+2023-11-02T09:22:24 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_ecs-0.11.3/src/system/commands/mod.rs"
+2023-11-02T09:24:36 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_ecs-0.11.3/src/system/commands/mod.rs"
+2023-11-02T09:24:36 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_asset-0.11.3/src/assets.rs"
+2023-11-02T09:24:36 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_transform-0.11.3/src/components/transform.rs"
+2023-11-02T09:24:39 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_asset-0.11.3/src/assets.rs"
+2023-11-02T09:24:40 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_ecs-0.11.3/src/system/commands/mod.rs"
+2023-11-02T09:25:07 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_ecs-0.11.3/src/system/commands/mod.rs"
+2023-11-02T09:25:07 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_asset-0.11.3/src/assets.rs"
+2023-11-02T09:25:08 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_ecs-0.11.3/src/system/commands/mod.rs"
+2023-11-02T09:25:26 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_ecs-0.11.3/src/system/commands/mod.rs"
+2023-11-02T09:25:28 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_ecs-0.11.3/src/system/commands/mod.rs"
+2023-11-02T09:25:49 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_ecs-0.11.3/src/system/commands/mod.rs"
+2023-11-02T09:25:49 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_transform-0.11.3/src/components/transform.rs"
+2023-11-02T09:25:50 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_ecs-0.11.3/src/system/commands/mod.rs"
+2023-11-02T09:26:07 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_render-0.11.3/src/color/mod.rs"
+2023-11-02T09:36:10 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_ecs-0.11.3/src/system/commands/mod.rs"
+2023-11-02T09:36:12 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_sprite-0.11.3/src/mesh2d/color_material.rs"
+2023-11-02T09:39:40 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_sprite-0.11.3/src/mesh2d/material.rs"
+2023-11-02T09:39:41 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_render-0.11.3/src/mesh/mesh/mod.rs"
+2023-11-02T09:39:51 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_render-0.11.3/src/render_resource/bind_group.rs"
+2023-11-02T09:40:08 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.rustup/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/library/core/src/clone.rs"
+2023-11-02T09:40:18 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_asset-0.11.3/src/handle.rs"
+2023-11-02T09:40:33 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_asset-0.11.3/src/assets.rs"
+2023-11-02T09:40:45 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_asset-0.11.3/src/assets.rs"
+2023-11-02T09:40:45 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_transform-0.11.3/src/components/transform.rs"
+2023-11-02T09:46:12 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_sprite-0.11.3/src/mesh2d/color_material.rs"
+2023-11-02T09:58:58 [INFO] 1 unhandled notification experimental/serverStatus:
+{
+  "health": "ok",
+  "quiescent": false,
+  "message": null
+}
+2023-11-02T09:59:00 [INFO] 1 unhandled notification experimental/serverStatus:
+{
+  "health": "ok",
+  "quiescent": true,
+  "message": null
+}
+2023-11-02T10:08:06 [WARN] Generic lsp request to rust-analyzer failed: content modified
+2023-11-02T10:08:06 [WARN] Generic lsp request to rust-analyzer failed: content modified
+2023-11-02T10:08:17 [WARN] Generic lsp request to rust-analyzer failed: Invalid Range
+2023-11-02T10:08:17 [ERROR] inlay hint update task for range Anchor { timestamp: Lamport {0: 281}, offset: 9, bias: Right, buffer_id: Some(27) }..Anchor { timestamp: Lamport {0: 1}, offset: 224, bias: Right, buffer_id: Some(27) } failed: inlay hint fetch task: inlay hints LSP request: Invalid Range
+2023-11-02T10:09:15 [WARN] Generic lsp request to rust-analyzer failed: content modified
+2023-11-02T10:09:16 [INFO] 1 unhandled notification experimental/serverStatus:
+{
+  "health": "warning",
+  "quiescent": true,
+  "message": "Proc-macros have changed and need to be rebuilt."
+}
+2023-11-02T10:09:17 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_eventlistener_derive-0.5.1/src/lib.rs"
+2023-11-02T10:09:20 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_ecs_macros-0.11.3/src/lib.rs"
+2023-11-02T10:09:22 [INFO] 1 unhandled notification experimental/serverStatus:
+{
+  "health": "ok",
+  "quiescent": true,
+  "message": null
+}
+2023-11-02T10:09:22 [WARN] Generic lsp request to rust-analyzer failed: content modified
+2023-11-02T10:09:22 [ERROR] inlay hint update task for range Anchor { timestamp: Lamport {0: 0}, offset: 0, bias: Left, buffer_id: None }..Anchor { timestamp: Lamport {0: 1}, offset: 1253, bias: Right, buffer_id: Some(49) } failed: inlay hint fetch task: inlay hints LSP request: content modified
+2023-11-02T10:09:30 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/syn-2.0.23/src/lib.rs"
+2023-11-02T10:09:31 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/syn-2.0.23/src/punctuated.rs"
+2023-11-02T10:09:39 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.rustup/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/library/proc_macro/src/lib.rs"
+2023-11-02T10:09:43 [ERROR] unexpected item event after pane was dropped
+2023-11-02T10:09:43 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_eventlistener_derive-0.5.1/src/lib.rs"
+2023-11-02T10:09:44 [INFO] 1 unhandled notification experimental/serverStatus:
+{
+  "health": "warning",
+  "quiescent": true,
+  "message": "Proc-macros have changed and need to be rebuilt."
+}
+2023-11-02T10:09:48 [ERROR] unexpected item event after pane was dropped
+2023-11-02T10:09:48 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_eventlistener_derive-0.5.1/src/lib.rs"
+2023-11-02T10:09:51 [INFO] 1 unhandled notification experimental/serverStatus:
+{
+  "health": "ok",
+  "quiescent": true,
+  "message": null
+}
+2023-11-02T10:09:52 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_ecs_macros-0.11.3/src/lib.rs"
+2023-11-02T10:10:44 [WARN] Generic lsp request to rust-analyzer failed: content modified
+2023-11-02T10:11:23 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_eventlistener_core-0.5.1/src/lib.rs"
+2023-11-02T10:11:25 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_eventlistener_core-0.5.1/src/lib.rs"
+2023-11-02T10:11:25 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_eventlistener_core-0.5.1/src/lib.rs"
+2023-11-02T10:11:32 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_eventlistener_core-0.5.1/src/lib.rs"
+2023-11-02T10:11:33 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_eventlistener_core-0.5.1/src/lib.rs"
+2023-11-02T10:11:34 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_eventlistener_core-0.5.1/src/lib.rs"
+2023-11-02T10:11:35 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_eventlistener_core-0.5.1/src/lib.rs"
+2023-11-02T10:22:16 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_eventlistener_core-0.5.1/src/lib.rs"
+2023-11-02T10:22:18 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_eventlistener_core-0.5.1/src/lib.rs"
+2023-11-02T10:22:20 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_app-0.11.3/src/app.rs"
+2023-11-02T10:22:22 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_app-0.11.3/src/app.rs"
+2023-11-02T10:22:24 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_app-0.11.3/src/app.rs"
+2023-11-02T10:23:23 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_app-0.11.3/src/app.rs"
+2023-11-02T10:23:24 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_app-0.11.3/src/app.rs"
+2023-11-02T10:23:29 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_app-0.11.3/src/app.rs"
+2023-11-02T10:23:30 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_app-0.11.3/src/app.rs"
+2023-11-02T11:57:06 [INFO] 1 unhandled notification experimental/serverStatus:
+{
+  "health": "ok",
+  "quiescent": false,
+  "message": null
+}
+2023-11-02T11:57:07 [INFO] 1 unhandled notification experimental/serverStatus:
+{
+  "health": "ok",
+  "quiescent": true,
+  "message": null
+}
+2023-11-02T11:57:07 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_app-0.11.3/src/app.rs"
+2023-11-02T11:57:10 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_app-0.11.3/src/app.rs"
+2023-11-02T11:57:12 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_app-0.11.3/src/app.rs"
+2023-11-02T11:57:13 [ERROR] unexpected item event after pane was dropped
+2023-11-02T11:57:14 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_app-0.11.3/src/app.rs"
+2023-11-02T11:57:21 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_app-0.11.3/src/app.rs"
+2023-11-02T11:57:22 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_app-0.11.3/src/app.rs"
+2023-11-02T11:57:24 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_app-0.11.3/src/app.rs"
+2023-11-02T11:58:03 [INFO] 1 unhandled notification experimental/serverStatus:
+{
+  "health": "ok",
+  "quiescent": false,
+  "message": null
+}
+2023-11-02T11:58:04 [INFO] 1 unhandled notification experimental/serverStatus:
+{
+  "health": "ok",
+  "quiescent": true,
+  "message": null
+}
+2023-11-02T11:58:06 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_app-0.11.3/src/app.rs"
+2023-11-02T11:58:31 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_app-0.11.3/src/app.rs"
+2023-11-02T11:59:10 [ERROR] connection error: delay between messages too long
+2023-11-02T11:59:10 [INFO] set status on client 83703: ConnectionLost
+2023-11-02T11:59:10 [INFO] set status on client 83703: Reauthenticating
+2023-11-02T11:59:10 [INFO] set status on client 83703: Reconnecting
+2023-11-02T11:59:15 [INFO] set status on client 83703: ConnectionError
+2023-11-02T11:59:15 [ERROR] failed to connect timed out trying to establish connection
+2023-11-02T11:59:15 [INFO] set status on client 83703: ReconnectionError { next_reconnection: Instant { t: 678373194888402 } }
+2023-11-02T11:59:15 [INFO] set status on client 83703: Reauthenticating
+2023-11-02T11:59:15 [INFO] set status on client 83703: Reconnecting
+2023-11-02T11:59:17 [WARN] Generic lsp request to rust-analyzer failed: content modified
+2023-11-02T11:59:20 [INFO] set status on client 83703: ConnectionError
+2023-11-02T11:59:20 [ERROR] failed to connect timed out trying to establish connection
+2023-11-02T11:59:20 [INFO] set status on client 83703: ReconnectionError { next_reconnection: Instant { t: 678378402298990 } }
+2023-11-02T11:59:20 [INFO] set status on client 83703: Reauthenticating
+2023-11-02T11:59:20 [INFO] set status on client 83703: Reconnecting
+2023-11-02T11:59:25 [INFO] set status on client 83703: ConnectionError
+2023-11-02T11:59:25 [ERROR] failed to connect timed out trying to establish connection
+2023-11-02T11:59:25 [INFO] set status on client 83703: ReconnectionError { next_reconnection: Instant { t: 678383701706880 } }
+2023-11-02T11:59:26 [INFO] set status on client 83703: Reauthenticating
+2023-11-02T11:59:26 [INFO] set status on client 83703: Reconnecting
+2023-11-02T11:59:26 [WARN] Generic lsp request to rust-analyzer failed: content modified
+2023-11-02T11:59:26 [INFO] connected to rpc endpoint https://collab.zed.dev/rpc
+2023-11-02T11:59:26 [INFO] add connection to peer
+2023-11-02T11:59:26 [INFO] waiting for server hello
+2023-11-02T11:59:26 [INFO] got server hello
+2023-11-02T11:59:26 [INFO] set status to connected (connection id: ConnectionId { owner_id: 0, id: 1 }, peer id: PeerId { owner_id: 234, id: 9133 })
+2023-11-02T11:59:26 [INFO] set status on client 83703: Connected { peer_id: PeerId { owner_id: 234, id: 9133 }, connection_id: ConnectionId { owner_id: 0, id: 1 } }
+2023-11-02T11:59:52 [WARN] Generic lsp request to rust-analyzer failed: content modified
+2023-11-02T12:00:09 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.rustup/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/library/core/src/macros/mod.rs"
+2023-11-02T12:00:22 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.rustup/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/library/core/src/macros/mod.rs"
+2023-11-02T12:00:34 [INFO] open paths ["/Users/widgethiro/projets/neon_defense/src/lib.rs"]
+2023-11-02T12:00:35 [WARN] Generic lsp request to rust-analyzer failed: Client does not support create capability.
+2023-11-02T12:00:35 [ERROR] crates/editor/src/editor.rs:3959: Client does not support create capability.
+2023-11-02T12:04:13 [ERROR] connection error: delay between messages too long
+2023-11-02T12:04:13 [INFO] set status on client 83703: ConnectionLost
+2023-11-02T12:04:13 [INFO] set status on client 83703: Reauthenticating
+2023-11-02T12:04:13 [INFO] set status on client 83703: Reconnecting
+2023-11-02T12:04:18 [INFO] set status on client 83703: ConnectionError
+2023-11-02T12:04:18 [ERROR] failed to connect timed out trying to establish connection
+2023-11-02T12:04:18 [INFO] set status on client 83703: ReconnectionError { next_reconnection: Instant { t: 678676224569868 } }
+2023-11-02T12:04:18 [INFO] set status on client 83703: Reauthenticating
+2023-11-02T12:04:18 [INFO] set status on client 83703: Reconnecting
+2023-11-02T12:04:18 [INFO] connected to rpc endpoint https://collab.zed.dev/rpc
+2023-11-02T12:04:19 [INFO] add connection to peer
+2023-11-02T12:04:19 [INFO] waiting for server hello
+2023-11-02T12:04:19 [INFO] got server hello
+2023-11-02T12:04:19 [INFO] set status to connected (connection id: ConnectionId { owner_id: 0, id: 2 }, peer id: PeerId { owner_id: 234, id: 9490 })
+2023-11-02T12:04:19 [INFO] set status on client 83703: Connected { peer_id: PeerId { owner_id: 234, id: 9490 }, connection_id: ConnectionId { owner_id: 0, id: 2 } }
+2023-11-02T12:04:57 [WARN] Generic lsp request to rust-analyzer failed: content modified
+2023-11-02T12:04:57 [WARN] Generic lsp request to rust-analyzer failed: content modified
+2023-11-02T12:04:57 [WARN] Generic lsp request to rust-analyzer failed: content modified
+2023-11-02T12:06:01 [ERROR] crates/assistant/src/assistant_panel.rs:3178: project is not permissioned for semantic indexing
+2023-11-02T12:07:03 [ERROR] unexpected item event after pane was dropped
+2023-11-02T12:07:47 [WARN] Generic lsp request to rust-analyzer failed: Invalid Range
+2023-11-02T12:07:47 [WARN] Generic lsp request to rust-analyzer failed: Invalid Range
+2023-11-02T12:07:47 [ERROR] inlay hint update task for range Anchor { timestamp: Lamport {0: 1}, offset: 38, bias: Right, buffer_id: Some(27) }..Anchor { timestamp: Lamport {0: 1048}, offset: 51, bias: Right, buffer_id: Some(27) } failed: inlay hint fetch task: inlay hints LSP request: Invalid Range
+2023-11-02T12:07:47 [ERROR] inlay hint update task for range Anchor { timestamp: Lamport {0: 1}, offset: 38, bias: Right, buffer_id: Some(27) }..Anchor { timestamp: Lamport {0: 1048}, offset: 51, bias: Right, buffer_id: Some(27) } failed: inlay hint fetch task: inlay hints LSP request: Invalid Range
+2023-11-02T12:07:59 [ERROR] unexpected item event after pane was dropped
+2023-11-02T12:08:21 [ERROR] connection error: error reading rpc message from socket
+
+Caused by:
+    0: WebSocket protocol error: Connection reset without closing handshake
+    1: Connection reset without closing handshake
+2023-11-02T12:08:21 [INFO] set status on client 83703: ConnectionLost
+2023-11-02T12:08:21 [INFO] set status on client 83703: Reauthenticating
+2023-11-02T12:08:21 [INFO] set status on client 83703: Reconnecting
+2023-11-02T12:08:22 [INFO] connected to rpc endpoint https://collab.zed.dev/rpc
+2023-11-02T12:08:22 [INFO] add connection to peer
+2023-11-02T12:08:22 [INFO] waiting for server hello
+2023-11-02T12:08:22 [INFO] got server hello
+2023-11-02T12:08:22 [INFO] set status to connected (connection id: ConnectionId { owner_id: 0, id: 3 }, peer id: PeerId { owner_id: 234, id: 9682 })
+2023-11-02T12:08:22 [INFO] set status on client 83703: Connected { peer_id: PeerId { owner_id: 234, id: 9682 }, connection_id: ConnectionId { owner_id: 0, id: 3 } }
+2023-11-02T12:08:47 [ERROR] unexpected item event after pane was dropped
+2023-11-02T12:08:48 [ERROR] unexpected item event after pane was dropped
+2023-11-02T12:08:48 [ERROR] unexpected item event after pane was dropped
+2023-11-02T12:08:48 [ERROR] unexpected item event after pane was dropped
+2023-11-02T12:08:48 [ERROR] unexpected item event after pane was dropped
+2023-11-02T12:08:48 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_eventlistener_core-0.5.1/src/lib.rs"
+2023-11-02T12:08:48 [ERROR] unexpected item event after pane was dropped
+2023-11-02T12:08:48 [ERROR] unexpected item event after pane was dropped
+2023-11-02T12:08:48 [ERROR] unexpected item event after pane was dropped
+2023-11-02T12:08:49 [ERROR] unexpected item event after pane was dropped
+2023-11-02T12:08:49 [ERROR] unexpected item event after pane was dropped
+2023-11-02T12:08:49 [ERROR] unexpected item event after pane was dropped
+2023-11-02T12:08:49 [ERROR] unexpected item event after pane was dropped
+2023-11-02T12:08:49 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_sprite-0.11.3/src/mesh2d/material.rs"
+2023-11-02T12:08:49 [ERROR] unexpected item event after pane was dropped
+2023-11-02T12:08:49 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_sprite-0.11.3/src/mesh2d/mesh.rs"
+2023-11-02T12:08:49 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/glam-0.24.1/src/f32/vec3.rs"
+2023-11-02T12:30:50 [ERROR] connection error: delay between messages too long
+2023-11-02T12:30:50 [INFO] set status on client 83703: ConnectionLost
+2023-11-02T12:30:51 [INFO] set status on client 83703: Reauthenticating
+2023-11-02T12:30:51 [INFO] set status on client 83703: Reconnecting
+2023-11-02T12:30:51 [INFO] connected to rpc endpoint https://collab.zed.dev/rpc
+2023-11-02T12:30:51 [INFO] add connection to peer
+2023-11-02T12:30:51 [INFO] waiting for server hello
+2023-11-02T12:30:51 [INFO] got server hello
+2023-11-02T12:30:51 [INFO] set status to connected (connection id: ConnectionId { owner_id: 0, id: 4 }, peer id: PeerId { owner_id: 234, id: 10744 })
+2023-11-02T12:30:51 [INFO] set status on client 83703: Connected { peer_id: PeerId { owner_id: 234, id: 10744 }, connection_id: ConnectionId { owner_id: 0, id: 4 } }
+2023-11-02T12:41:02 [ERROR] connection error: delay between messages too long
+2023-11-02T12:41:02 [INFO] set status on client 83703: ConnectionLost
+2023-11-02T12:41:02 [INFO] set status on client 83703: Reauthenticating
+2023-11-02T12:41:02 [INFO] set status on client 83703: Reconnecting
+2023-11-02T12:41:02 [INFO] connected to rpc endpoint https://collab.zed.dev/rpc
+2023-11-02T12:41:03 [INFO] add connection to peer
+2023-11-02T12:41:03 [INFO] waiting for server hello
+2023-11-02T12:41:03 [INFO] got server hello
+2023-11-02T12:41:03 [INFO] set status to connected (connection id: ConnectionId { owner_id: 0, id: 5 }, peer id: PeerId { owner_id: 234, id: 11198 })
+2023-11-02T12:41:03 [INFO] set status on client 83703: Connected { peer_id: PeerId { owner_id: 234, id: 11198 }, connection_id: ConnectionId { owner_id: 0, id: 5 } }
+2023-11-02T12:51:47 [WARN] request completed with error: request or operation took longer than the configured timeout time
+2023-11-02T12:51:47 [ERROR] request or operation took longer than the configured timeout time
+
+Caused by:
+    [28] Timeout was reached
+2023-11-02T15:29:50 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_core_pipeline-0.11.3/src/core_2d/camera_2d.rs"
+2023-11-02T15:30:24 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_ecs_macros-0.11.3/src/lib.rs"
+2023-11-02T15:30:25 [WARN] Generic lsp request to rust-analyzer failed: content modified
+2023-11-02T15:30:26 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_window-0.11.3/src/window.rs"
+2023-11-02T15:30:27 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_app-0.11.3/src/app.rs"
+2023-11-02T15:30:38 [WARN] Generic lsp request to rust-analyzer failed: content modified
+2023-11-02T15:30:38 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_ecs_macros-0.11.3/src/lib.rs"
+2023-11-02T15:30:38 [WARN] Generic lsp request to rust-analyzer failed: content modified
+2023-11-02T15:30:38 [WARN] Generic lsp request to rust-analyzer failed: content modified
+2023-11-02T15:30:39 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_app-0.11.3/src/app.rs"
+2023-11-02T15:30:41 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_app-0.11.3/src/app.rs"
+2023-11-02T15:30:46 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_app-0.11.3/src/app.rs"
+2023-11-02T15:30:47 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_core_pipeline-0.11.3/src/core_2d/camera_2d.rs"
+2023-11-02T15:30:47 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_app-0.11.3/src/app.rs"
+2023-11-02T15:30:47 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_ecs-0.11.3/src/system/commands/mod.rs"
+2023-11-02T15:30:51 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_ecs-0.11.3/src/system/commands/mod.rs"
+2023-11-02T15:30:51 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_app-0.11.3/src/app.rs"
+2023-11-02T15:30:52 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_app-0.11.3/src/app.rs"
+2023-11-02T15:30:52 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_ecs-0.11.3/src/system/commands/mod.rs"
+2023-11-02T15:30:54 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_ecs-0.11.3/src/system/commands/mod.rs"
+2023-11-02T15:30:54 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_app-0.11.3/src/app.rs"
+2023-11-02T15:30:55 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_app-0.11.3/src/app.rs"
+2023-11-02T15:30:55 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_ecs-0.11.3/src/system/commands/mod.rs"
+2023-11-02T15:30:56 [WARN] Generic lsp request to rust-analyzer failed: content modified
+2023-11-02T15:30:58 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_ecs-0.11.3/src/system/commands/mod.rs"
+2023-11-02T15:30:58 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_app-0.11.3/src/app.rs"
+2023-11-02T15:31:01 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_app-0.11.3/src/app.rs"
+2023-11-02T15:31:02 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_app-0.11.3/src/app.rs"
+2023-11-02T15:31:04 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_app-0.11.3/src/app.rs"
+2023-11-02T15:31:09 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_app-0.11.3/src/app.rs"
+2023-11-02T15:36:07 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_ecs-0.11.3/src/change_detection.rs"
+2023-11-02T15:36:14 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_app-0.11.3/src/app.rs"
+2023-11-02T15:38:22 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_app-0.11.3/src/app.rs"
+2023-11-02T15:38:24 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_app-0.11.3/src/app.rs"
+2023-11-02T15:43:52 [WARN] Generic lsp request to rust-analyzer failed: content modified
+2023-11-02T15:43:58 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_app-0.11.3/src/app.rs"
+2023-11-02T15:46:42 [WARN] Generic lsp request to rust-analyzer failed: content modified
+2023-11-02T15:47:50 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_ecs-0.11.3/src/change_detection.rs"
+2023-11-02T15:47:50 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_sprite-0.11.3/src/mesh2d/material.rs"
+2023-11-02T15:48:54 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_sprite-0.11.3/src/mesh2d/color_material.rs"
+2023-11-02T15:49:35 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_sprite-0.11.3/src/mesh2d/color_material.rs"
+2023-11-02T15:50:16 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_render-0.11.3/src/color/mod.rs"
+2023-11-02T15:51:48 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_render-0.11.3/src/color/mod.rs"
+2023-11-02T15:52:24 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_sprite-0.11.3/src/mesh2d/color_material.rs"
+2023-11-02T15:52:24 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/glam-0.24.1/src/f32/vec3.rs"
+2023-11-02T15:52:29 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_render-0.11.3/src/color/mod.rs"
+2023-11-02T15:52:40 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.rustup/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/library/core/src/macros/mod.rs"
+2023-11-02T15:52:43 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.rustup/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/library/core/src/macros/mod.rs"
+2023-11-02T15:52:44 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.rustup/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/library/core/src/macros/mod.rs"
+2023-11-02T15:53:02 [WARN] Generic lsp request to rust-analyzer failed: content modified
+2023-11-02T15:53:07 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.rustup/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/library/core/src/macros/mod.rs"
+2023-11-02T15:53:08 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.rustup/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/library/core/src/macros/mod.rs"
+2023-11-02T15:53:08 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.rustup/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/library/core/src/macros/mod.rs"
+2023-11-02T15:53:21 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.rustup/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/library/core/src/macros/mod.rs"
+2023-11-02T15:53:21 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/glam-0.24.1/src/f32/vec3.rs"
+2023-11-02T15:55:11 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_ecs-0.11.3/src/system/commands/mod.rs"
+2023-11-02T15:55:15 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_ecs-0.11.3/src/system/commands/mod.rs"
+2023-11-02T15:55:15 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_transform-0.11.3/src/components/transform.rs"
+2023-11-02T15:55:16 [WARN] Generic lsp request to rust-analyzer failed: Invalid Range
+2023-11-02T15:55:16 [ERROR] inlay hint update task for range Anchor { timestamp: Lamport {0: 968}, offset: 68, bias: Right, buffer_id: Some(68) }..Anchor { timestamp: Lamport {0: 1}, offset: 916, bias: Right, buffer_id: Some(68) } failed: inlay hint fetch task: inlay hints LSP request: Invalid Range
+2023-11-02T15:55:16 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_ecs-0.11.3/src/system/commands/mod.rs"
+2023-11-02T15:55:22 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_ecs-0.11.3/src/system/commands/mod.rs"
+2023-11-02T15:55:23 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_ecs-0.11.3/src/system/commands/mod.rs"
+2023-11-02T15:55:24 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_ecs-0.11.3/src/system/commands/mod.rs"
+2023-11-02T15:55:25 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_ecs-0.11.3/src/system/commands/mod.rs"
+2023-11-02T15:55:38 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_ecs-0.11.3/src/system/commands/mod.rs"
+2023-11-02T15:55:39 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_ecs-0.11.3/src/system/commands/mod.rs"
+2023-11-02T15:55:47 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_ecs-0.11.3/src/system/commands/mod.rs"
+2023-11-02T15:59:30 [WARN] Generic lsp request to rust-analyzer failed: content modified
+2023-11-02T15:59:30 [ERROR] inlay hint update task for range Anchor { timestamp: Lamport {0: 1}, offset: 2568, bias: Left, buffer_id: Some(86) }..Anchor { timestamp: Lamport {0: 1}, offset: 3525, bias: Right, buffer_id: Some(86) } failed: inlay hint fetch task: inlay hints LSP request: content modified
+2023-11-02T15:59:30 [WARN] Generic lsp request to rust-analyzer failed: request handler panicked: Bad offset: range 0..1210 offset 1224
+2023-11-02T15:59:30 [ERROR] crates/editor/src/editor.rs:3999: request handler panicked: Bad offset: range 0..1210 offset 1224
+2023-11-02T15:59:30 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.rustup/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/library/core/src/cmp.rs"
+2023-11-02T16:00:45 [WARN] Generic lsp request to rust-analyzer failed: content modified
+2023-11-02T16:01:35 [WARN] Generic lsp request to rust-analyzer failed: content modified
+2023-11-02T16:01:44 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.rustup/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/library/core/src/macros/mod.rs"
+2023-11-02T16:02:00 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.rustup/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/library/core/src/iter/traits/iterator.rs"
+2023-11-02T16:02:14 [WARN] Generic lsp request to rust-analyzer failed: content modified
+2023-11-02T16:02:14 [WARN] Generic lsp request to rust-analyzer failed: content modified
+2023-11-02T16:04:32 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_ecs-0.11.3/src/system/query.rs"
+2023-11-02T16:04:57 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_ecs-0.11.3/src/change_detection.rs"
+2023-11-02T16:05:00 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_ecs-0.11.3/src/system/commands/mod.rs"
+2023-11-02T16:06:07 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_ecs-0.11.3/src/query/filter.rs"
+2023-11-02T16:06:45 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_ecs-0.11.3/src/query/filter.rs"
+2023-11-02T16:08:48 [WARN] request completed with error: request or operation took longer than the configured timeout time
+2023-11-02T16:08:48 [ERROR] request or operation took longer than the configured timeout time
+
+Caused by:
+    [28] Timeout was reached
+2023-11-02T16:09:27 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.rustup/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/library/core/src/iter/traits/iterator.rs"
+2023-11-02T16:09:49 [WARN] Generic lsp request to rust-analyzer failed: Invalid Range
+2023-11-02T16:09:49 [ERROR] inlay hint update task for range Anchor { timestamp: Lamport {0: 368}, offset: 9, bias: Right, buffer_id: Some(68) }..Anchor { timestamp: Lamport {0: 1}, offset: 53, bias: Right, buffer_id: Some(68) } failed: inlay hint fetch task: inlay hints LSP request: Invalid Range
+2023-11-02T16:10:00 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_ecs-0.11.3/src/schedule/condition.rs"
+2023-11-02T16:10:00 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_ecs-0.11.3/src/schedule/config.rs"
+2023-11-02T16:10:22 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_ecs-0.11.3/src/schedule/config.rs"
+2023-11-02T16:10:22 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_ecs-0.11.3/src/schedule/condition.rs"
+2023-11-02T16:11:48 [ERROR] unexpected item event after pane was dropped
+2023-11-02T16:11:48 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_asset-0.11.3/src/handle.rs"
+2023-11-02T16:11:48 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_kira_audio-0.16.0/src/source/mod.rs"
+2023-11-02T16:13:52 [INFO] open paths ["/Users/widgethiro/projets/neon_defense/src/actions/cursor.rs"]
+2023-11-02T16:14:06 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.rustup/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/library/core/src/convert/mod.rs"
+2023-11-02T16:14:07 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_ui-0.11.3/src/node_bundles.rs"
+2023-11-02T16:14:07 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.rustup/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/library/core/src/default.rs"
+2023-11-02T16:14:40 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.rustup/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/library/core/src/default.rs"
+2023-11-02T16:14:41 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_app-0.11.3/src/app.rs"
+2023-11-02T16:14:47 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_app-0.11.3/src/app.rs"
+2023-11-02T16:28:49 [INFO] build git repository ".git"
+2023-11-02T16:28:49 [INFO] build git repository ".git"
+2023-11-02T16:28:49 [INFO] starting language server "rust-analyzer", path: "/Users/widgethiro/projets/sandboxed", id: 2
+2023-11-02T16:28:50 [INFO] 2 unhandled notification experimental/serverStatus:
+{
+  "health": "ok",
+  "quiescent": false,
+  "message": null
+}
+2023-11-02T16:28:50 [INFO] starting language server "rust-analyzer", path: "/Users/widgethiro/projets/bevy", id: 3
+2023-11-02T16:28:50 [INFO] 3 unhandled notification experimental/serverStatus:
+{
+  "health": "ok",
+  "quiescent": false,
+  "message": null
+}
+2023-11-02T16:28:52 [WARN] Generic lsp request to rust-analyzer failed: content modified
+2023-11-02T16:28:52 [ERROR] inlay hint update task for range Anchor { timestamp: Lamport {0: 1}, offset: 290, bias: Left, buffer_id: Some(4) }..Anchor { timestamp: Lamport {0: 1}, offset: 2322, bias: Right, buffer_id: Some(4) } failed: inlay hint fetch task: inlay hints LSP request: content modified
+2023-11-02T16:28:53 [WARN] Generic lsp request to rust-analyzer failed: content modified
+2023-11-02T16:28:53 [WARN] Generic lsp request to rust-analyzer failed: content modified
+2023-11-02T16:28:53 [ERROR] inlay hint update task for range Anchor { timestamp: Lamport {0: 0}, offset: 0, bias: Left, buffer_id: None }..Anchor { timestamp: Lamport {0: 1}, offset: 289, bias: Right, buffer_id: Some(4) } failed: inlay hint fetch task: inlay hints LSP request: content modified
+2023-11-02T16:28:53 [ERROR] inlay hint update task for range Anchor { timestamp: Lamport {0: 1}, offset: 2323, bias: Left, buffer_id: Some(4) }..Anchor { timestamp: Lamport {65535: 4294967295}, offset: 18446744073709551615, bias: Right, buffer_id: None } failed: inlay hint fetch task: inlay hints LSP request: content modified
+2023-11-02T16:29:05 [INFO] 2 unhandled notification experimental/serverStatus:
+{
+  "health": "ok",
+  "quiescent": true,
+  "message": null
+}
+2023-11-02T16:29:42 [INFO] open paths ["/Users/widgethiro/projets/neon_defense"]
+2023-11-02T16:29:44 [INFO] 3 unhandled notification experimental/serverStatus:
+{
+  "health": "ok",
+  "quiescent": true,
+  "message": null
+}
+2023-11-02T16:29:45 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.rustup/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/library/core/src/iter/traits/iterator.rs"
+2023-11-02T16:30:10 [INFO] 1 unhandled notification experimental/serverStatus:
+{
+  "health": "ok",
+  "quiescent": false,
+  "message": null
+}
+2023-11-02T16:30:12 [INFO] 1 unhandled notification experimental/serverStatus:
+{
+  "health": "ok",
+  "quiescent": true,
+  "message": null
+}
+2023-11-02T16:30:15 [INFO] 1 unhandled notification experimental/serverStatus:
+{
+  "health": "ok",
+  "quiescent": false,
+  "message": null
+}
+2023-11-02T16:30:18 [ERROR] crates/editor/src/inlay_hint_cache.rs:572: hint resolve task: inlay hint resolve LSP request: Invalid LSP resolve data
+2023-11-02T16:30:19 [WARN] Generic lsp request to rust-analyzer failed: Invalid Range
+2023-11-02T16:30:19 [ERROR] inlay hint update task for range Anchor { timestamp: Lamport {0: 368}, offset: 9, bias: Right, buffer_id: Some(68) }..Anchor { timestamp: Lamport {0: 1}, offset: 53, bias: Right, buffer_id: Some(68) } failed: inlay hint fetch task: inlay hints LSP request: Invalid Range
+2023-11-02T16:30:19 [INFO] 1 unhandled notification experimental/serverStatus:
+{
+  "health": "ok",
+  "quiescent": true,
+  "message": null
+}
+2023-11-02T16:30:31 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_render-0.11.3/src/mesh/mesh/mod.rs"
+2023-11-02T16:30:40 [INFO] 1 unhandled notification experimental/serverStatus:
+{
+  "health": "ok",
+  "quiescent": false,
+  "message": null
+}
+2023-11-02T16:30:41 [INFO] 1 unhandled notification experimental/serverStatus:
+{
+  "health": "ok",
+  "quiescent": true,
+  "message": null
+}
+2023-11-02T16:30:45 [ERROR] unexpected item event after pane was dropped
+2023-11-02T16:31:21 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_render-0.11.3/src/render_resource/pipeline_cache.rs"
+2023-11-02T16:31:47 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_ecs-0.11.3/src/world/mod.rs"
+2023-11-02T16:32:27 [ERROR] crates/assistant/src/assistant_panel.rs:3178: project is not permissioned for semantic indexing
+2023-11-02T16:32:29 [ERROR] crates/assistant/src/assistant_panel.rs:3178: project is not permissioned for semantic indexing
+2023-11-02T16:38:20 [ERROR] crates/assistant/src/assistant_panel.rs:3178: project is not permissioned for semantic indexing
+2023-11-02T16:38:21 [ERROR] crates/assistant/src/assistant_panel.rs:3178: project is not permissioned for semantic indexing
+2023-11-02T16:38:33 [ERROR] crates/assistant/src/assistant_panel.rs:3178: project is not permissioned for semantic indexing
+2023-11-02T16:38:44 [ERROR] unexpected item event after pane was dropped
+2023-11-02T16:42:54 [ERROR] unexpected item event after pane was dropped
+2023-11-02T16:42:54 [ERROR] unexpected item event after pane was dropped
+2023-11-02T16:42:58 [ERROR] unexpected item event after pane was dropped
+2023-11-02T16:42:58 [ERROR] unexpected item event after pane was dropped
+2023-11-02T16:42:58 [ERROR] unexpected item event after pane was dropped
+2023-11-02T16:42:58 [ERROR] unexpected item event after pane was dropped
+2023-11-02T16:42:59 [ERROR] unexpected item event after pane was dropped
+2023-11-02T16:42:59 [ERROR] unexpected item event after pane was dropped
+2023-11-02T16:42:59 [ERROR] unexpected item event after pane was dropped
+2023-11-02T16:42:59 [ERROR] unexpected item event after pane was dropped
+2023-11-02T16:42:59 [ERROR] unexpected item event after pane was dropped
+2023-11-02T16:42:59 [ERROR] unexpected item event after pane was dropped
+2023-11-02T16:42:59 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_picking_core-0.16.0/src/events.rs"
+2023-11-02T16:43:00 [ERROR] unexpected item event after pane was dropped
+2023-11-02T16:43:00 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_picking_core-0.16.0/src/pointer.rs"
+2023-11-02T16:43:00 [ERROR] unexpected item event after pane was dropped
+2023-11-02T16:43:00 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_ecs-0.11.3/src/event.rs"
+2023-11-02T16:43:00 [ERROR] unexpected item event after pane was dropped
+2023-11-02T16:43:00 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_render-0.11.3/src/mesh/shape/mod.rs"
+2023-11-02T16:43:00 [ERROR] unexpected item event after pane was dropped
+2023-11-02T16:43:00 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_render-0.11.3/src/view/visibility/mod.rs"
+2023-11-02T16:43:00 [ERROR] unexpected item event after pane was dropped
+2023-11-02T16:43:00 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_sprite-0.11.3/src/mesh2d/material.rs"
+2023-11-02T16:43:00 [ERROR] unexpected item event after pane was dropped
+2023-11-02T16:43:00 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_mod_picking-0.16.0/src/lib.rs"
+2023-11-02T16:43:01 [ERROR] unexpected item event after pane was dropped
+2023-11-02T16:43:01 [ERROR] unexpected item event after pane was dropped
+2023-11-02T16:43:01 [ERROR] unexpected item event after pane was dropped
+2023-11-02T16:43:01 [ERROR] unexpected item event after pane was dropped
+2023-11-02T16:43:01 [ERROR] unexpected item event after pane was dropped
+2023-11-02T16:43:01 [ERROR] crates/project/src/project.rs:2927: no worktree found for diagnostics path "/Users/widgethiro/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bevy_pbr-0.11.3/src/bundle.rs"
+2023-11-02T16:43:01 [ERROR] unexpected item event after pane was dropped

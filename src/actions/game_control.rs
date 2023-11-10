@@ -8,7 +8,7 @@ pub enum GameControl {
 }
 
 impl GameControl {
-    pub fn pressed(&self, keyboard_input: &Res<Input<KeyCode>>) -> bool {
+    pub fn _pressed(&self, keyboard_input: &Res<Input<KeyCode>>) -> bool {
         match self {
             GameControl::Up => {
                 keyboard_input.pressed(KeyCode::W) || keyboard_input.pressed(KeyCode::Up)
@@ -23,13 +23,5 @@ impl GameControl {
                 keyboard_input.pressed(KeyCode::D) || keyboard_input.pressed(KeyCode::Right)
             }
         }
-    }
-}
-
-pub fn get_movement(control: GameControl, input: &Res<Input<KeyCode>>) -> f32 {
-    if control.pressed(input) {
-        1.0
-    } else {
-        0.0
     }
 }
