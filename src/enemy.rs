@@ -1,3 +1,5 @@
+use std::time::Duration;
+
 use crate::{
     movable::{move_towards_target, AutoMovable},
     primitives::{
@@ -9,7 +11,10 @@ use crate::{
     turret::Turret,
     GameState,
 };
-use bevy::{ecs::system::Command, math::Vec3, prelude::*, sprite::SpriteBundle};
+use bevy::{
+    ecs::system::Command, math::Vec3, prelude::*, sprite::SpriteBundle,
+    time::common_conditions::on_timer,
+};
 
 pub struct EnemyPlugin;
 
@@ -27,12 +32,13 @@ impl Plugin for EnemyPlugin {
                 )
                     .run_if(in_state(GameState::Playing)),
             )
-            .insert_resource(FixedTime::new_from_secs(FIXED_TIMESTEP))
             .add_systems(
                 FixedUpdate,
-                (animate).run_if(
-                    in_state(GameState::Playing).and_then(resource_exists::<EnemyAnimation>()),
-                ),
+                (animate.run_if(
+                    on_timer(Duration::from_secs_f32(FIXED_TIMESTEP))
+                        .and_then(resource_exists::<EnemyAnimation>()),
+                ))
+                .run_if(in_state(GameState::Playing)),
             );
     }
 }

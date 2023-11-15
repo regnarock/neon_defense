@@ -31,18 +31,18 @@ fn cube_subtract(a: FHex, b: FHex) -> vec3<f32> {
 }
 
 fn cube_distance(a: FHex, b: FHex) -> f32 {
-    var a = rotate_hex_coord(a);
-    var b = rotate_hex_coord(b);
-    var vec = cube_subtract(a, b);
+    var r_a = rotate_hex_coord(a);
+    var r_b = rotate_hex_coord(b);
+    var vec = cube_subtract(r_a, r_b);
     var d = (abs(vec.x) + abs(vec.y) + abs(vec.z)) / 2.;
     d = d / 0.57735; // sqrt(3)/3
     return d;
 }
 
 fn in_hex(a: FHex, b: FHex) -> vec3<f32> {
-    var a = rotate_hex_coord(a);
-    var b = rotate_hex_coord(b);
-    var hex = cube_subtract(a, b);
+    var r_a = rotate_hex_coord(a);
+    var r_b = rotate_hex_coord(b);
+    var hex = cube_subtract(r_a, r_b);
     return hex;
 }
 
@@ -155,7 +155,8 @@ fn update(@builtin(global_invocation_id) invocation_id: vec3<u32>) {
     //     let external_intensity = (smoothstep(.51, .51 - aa, d) + pow(1. - max(0., .5 - d), 20.) * 1.5);
     //     //color *= external_intensity;
     }
-    if d > 0.99 {
+    if d > 0.97 {
+        color = mix(color, vec3<f32>(1., 0.0, 0.0), smoothstep(0.97, 1., d));
     }
 
     //1 - smoothstep(0.0, 3.0, (abs(d) - 0.002) * iResolution.y)

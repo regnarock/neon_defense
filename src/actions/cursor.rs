@@ -1,4 +1,8 @@
-use bevy::{prelude::*, window::PrimaryWindow};
+use bevy::{
+    core_pipeline::fxaa::{Fxaa, FxaaPlugin},
+    prelude::*,
+    window::PrimaryWindow,
+};
 
 pub struct CursorPlugin;
 
@@ -19,7 +23,7 @@ pub struct MainCamera;
 
 fn setup_cursor(mut commands: Commands) {
     // TODO: maybe move to a better place?
-    commands.spawn((Camera2dBundle::default(), MainCamera));
+    commands.spawn((Camera2dBundle::default(), MainCamera, Fxaa::default()));
     commands.init_resource::<CursorScreenPos>();
 }
 

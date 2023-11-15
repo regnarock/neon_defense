@@ -2,7 +2,6 @@ mod image;
 mod pipeline;
 
 use bevy::{
-    math::Vec3Swizzles,
     prelude::*,
     render::{
         extract_resource::{ExtractResource, ExtractResourcePlugin},
