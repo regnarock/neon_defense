@@ -112,11 +112,11 @@ fn rotate_hex_coord(fhex: FHex) -> FHex {
 fn pixel_to_fhex(point: vec2<f32>, size: f32) -> FHex {
     var hex: FHex;
     // vertical/pointy design
-    hex.q = (sqrt(3.)/3. * point.x  -  1./3. * point.y) / size;
-    hex.r = (                          2./3. * point.y) / size;
+    //hex.q = (sqrt(3.)/3. * point.x  -  1./3. * point.y) / size;
+    //hex.r = (                          2./3. * point.y) / size;
     // horizontal/falt design
-    //hex.q = ( 2./3. * point.x                        ) / size;
-    //hex.r = (-1./3. * point.x + sqrt(3.)/3. * point.y) / size;
+    hex.q = ( 2./3. * point.x                        ) / size;
+    hex.r = (-1./3. * point.x + sqrt(3.)/3. * point.y) / size;
     hex.s = -hex.q - hex.r;
     return hex;
 }
@@ -128,7 +128,6 @@ fn update(@builtin(global_invocation_id) invocation_id: vec3<u32>) {
     mouse.y -= parameters.screen_y / 2.;
     mouse /= vec2<f32>(parameters.screen_x, parameters.screen_y);
     let SCALE = .05;
-    let CELL_DIMENSIONS = vec2<f32>(3./2., 1.7320508076) * SCALE;
 
     var tmp_invocation_id = vec2<f32>(invocation_id.xy) - vec2<f32>(parameters.screen_x, parameters.screen_y) / 2.;
     var uv = vec2<f32>(tmp_invocation_id.xy) / vec2<f32>(parameters.screen_x, parameters.screen_y);
@@ -139,7 +138,7 @@ fn update(@builtin(global_invocation_id) invocation_id: vec3<u32>) {
     var c_i = 0.08;
     var color: vec3<f32>;
     //color = vec3<f32>(0.867, 0.145, 0.145);
-    color = vec3<f32>(f32(hex.q) * c_i, f32(hex.r) * c_i, f32(hex.s) * c_i);
+    //color = vec3<f32>(f32(hex.q) * c_i, f32(hex.r) * c_i, f32(hex.s) * c_i);
 
     var cf = pixel_to_fhex(uv, SCALE);
     var d = cube_distance(cf, to_fhex(hex));

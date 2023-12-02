@@ -1,8 +1,4 @@
-use bevy::{
-    core_pipeline::fxaa::{Fxaa, FxaaPlugin},
-    prelude::*,
-    window::PrimaryWindow,
-};
+use bevy::{core_pipeline::fxaa::Fxaa, prelude::*, window::PrimaryWindow};
 
 pub struct CursorPlugin;
 

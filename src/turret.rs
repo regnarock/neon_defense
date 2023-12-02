@@ -6,15 +6,17 @@ use crate::{
     primitives::target::{OnTargetDespawned, SourceWithoutTargetAccessor, Target},
     GameState,
 };
-use bevy::{math::Vec3, prelude::*, sprite::SpriteBundle};
+use bevy::{ecs::system::Command, math::Vec3, prelude::*, sprite::SpriteBundle};
 use bevy_easings::{Ease, EaseFunction};
 
 pub struct TurretPlugin;
 
 impl Plugin for TurretPlugin {
     fn build(&self, app: &mut App) {
-        app.add_systems(OnEnter(GameState::Playing), spawn_turret)
-            .add_systems(Update, (target_nearest_enemy, auto_fire));
+        app.add_systems(
+            Update,
+            (target_nearest_enemy, auto_fire).run_if(in_state(GameState::Playing)),
+        );
     }
 }
 
@@ -33,6 +35,30 @@ impl AutoGun {
         next_shot.pause();
 
         Self { next_shot, range }
+    }
+}
+
+pub struct SpawnTurret {
+    pub at_hex: Entity,
+}
+
+impl Command for SpawnTurret {
+    fn apply(self, world: &mut World) {
+        let texture = world.resource_scope(|_, asset_server: Mut<AssetServer>| {
+            asset_server.load("textures/DifferentTurrets/Turret01.png")
+        });
+        world
+            .spawn((
+                SpriteBundle {
+                    transform: Transform::from_scale(Vec3::new(0.5, 0.5, 1.)),
+                    texture,
+                    ..Default::default()
+                },
+                Turret,
+                Name::new("Turret"),
+                //AutoGun::new(1., 400.),
+            ))
+            .set_parent(self.at_hex);
     }
 }
 
@@ -56,7 +82,6 @@ pub fn target_nearest_enemy(
         }
 
         if let Some(enemy) = nearest_enemy {
-            info!("Targeting enemy");
             // calculate the angle to the enemy and change the rotation of the turret with easing
             let direction = enemy.transform.translation - turret.transform.translation;
             let angle = direction.y.atan2(direction.x) + FRAC_PI_2;
@@ -73,19 +98,6 @@ pub fn target_nearest_enemy(
             ));
         }
     }
-}
-
-pub fn spawn_turret(mut commands: Commands, asset_server: Res<AssetServer>) {
-    commands.spawn((
-        SpriteBundle {
-            transform: Transform::from_xyz(0.0, 0.0, 0.0).with_scale(Vec3::new(0.5, 0.5, 1.)),
-            texture: asset_server.load("textures/DifferentTurrets/Turret01.png"),
-            ..Default::default()
-        },
-        Turret,
-        Name::new("Turret"),
-        AutoGun::new(1., 400.),
-    ));
 }
 
 pub fn auto_fire(

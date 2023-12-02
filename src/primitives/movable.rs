@@ -1,20 +1,14 @@
 use bevy::{
     ecs::{query::WorldQuery, system::SystemParam},
-    math::Vec3Swizzles,
     prelude::*,
 };
 
 use crate::primitives::target::{Target, TargetQuery};
 
-pub struct MovementPlugin;
-
-impl Plugin for MovementPlugin {
-    fn build(&self, _app: &mut App) {}
-}
-
 #[derive(Component)]
 pub struct AutoMovable {
     pub velocity: f32,
+    pub follow_grid: bool,
 }
 
 #[derive(WorldQuery)]

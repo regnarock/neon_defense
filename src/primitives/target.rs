@@ -5,12 +5,17 @@ use bevy::{
     prelude::*,
 };
 
+use crate::GameState;
+
 pub struct TargetPlugin;
 
 impl Plugin for TargetPlugin {
     fn build(&self, app: &mut App) {
         //app.add_systems(Update, systems);
-        app.add_systems(Update, detect_target_removed);
+        app.add_systems(
+            Update,
+            detect_target_removed.run_if(in_state(GameState::Playing)),
+        );
     }
 }
 
@@ -38,6 +43,7 @@ impl Default for Target {
     }
 }
 
+// TODO: replace with a system that reacts to an event of target despawned
 #[derive(Debug)]
 pub enum OnTargetDespawned {
     DoNothing,
@@ -86,7 +92,7 @@ where
 }
 
 #[derive(SystemParam)]
-pub struct TargetSourceAccessor<'w, 's, S, T>
+pub struct SourceWithTargetAccessor<'w, 's, S, T>
 where
     S: Component,
     T: Component,
@@ -106,7 +112,7 @@ where
 }
 
 // TODO: change genetic const parameter to configuration through a resource
-pub fn face_target<S, T, const PI_2_OFFSET: usize>(mut params: TargetSourceAccessor<S, T>)
+pub fn face_target<S, T, const PI_2_OFFSET: usize>(mut params: SourceWithTargetAccessor<S, T>)
 where
     S: Component,
     T: Component,

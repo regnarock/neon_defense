@@ -2,11 +2,12 @@ use bevy::{ecs::system::Command, prelude::*};
 
 use crate::{
     enemy::Enemy,
-    movable::{move_towards_target, AutoMovable},
     primitives::{
         destructible::Damage,
+        movable::{move_towards_target, AutoMovable},
         target::{face_target, AutoLookAtTarget, OnTargetDespawned, Target},
     },
+    GameState,
 };
 
 pub struct BulletPlugin;
@@ -18,7 +19,8 @@ impl Plugin for BulletPlugin {
             (
                 move_towards_target::<Bullet, Enemy>,
                 face_target::<Bullet, Enemy, 3>,
-            ),
+            )
+                .run_if(in_state(GameState::Playing)),
         );
     }
 }
@@ -53,6 +55,7 @@ impl Command for SpawnBullet {
             Target::new(self.target, OnTargetDespawned::DespawnSelf),
             AutoMovable {
                 velocity: self.velocity,
+                follow_grid: false,
             },
             AutoLookAtTarget,
             Damage::new(self.damage),
