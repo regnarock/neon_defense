@@ -21,6 +21,7 @@ use super::HexGrid;
 #[derive(Debug, Default, Component)]
 pub struct HexCell {
     pub dist: u32,
+    pub content: Option<Entity>,
 }
 
 #[derive(Asset, TypePath, AsBindGroup, Debug, Clone)]
@@ -59,7 +60,10 @@ impl EntityCommand for SpawnHex {
                         transform: Transform::from_xyz(self.position.x, self.position.y, -1.0),
                         ..default()
                     },
-                    HexCell { dist: 0 },
+                    HexCell {
+                        dist: 0,
+                        content: None,
+                    },
                     On::<Pointer<Over>>::run(select_hex),
                     On::<Pointer<Out>>::run(deselect_hex),
                     On::<Pointer<Click>>::send_event::<SpawnOnClick>(),
@@ -119,6 +123,7 @@ pub fn spawn_on_click(
             }
             PointerButton::Primary => {
                 commands.add(SpawnTurret {
+                    position: hexes.get(click.target).unwrap().translation.xy(),
                     at_hex: click.target,
                 });
             }

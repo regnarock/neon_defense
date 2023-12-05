@@ -24,7 +24,7 @@ use bevy_mod_picking::DefaultPickingPlugins;
 use bullet::BulletPlugin;
 use crystal::CrystalPlugin;
 use grid::GridPlugin;
-use primitives::{destructible::DestructiblePlugin, target::TargetPlugin};
+use primitives::PrimitivesPlugin;
 
 #[derive(States, Default, Clone, Eq, PartialEq, Debug, Hash)]
 pub enum GameState {
@@ -47,12 +47,11 @@ impl Plugin for GamePlugin {
             EnemyPlugin,
             BulletPlugin,
             GridPlugin,
-            DestructiblePlugin,
             // TODO: remove and replace usage with bevy_mod_picking::PickingPlugin
             CursorPlugin,
             DefaultPickingPlugins,
-            TargetPlugin,
             CrystalPlugin,
+            PrimitivesPlugin,
         ));
 
         #[cfg(debug_assertions)]

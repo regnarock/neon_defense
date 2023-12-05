@@ -21,7 +21,9 @@ use rand::{seq::SliceRandom, thread_rng};
 
 pub struct EnemyPlugin;
 
+// TODO: make this a config resource
 const FIXED_TIMESTEP: f32 = 0.1;
+const TARGET_REACHED_EPSILON: f32 = 1.5;
 
 impl Plugin for EnemyPlugin {
     fn build(&self, app: &mut App) {
@@ -147,7 +149,7 @@ pub fn remove_reached_target(
                 .transform
                 .translation
                 .distance(enemy.transform.translation);
-            if distance <= 1.1 {
+            if distance <= TARGET_REACHED_EPSILON {
                 commands.entity(enemy.entity).remove::<Target>();
             }
         }

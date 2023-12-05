@@ -56,7 +56,7 @@ pub struct AutoLookAtTarget;
 
 #[derive(WorldQuery)]
 #[world_query(mutable, derive(Debug))]
-pub struct SrcQuery<S, T>
+pub struct SrcTargetQuery<S, T>
 where
     S: Component,
     T: Component,
@@ -97,7 +97,7 @@ where
     S: Component,
     T: Component,
 {
-    pub srcs_query: Query<'w, 's, SrcQuery<S, T>>,
+    pub srcs_query: Query<'w, 's, SrcTargetQuery<S, T>>,
     pub targets_query: Query<'w, 's, TargetQuery<S, T>>,
 }
 

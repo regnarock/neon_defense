@@ -3,7 +3,13 @@ use std::{f32::consts::FRAC_PI_2, time::Duration};
 use crate::{
     bullet::SpawnBullet,
     enemy::Enemy,
-    primitives::target::{OnTargetDespawned, SourceWithoutTargetAccessor, Target},
+    grid::{HexCell, HexGrid},
+    primitives::{
+        target::{SourceWithTargetAccessor, Target},
+        view::{
+            auto_remove_target_when_out_of_range, scan_for_targets_in_range, EnterViewEvent, View,
+        },
+    },
     GameState,
 };
 use bevy::{ecs::system::Command, math::Vec3, prelude::*, sprite::SpriteBundle};
@@ -15,30 +21,40 @@ impl Plugin for TurretPlugin {
     fn build(&self, app: &mut App) {
         app.add_systems(
             Update,
-            (target_nearest_enemy, auto_fire).run_if(in_state(GameState::Playing)),
+            (
+                scan_for_targets_in_range::<Turret, Enemy>,
+                auto_remove_target_when_out_of_range::<Turret, Enemy>,
+                process_enemy_enter_range,
+                process_enemy_exit_range,
+                animate_targeting,
+                auto_fire,
+            )
+                .run_if(in_state(GameState::Playing)),
         );
     }
 }
 
 #[derive(Component)]
-pub struct Turret;
+pub struct Turret {
+    pub parent_hex: Entity,
+}
 
 #[derive(Component)]
 pub struct AutoGun {
     next_shot: Timer,
-    range: f32,
 }
 
 impl AutoGun {
-    pub fn new(fire_rate: f32, range: f32) -> Self {
+    pub fn new(fire_rate: f32) -> Self {
         let mut next_shot = Timer::from_seconds(fire_rate, TimerMode::Repeating);
         next_shot.pause();
 
-        Self { next_shot, range }
+        Self { next_shot }
     }
 }
 
 pub struct SpawnTurret {
+    pub position: Vec2,
     pub at_hex: Entity,
 }
 
@@ -47,87 +63,95 @@ impl Command for SpawnTurret {
         let texture = world.resource_scope(|_, asset_server: Mut<AssetServer>| {
             asset_server.load("textures/DifferentTurrets/Turret01.png")
         });
-        world
+        let hex_grid = world.resource::<HexGrid>();
+        let hex_radius: f32 = hex_grid.layout.hex_size.length();
+        let id = world
             .spawn((
                 SpriteBundle {
-                    transform: Transform::from_scale(Vec3::new(0.5, 0.5, 1.)),
+                    transform: Transform::from_xyz(self.position.x, self.position.y, 0.)
+                        .with_scale(Vec3::new(0.5, 0.5, 1.)),
                     texture,
                     ..Default::default()
                 },
-                Turret,
+                Turret {
+                    parent_hex: self.at_hex,
+                },
                 Name::new("Turret"),
-                //AutoGun::new(1., 400.),
+                AutoGun::new(1.),
+                View::new(2. * hex_radius),
             ))
-            .set_parent(self.at_hex);
+            .id();
+        world
+            .entity_mut(self.at_hex)
+            .get_mut::<HexCell>()
+            .iter_mut()
+            .for_each(|cell| {
+                cell.content = Some(id);
+            });
     }
 }
 
-pub fn target_nearest_enemy(
+pub fn animate_targeting(
     mut commands: Commands,
-    mut accessor: SourceWithoutTargetAccessor<Turret, Enemy>,
+    accessor: SourceWithTargetAccessor<Turret, Enemy>,
 ) {
-    for turret in accessor.srcs_query.iter_mut() {
-        let mut nearest_enemy = None;
-        let mut nearest_distance = f32::MAX;
-
-        for enemy in accessor.targets_query.iter_mut() {
-            let distance = turret
-                .transform
-                .translation
-                .distance(enemy.transform.translation);
-            if distance < nearest_distance {
-                nearest_enemy = Some(enemy);
-                nearest_distance = distance;
-            }
-        }
-
-        if let Some(enemy) = nearest_enemy {
-            // calculate the angle to the enemy and change the rotation of the turret with easing
+    for turret in &accessor.srcs_query {
+        if let Ok(enemy) = accessor.targets_query.get(turret.target.entity) {
             let direction = enemy.transform.translation - turret.transform.translation;
+            // TODO: FRAC_PI_2 is a bit hacky, because the turret asset is rotated by 90 degrees
             let angle = direction.y.atan2(direction.x) + FRAC_PI_2;
 
-            commands.entity(turret.entity).insert((
-                Target::new(enemy.entity, OnTargetDespawned::DoNothing),
-                turret.transform.ease_to(
+            commands
+                .entity(turret.entity)
+                .insert((turret.transform.ease_to(
                     turret.transform.with_rotation(Quat::from_rotation_z(angle)),
                     EaseFunction::QuadraticOut,
                     bevy_easings::EasingType::Once {
                         duration: Duration::from_millis(500),
                     },
-                ),
-            ));
+                ),));
+        }
+    }
+}
+
+pub fn process_enemy_enter_range(
+    mut events: EventReader<EnterViewEvent>,
+    mut turrets_query: Query<&mut AutoGun, With<Turret>>,
+) {
+    for event in events.read() {
+        if let Ok(mut gun) = turrets_query.get_mut(event.entity) {
+            gun.next_shot.unpause();
+        }
+    }
+}
+
+pub fn process_enemy_exit_range(
+    mut events: EventReader<EnterViewEvent>,
+    mut turrets_query: Query<&mut AutoGun, With<Turret>>,
+) {
+    for event in events.read() {
+        if let Ok(mut gun) = turrets_query.get_mut(event.entity) {
+            gun.next_shot.pause();
+            gun.next_shot.reset();
         }
     }
 }
 
 pub fn auto_fire(
     mut commands: Commands,
-    mut turrets_query: Query<(&Transform, &Target, &mut AutoGun), With<Turret>>,
-    targets_query: Query<&Transform, With<Enemy>>,
+    // make sure that the turret has a target and is in view
+    mut turrets_query: Query<(&Transform, &Target, &mut AutoGun), (With<Turret>, With<View>)>,
     time: Res<Time>,
 ) {
-    turrets_query.for_each_mut(|(transform, target, mut gun)| {
-        // first, check if the target is in range
-        if let Ok(rhs) = targets_query.get(target.entity) {
-            let distance = transform.translation.distance(rhs.translation);
-
-            if distance > gun.range {
-                gun.next_shot.pause();
-            } else {
-                let spaw_bullet = SpawnBullet {
-                    position: transform.translation,
-                    velocity: 200.,
-                    damage: 10.,
-                    target: target.entity,
-                };
-                if gun.next_shot.paused() {
-                    gun.next_shot.reset();
-                    gun.next_shot.unpause();
-                    commands.add(spaw_bullet);
-                } else if gun.next_shot.tick(time.delta()).just_finished() {
-                    commands.add(spaw_bullet);
-                }
-            }
+    for (transform, target, mut gun) in &mut turrets_query {
+        if gun.next_shot.tick(time.delta()).just_finished() {
+            let spaw_bullet = SpawnBullet {
+                position: transform.translation,
+                velocity: 200.,
+                damage: 10.,
+                target: target.entity,
+            };
+            commands.add(spaw_bullet);
         }
-    });
+    }
 }

@@ -106,11 +106,9 @@ fn hexagonal_plane(hex_layout: &HexLayout) -> Mesh {
 // recalculating the distance to the center for all hexes
 // to be called when the grid is changed (e.g. when a tower is placed)
 fn update_distances(
-    mut commands: Commands,
     grid: Res<HexGrid>,
-    children: Query<&Children>,
-    #[cfg(debug_assertions)] mut hexes: Query<&Handle<HexMaterial>>,
-    #[cfg(debug_assertions)] mut materials: ResMut<Assets<HexMaterial>>,
+    mut hexes: Query<(&mut HexCell, &Handle<HexMaterial>)>,
+    mut materials: ResMut<Assets<HexMaterial>>,
 ) {
     let center = Hex::ZERO;
     let mut queue = vec![center];
@@ -122,33 +120,29 @@ fn update_distances(
         let mut next_queue = Vec::new();
         for hex in queue {
             if let Some(entity) = grid.entities.get(&hex) {
-                // if the hex has a child (a tower), assign dist as u32::MAX
-                let has_tower = children.get(*entity).map_or(false, |c| !c.is_empty());
-
-                if has_tower {
-                    commands.entity(*entity).insert(HexCell { dist: u32::MAX });
-                    continue;
-                }
-                commands.entity(*entity).insert(HexCell { dist });
-
-                // adds next circle of neighbors to the queue
-                for neighbor in hex.all_neighbors() {
-                    // filter out out-of-bounds and inner-bounds hexes
-                    if !grid.entities.contains_key(&neighbor) || processed.contains(&neighbor) {
+                if let Ok((mut cell, hex_material)) = hexes.get_mut(*entity) {
+                    // if the hex has content, consider it as a wall and don't add any neighbors
+                    if cell.content.is_some() {
+                        cell.dist = u32::MAX;
                         continue;
                     }
-                    processed.insert(neighbor);
-                    next_queue.push(neighbor);
-                }
-                #[cfg(debug_assertions)]
-                {
-                    if let Ok(hex_material) = hexes.get_mut(*entity) {
-                        let v = 1.0 - (dist as f32 / MAP_RADIUS as f32);
-                        let material = materials.get_mut(hex_material).unwrap();
-                        material.color.x = v;
-                        material.color.y = v;
-                        material.color.z = v;
+                    cell.dist = dist;
+
+                    // adds next circle of neighbors to the queue
+                    for neighbor in hex.all_neighbors() {
+                        // filter out out-of-bounds and inner-bounds hexes
+                        if !grid.entities.contains_key(&neighbor) || processed.contains(&neighbor) {
+                            continue;
+                        }
+                        processed.insert(neighbor);
+                        next_queue.push(neighbor);
                     }
+                    // debug purposes only
+                    let v = 1.0 - (dist as f32 / MAP_RADIUS as f32);
+                    let material = materials.get_mut(hex_material).unwrap();
+                    material.color.x = v;
+                    material.color.y = v;
+                    material.color.z = v;
                 }
             }
         }
