@@ -1,7 +1,7 @@
 use bevy::prelude::*;
 use rand::prelude::*;
 use rand_chacha::ChaCha20Rng;
-use std::marker::PhantomData;
+
 
 #[derive(Component)]
 pub struct RandomDeterministic {
@@ -12,7 +12,7 @@ pub struct RandomDeterministic {
 impl Default for RandomDeterministic {
     fn default() -> Self {
         let seed = 0; //thread_rng().gen::<u64>();
-        return Self::new_from_seed(seed);
+        Self::new_from_seed(seed)
     }
 }
 

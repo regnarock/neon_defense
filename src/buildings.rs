@@ -152,14 +152,14 @@ pub struct CreateItemDefVisual {
 impl EntityCommand for CreateItemDefVisual {
     fn apply(self, id: Entity, world: &mut World) {
         let assets = world.get_resource::<VisualAssets>().unwrap();
-        let visual = (MaterialMesh2dBundle {
+        let visual = MaterialMesh2dBundle {
             mesh: assets.mesh_def[&self.item_type.0].clone(),
             transform: Transform::default().with_scale(Vec3::splat(
                 ITEM_VISUAL_SIZE * assets.size_def[&self.item_type.1],
             )),
             material: assets.color_def[&self.item_type.2].clone(),
             ..default()
-        });
+        };
         world.entity_mut(id).insert(visual);
     }
 }
