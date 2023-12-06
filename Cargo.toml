@@ -1,8 +1,8 @@
 [package]
-name = "bevy_game" # ToDo
+name = "bevy_game"                               # ToDo
 version = "0.1.0"
 publish = false
-authors = ["Niklas Eicker <git@nikl.me>"] # ToDo: you are the author ;)
+authors = ["Niklas Eicker <git@nikl.me>"]        # ToDo: you are the author ;)
 edition = "2021"
 exclude = ["dist", "build", "assets", "credits"]
 
@@ -22,14 +22,12 @@ inherits = "release"
 lto = "thin"
 
 [features]
-dev = [
-    "bevy/dynamic_linking",
-]
+dev = ["bevy/dynamic_linking"]
 
 # All of Bevy's default features exept for the audio related ones, since they clash with bevy_kira_audio
 #   and android_shared_stdcxx, since that is covered in `mobile`
 [dependencies]
-bevy = { version="0.12", default-features = false, features = [
+bevy = { version = "0.12", default-features = false, features = [
     "animation",
     "bevy_asset",
     "bevy_gilrs",
@@ -56,6 +54,7 @@ bevy = { version="0.12", default-features = false, features = [
 bevy_kira_audio = { version = "0.18" }
 bevy_asset_loader = { version = "0.18" }
 rand = { version = "0.8.3" }
+rand_chacha = "0.3"
 
 # keep the following in sync with Bevy's dependencies
 winit = { version = "0.28", default-features = false }

@@ -1,13 +1,16 @@
 mod actions;
 mod audio;
 mod board;
+mod buildings;
 mod bullet;
 mod crystal;
 mod enemy;
 mod grid;
+mod inventory;
 mod loading;
 mod menu;
 mod primitives;
+mod random;
 mod turret;
 
 use crate::actions::ActionsPlugin;

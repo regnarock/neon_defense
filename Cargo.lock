@@ -885,6 +885,7 @@ dependencies = [
  "hexx",
  "image",
  "rand",
+ "rand_chacha",
  "winit",
 ]
 
