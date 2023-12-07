@@ -106,7 +106,7 @@ impl EntityCommand for SpawnTurret {
         let (mut q_inventory, _q_items) = state.get_mut(world);
         let (_rng, _inventory) = q_inventory.single_mut();
 
-        //inventory.items.push_back(new_item);
+        inventory.items.push_back(new_item);
 
         let texture = world.resource_scope(|_, asset_server: Mut<AssetServer>| {
             asset_server.load("textures/DifferentTurrets/Turret01.png")
