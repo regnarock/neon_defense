@@ -3,7 +3,7 @@ use std::{f32::consts::FRAC_PI_2, time::Duration};
 use crate::{
     bullet::SpawnBullet,
     enemy::Enemy,
-    grid::{HexCell, HexGrid},
+    grid::HexGrid,
     primitives::{
         target::{SourceWithTargetAccessor, Target},
         view::{
@@ -12,7 +12,7 @@ use crate::{
     },
     GameState,
 };
-use bevy::{ecs::system::Command, math::Vec3, prelude::*, sprite::SpriteBundle};
+use bevy::{ecs::system::EntityCommand, math::Vec3, prelude::*, sprite::SpriteBundle};
 use bevy_easings::{Ease, EaseFunction};
 
 pub struct TurretPlugin;
@@ -27,7 +27,7 @@ impl Plugin for TurretPlugin {
                 process_enemy_enter_range,
                 process_enemy_exit_range,
                 animate_targeting,
-                auto_fire,
+                //auto_fire,
             )
                 .run_if(in_state(GameState::Playing)),
         );
@@ -58,36 +58,27 @@ pub struct SpawnTurret {
     pub at_hex: Entity,
 }
 
-impl Command for SpawnTurret {
-    fn apply(self, world: &mut World) {
+impl EntityCommand for SpawnTurret {
+    fn apply(self, id: Entity, world: &mut World) {
         let texture = world.resource_scope(|_, asset_server: Mut<AssetServer>| {
             asset_server.load("textures/DifferentTurrets/Turret01.png")
         });
         let hex_grid = world.resource::<HexGrid>();
         let hex_radius: f32 = hex_grid.layout.hex_size.length();
-        let id = world
-            .spawn((
-                SpriteBundle {
-                    transform: Transform::from_xyz(self.position.x, self.position.y, 0.)
-                        .with_scale(Vec3::new(0.5, 0.5, 1.)),
-                    texture,
-                    ..Default::default()
-                },
-                Turret {
-                    parent_hex: self.at_hex,
-                },
-                Name::new("Turret"),
-                AutoGun::new(1.),
-                View::new(2. * hex_radius),
-            ))
-            .id();
-        world
-            .entity_mut(self.at_hex)
-            .get_mut::<HexCell>()
-            .iter_mut()
-            .for_each(|cell| {
-                cell.content = Some(id);
-            });
+        world.entity_mut(id).insert((
+            SpriteBundle {
+                transform: Transform::from_xyz(self.position.x, self.position.y, 0.)
+                    .with_scale(Vec3::new(0.5, 0.5, 1.)),
+                texture,
+                ..Default::default()
+            },
+            Turret {
+                parent_hex: self.at_hex,
+            },
+            Name::new("Turret"),
+            AutoGun::new(1.),
+            View::new(2. * hex_radius),
+        ));
     }
 }
 

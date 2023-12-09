@@ -12,8 +12,8 @@ pub struct ViewPlugin;
 impl Plugin for ViewPlugin {
     fn build(&self, app: &mut App) {
         app.add_event::<EnterViewEvent>()
-            .add_event::<ExitViewEvent>()
-            .add_systems(Update, debug_range);
+            .add_event::<ExitViewEvent>();
+        //.add_systems(Update, debug_range);
     }
 }
 

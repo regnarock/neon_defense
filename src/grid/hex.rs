@@ -24,6 +24,9 @@ pub struct HexCell {
     pub content: Option<Entity>,
 }
 
+#[derive(Debug, Default, Component)]
+pub struct NonConstructible;
+
 #[derive(Asset, TypePath, AsBindGroup, Debug, Clone)]
 pub struct HexMaterial {
     #[uniform(0)]
@@ -51,25 +54,38 @@ impl EntityCommand for SpawnHex {
             color: color.into(),
             is_selected: 0.,
         };
-        world.resource_scope(
-            |world: &mut World, mut materials: Mut<Assets<HexMaterial>>| {
-                world.entity_mut(id).insert((
-                    MaterialMesh2dBundle {
-                        mesh: self.mesh.clone().into(),
-                        material: materials.add(asset),
-                        transform: Transform::from_xyz(self.position.x, self.position.y, -1.0),
-                        ..default()
-                    },
-                    HexCell {
-                        dist: 0,
-                        content: None,
-                    },
-                    On::<Pointer<Over>>::run(select_hex),
-                    On::<Pointer<Out>>::run(deselect_hex),
-                    On::<Pointer<Click>>::send_event::<SpawnOnClick>(),
-                ));
-            },
+        let material = world.resource_scope(
+            |_world: &mut World, mut materials: Mut<Assets<HexMaterial>>| materials.add(asset),
         );
+        world.entity_mut(id).insert((
+            MaterialMesh2dBundle {
+                mesh: self.mesh.clone().into(),
+                material,
+                transform: Transform::from_xyz(self.position.x, self.position.y, -1.0),
+                ..default()
+            },
+            HexCell {
+                dist: 0,
+                content: None,
+            },
+            On::<Pointer<Over>>::run(select_hex),
+            On::<Pointer<Out>>::run(deselect_hex),
+            On::<Pointer<Click>>::send_event::<SpawnOnClick>(),
+        ));
+    }
+}
+
+pub struct UpdateHexContent {
+    pub content: Entity,
+}
+
+impl EntityCommand for UpdateHexContent {
+    fn apply(self, id: Entity, world: &mut World) {
+        let mut entity_mut = world.entity_mut(id);
+        let mut cell = entity_mut.get_mut::<HexCell>().unwrap();
+
+        cell.content = Some(self.content);
+        cell.dist = u32::MAX;
     }
 }
 
@@ -95,8 +111,8 @@ pub fn deselect_hex(
 
 #[derive(Event)]
 pub struct SpawnOnClick {
-    event: Click,
-    target: Entity,
+    pub event: Click,
+    pub target: Entity,
 }
 
 impl From<ListenerInput<Pointer<Click>>> for SpawnOnClick {
@@ -122,10 +138,16 @@ pub fn spawn_on_click(
                 });
             }
             PointerButton::Primary => {
-                commands.add(SpawnTurret {
-                    position: hexes.get(click.target).unwrap().translation.xy(),
-                    at_hex: click.target,
-                });
+                let turret_id = commands
+                    .spawn_empty()
+                    .add(SpawnTurret {
+                        position: hexes.get(click.target).unwrap().translation.xy(),
+                        at_hex: click.target,
+                    })
+                    .id();
+                commands
+                    .entity(click.target)
+                    .add(UpdateHexContent { content: turret_id });
             }
             _ => {}
         }

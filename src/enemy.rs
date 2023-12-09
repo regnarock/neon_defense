@@ -82,6 +82,7 @@ impl Command for SpawnEnemy {
                 hitbox: 10.,
             },
             AutoMovable {
+                // FIXME: when velocity is too high, the enemy can go through the target
                 velocity: 20.,
                 follow_grid: true,
             },

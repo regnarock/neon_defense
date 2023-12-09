@@ -18,7 +18,7 @@ use hexx::{Hex, HexBounds, HexLayout, PlaneMeshBuilder, Vec2};
 use crate::GameState;
 
 pub use self::hex::HexCell;
-use self::hex::{spawn_on_click, HexMaterial, SpawnHex, SpawnOnClick};
+use self::hex::{spawn_on_click, HexMaterial, NonConstructible, SpawnHex, SpawnOnClick};
 
 pub struct GridPlugin;
 
@@ -40,6 +40,9 @@ impl Plugin for GridPlugin {
                     spawn_on_click,
                     apply_deferred.in_set(GridFlush), // make sure we flush the grid before updating distances
                     update_distances,
+                    update_unconstructible_hexes,
+                    apply_deferred.in_set(GridUpdate), // make sure we flush the grid before drawing
+                    debug_display_non_constructible_hexes,
                 )
                     .chain())
                 .run_if(on_event::<SpawnOnClick>()))
@@ -48,8 +51,8 @@ impl Plugin for GridPlugin {
     }
 }
 
-pub const HEX_SIZE: Vec2 = Vec2::new(40., 40.);
-pub const MAP_RADIUS: u32 = 15;
+pub const HEX_SIZE: Vec2 = Vec2::new(60., 60.);
+pub const MAP_RADIUS: u32 = 10;
 
 #[derive(Debug, Resource)]
 pub struct HexGrid {
@@ -58,8 +61,17 @@ pub struct HexGrid {
     pub bounds: HexBounds,
 }
 
+impl HexGrid {
+    pub fn hex(&self, hex: &Hex) -> Option<Entity> {
+        self.entities.get(hex).copied()
+    }
+}
+
 #[derive(Debug, Hash, PartialEq, Eq, Clone, SystemSet)]
 struct GridFlush;
+
+#[derive(Debug, Hash, PartialEq, Eq, Clone, SystemSet)]
+struct GridUpdate;
 
 fn setup(mut commands: Commands, mut meshes: ResMut<Assets<Mesh>>) {
     let layout = HexLayout {
@@ -138,7 +150,7 @@ fn update_distances(
                         next_queue.push(neighbor);
                     }
                     // debug purposes only
-                    let v = 1.0 - (dist as f32 / MAP_RADIUS as f32);
+                    let v = 1.0;
                     let material = materials.get_mut(hex_material).unwrap();
                     material.color.x = v;
                     material.color.y = v;
@@ -148,5 +160,111 @@ fn update_distances(
         }
         queue = next_queue;
         dist += 1;
+    }
+}
+
+fn update_unconstructible_hexes(
+    mut commands: Commands,
+    grid: Res<HexGrid>,
+    hexes: Query<&HexCell>,
+) {
+    tarjan(
+        Hex::ZERO,
+        None,
+        1,
+        &mut HashMap::new(),
+        &mut HashMap::new(),
+        &mut commands,
+        &grid,
+        &hexes,
+    );
+
+    pub fn tarjan(
+        hex: Hex,
+        parent: Option<Hex>,
+        depth: usize,
+        lowest_link: &mut HashMap<Hex, usize>,
+        current_link: &mut HashMap<Hex, usize>,
+        commands: &mut Commands,
+        grid: &Res<HexGrid>,
+        hexes: &Query<&HexCell>,
+    ) {
+        current_link.insert(hex, depth);
+        lowest_link.insert(hex, depth);
+
+        let all_neighbors = hex.all_neighbors();
+        let neighbors: Vec<&Hex> = all_neighbors
+            .iter()
+            .filter_map(|h| grid.hex(h).map(|e| (h, e)))
+            .filter_map(|(h, e)| hexes.get(e).ok().map(|d| (h, d)))
+            .filter(|(_h, cell)| cell.content.is_none())
+            .map(|(h, _)| h)
+            .collect::<Vec<_>>();
+
+        let mut children: usize = 0;
+
+        for neighbor in neighbors {
+            // if we discover a new node
+            if !current_link.contains_key(neighbor) {
+                children += 1;
+
+                tarjan(
+                    *neighbor,
+                    Some(hex),
+                    depth + 1,
+                    lowest_link,
+                    current_link,
+                    commands,
+                    grid,
+                    hexes,
+                );
+                let lowest_neighbour_link = lowest_link.get(neighbor).copied().unwrap();
+                let lowest_hex_link = lowest_link.get(&hex).copied().unwrap();
+                let current_hex_link = current_link.get(&hex).copied().unwrap();
+
+                if lowest_hex_link > lowest_neighbour_link {
+                    lowest_link.insert(hex, lowest_neighbour_link);
+                }
+                if lowest_neighbour_link >= current_hex_link && parent.is_some() {
+                    commands
+                        .entity(grid.hex(&hex).unwrap())
+                        .insert(NonConstructible);
+                }
+            } else if Some(*neighbor) != parent {
+                let lowest_neighbour_link = lowest_link.get(neighbor).copied().unwrap();
+                let lowest_hex_link = lowest_link.get(&hex).copied().unwrap();
+                if lowest_hex_link > lowest_neighbour_link {
+                    lowest_link.insert(hex, lowest_neighbour_link);
+                }
+            }
+        }
+        // special case for the root node
+        if parent.is_none() && children > 1 {
+            commands
+                .entity(grid.hex(&hex).unwrap())
+                .insert(NonConstructible);
+        }
+    }
+}
+
+pub fn debug_display_non_constructible_hexes(
+    grid: Res<HexGrid>,
+    hexes: Query<(&Handle<HexMaterial>, Option<&NonConstructible>)>,
+    mut materials: ResMut<Assets<HexMaterial>>,
+) {
+    for hex in grid.bounds.all_coords() {
+        if let Some(entity) = grid.entities.get(&hex) {
+            if hexes
+                .get(*entity)
+                .is_ok_and(|(_, maybe_nonconstructible)| maybe_nonconstructible.is_some())
+            {
+                if let Ok((material, _)) = hexes.get(*entity) {
+                    let material = materials.get_mut(material).unwrap();
+                    material.color.x = 1.0;
+                    material.color.y = 0.0;
+                    material.color.z = 0.0;
+                }
+            }
+        }
     }
 }
