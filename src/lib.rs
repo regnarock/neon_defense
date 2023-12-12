@@ -9,6 +9,7 @@ mod grid;
 mod inventory;
 mod loading;
 mod menu;
+mod overload;
 mod primitives;
 mod random;
 mod turret;
@@ -19,6 +20,7 @@ use crate::audio::InternalAudioPlugin;
 use crate::enemy::EnemyPlugin;
 use crate::loading::LoadingPlugin;
 use crate::menu::MenuPlugin;
+use crate::overload::OverloadPlugin;
 use crate::turret::TurretPlugin;
 
 use actions::cursor::CursorPlugin;
@@ -45,6 +47,7 @@ impl Plugin for GamePlugin {
     fn build(&self, app: &mut App) {
         app.add_state::<GameState>().add_plugins((
             LoadingPlugin,
+            GameWindowPlugin,
             MenuPlugin,
             ActionsPlugin,
             InternalAudioPlugin,
@@ -57,7 +60,7 @@ impl Plugin for GamePlugin {
             DefaultPickingPlugins,
             CrystalPlugin,
             PrimitivesPlugin,
-            GameWindowPlugin,
+            OverloadPlugin,
         ));
 
         #[cfg(debug_assertions)]
