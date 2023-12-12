@@ -25,6 +25,7 @@ use crate::turret::TurretPlugin;
 
 use actions::cursor::CursorPlugin;
 use bevy::app::App;
+use bevy::diagnostic::{FrameTimeDiagnosticsPlugin, LogDiagnosticsPlugin};
 use bevy::prelude::*;
 use bevy_mod_picking::DefaultPickingPlugins;
 use bullet::BulletPlugin;

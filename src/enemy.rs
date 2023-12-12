@@ -14,7 +14,10 @@ use crate::{
 };
 
 use bevy::{
-    ecs::system::Command, math::Vec3, prelude::*, sprite::SpriteBundle,
+    ecs::system::{Command, SystemState},
+    math::Vec3,
+    prelude::*,
+    sprite::SpriteBundle,
     time::common_conditions::on_timer,
 };
 use rand::{seq::SliceRandom, thread_rng};
@@ -27,6 +30,7 @@ const TARGET_REACHED_EPSILON: f32 = 1.5;
 
 impl Plugin for EnemyPlugin {
     fn build(&self, app: &mut App) {
+        app.add_event::<EventSpawnedEnemy>();
         app.add_systems(
             Update,
             (
@@ -54,6 +58,9 @@ pub struct Enemy;
 #[derive(Resource)]
 pub struct EnemyAnimation(Vec<Handle<Image>>);
 
+#[derive(Event)]
+pub struct EventSpawnedEnemy(pub Entity);
+
 pub struct SpawnEnemy {
     pub position: Vec2,
 }
@@ -69,26 +76,33 @@ impl Command for SpawnEnemy {
             });
         }
 
-        world.spawn((
-            SpriteBundle {
-                transform: Transform::from_xyz(self.position.x, self.position.y, 0.0)
-                    .with_scale(Vec3::new(1.8, 1.8, 1.)),
-                texture: textures[0].clone(),
-                ..Default::default()
-            },
-            Enemy,
-            Destructible {
-                health: 20.,
-                hitbox: 10.,
-            },
-            AutoMovable {
-                // FIXME: when velocity is too high, the enemy can go through the target
-                velocity: 20.,
-                follow_grid: true,
-            },
-        ));
+        let spawned_enemy = world
+            .spawn((
+                SpriteBundle {
+                    transform: Transform::from_xyz(self.position.x, self.position.y, 0.0)
+                        .with_scale(Vec3::new(1.8, 1.8, 1.)),
+                    texture: textures[0].clone(),
+                    ..Default::default()
+                },
+                Enemy,
+                Destructible {
+                    health: 20.,
+                    hitbox: 10.,
+                },
+                AutoMovable {
+                    // FIXME: when velocity is too high, the enemy can go through the target
+                    velocity: 20.,
+                    follow_grid: true,
+                },
+            ))
+            .id();
 
         world.insert_resource(EnemyAnimation(textures));
+
+        let mut q_event: SystemState<(EventWriter<EventSpawnedEnemy>)> = SystemState::new(world);
+
+        let mut event_writer = q_event.get_mut(world);
+        event_writer.send(EventSpawnedEnemy(spawned_enemy));
     }
 }
 
