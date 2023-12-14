@@ -18,14 +18,14 @@ use hexx::{Hex, HexBounds, HexLayout, PlaneMeshBuilder, Vec2};
 use crate::GameState;
 
 pub use self::hex::HexCell;
-use self::hex::{spawn_on_click, HexMaterial, NonConstructible, SpawnHex, SpawnOnClick};
+use self::hex::{on_click, HexClicked, HexMaterial, NonConstructible, SpawnHex};
 
 pub struct GridPlugin;
 
 impl Plugin for GridPlugin {
     fn build(&self, app: &mut App) {
         app.add_plugins(Material2dPlugin::<HexMaterial>::default())
-            .add_event::<SpawnOnClick>()
+            .add_event::<HexClicked>()
             .add_systems(
                 OnTransition {
                     from: GameState::Menu,
@@ -37,7 +37,7 @@ impl Plugin for GridPlugin {
             .add_systems(
                 Update,
                 (((
-                    spawn_on_click,
+                    on_click,
                     apply_deferred.in_set(GridFlush), // make sure we flush the grid before updating distances
                     update_distances,
                     update_unconstructible_hexes,
@@ -45,7 +45,7 @@ impl Plugin for GridPlugin {
                     debug_display_non_constructible_hexes,
                 )
                     .chain())
-                .run_if(on_event::<SpawnOnClick>()))
+                .run_if(on_event::<HexClicked>()))
                 .run_if(in_state(GameState::Playing)),
             );
     }

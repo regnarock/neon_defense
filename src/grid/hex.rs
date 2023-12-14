@@ -70,7 +70,7 @@ impl EntityCommand for SpawnHex {
             },
             On::<Pointer<Over>>::run(select_hex),
             On::<Pointer<Out>>::run(deselect_hex),
-            On::<Pointer<Click>>::send_event::<SpawnOnClick>(),
+            On::<Pointer<Click>>::send_event::<HexClicked>(),
         ));
     }
 }
@@ -110,46 +110,49 @@ pub fn deselect_hex(
 }
 
 #[derive(Event)]
-pub struct SpawnOnClick {
+pub struct HexClicked {
     pub event: Click,
     pub target: Entity,
 }
 
-impl From<ListenerInput<Pointer<Click>>> for SpawnOnClick {
+impl From<ListenerInput<Pointer<Click>>> for HexClicked {
     fn from(value: ListenerInput<Pointer<Click>>) -> Self {
-        SpawnOnClick {
+        HexClicked {
             event: value.event.clone(),
             target: value.target,
         }
     }
 }
 
-pub fn spawn_on_click(
+pub fn on_click(
     mut commands: Commands,
-    mut clicks: EventReader<SpawnOnClick>,
-    hexes: Query<&Transform, &HexCell>,
+    mut clicks: EventReader<HexClicked>,
+    hexes: Query<&Transform, Without<NonConstructible>>,
     _grid: Res<HexGrid>,
 ) {
     for click in clicks.read() {
-        match click.event.button {
-            PointerButton::Secondary => {
-                commands.add(SpawnEnemy {
-                    position: hexes.get(click.target).unwrap().translation.xy(),
-                });
+        if let Ok(transform) = hexes.get(click.target) {
+            match click.event.button {
+                PointerButton::Secondary => {
+                    commands.add(SpawnEnemy {
+                        position: transform.translation.xy(),
+                    });
+                }
+                PointerButton::Primary => {
+                    let turret_id = commands
+                        .spawn_empty()
+                        .add(SpawnTurret {
+                            position: transform.translation.xy(),
+                            at_hex: click.target,
+                        })
+                        .id();
+                    commands
+                        .entity(click.target)
+                        .add(UpdateHexContent { content: turret_id });
+                }
+                _ => {}
             }
-            PointerButton::Primary => {
-                let turret_id = commands
-                    .spawn_empty()
-                    .add(SpawnTurret {
-                        position: hexes.get(click.target).unwrap().translation.xy(),
-                        at_hex: click.target,
-                    })
-                    .id();
-                commands
-                    .entity(click.target)
-                    .add(UpdateHexContent { content: turret_id });
-            }
-            _ => {}
         }
+        // TODO: UX: else, means the hex is not constructible. Make it clear to player.
     }
 }
