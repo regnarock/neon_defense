@@ -1,5 +1,5 @@
-use crate::inventory::SpawnInventory;
 use crate::inventory::{self};
+use crate::inventory::{Inventory, SpawnInventory};
 use crate::random::RandomDeterministic;
 use crate::window::WindowSize;
 use bevy::ecs::system::{EntityCommand, SystemParam, SystemState};
@@ -17,13 +17,14 @@ pub struct Plugin;
 impl bevy::prelude::Plugin for Plugin {
     fn build(&self, app: &mut App) {
         app.add_plugins(inventory::InventoryPlugin::<Building>::default())
-            .init_resource::<BuildingSpawner>()
-            .add_systems(Startup, (create_assets, spawn_layout).chain());
+            .init_resource::<BuildingInventory>()
+            .add_systems(Startup, (create_assets, spawn_layout).chain())
+            .add_systems(Update, update_anchor_position);
     }
 }
 
 #[derive(Resource)]
-pub struct BuildingSpawner {
+pub struct BuildingInventory {
     pub(crate) state: SystemState<GetNextBuildingParams<'static, 'static>>,
 }
 
@@ -41,16 +42,16 @@ pub(crate) struct GetNextBuildingParams<'w, 's> {
     q_buildings: Query<'w, 's, &'static Building>,
 }
 
-impl FromWorld for BuildingSpawner {
+impl FromWorld for BuildingInventory {
     fn from_world(world: &mut World) -> Self {
-        BuildingSpawner {
+        BuildingInventory {
             state: SystemState::new(world),
         }
     }
 }
 
-impl BuildingSpawner {
-    pub fn get_next_building(&mut self, world: &mut World) -> Option<Building> {
+impl BuildingInventory {
+    pub fn next(&mut self, world: &mut World) -> Option<Building> {
         let mut params = self.state.get_mut(world);
         let (mut rng, mut inventory) = params.q_inventory.single_mut();
 
@@ -156,27 +157,46 @@ pub(crate) fn spawn_layout(mut commands: Commands, window_size: ResMut<WindowSiz
         commands.spawn(get_random_building(&mut rng)).id(),
         commands.spawn(get_random_building(&mut rng)).id(),
     ];
-    let anchor_point = Vec2::new(
+    let anchor_point = Vec3::new(
         -window_size.size.x / 2f32 + ITEM_VISUAL_SIZE / 2f32 + PADDING,
         -window_size.size.y / 2f32 + (ITEM_VISUAL_SIZE + PADDING) * 5.5f32 + PADDING,
-    )
-    .extend(0f32);
+        0f32,
+    );
+
     commands
         .spawn_empty()
         .add(SpawnInventory::<Building>::new(
             inventory,
             inventory::InventoryConfiguration {
-                positions: vec![
-                    anchor_point - Vec3::new(0f32, (ITEM_VISUAL_SIZE + PADDING) * 5f32, 0f32),
-                    anchor_point - Vec3::new(0f32, (ITEM_VISUAL_SIZE + PADDING) * 4f32, 0f32),
-                    anchor_point - Vec3::new(0f32, (ITEM_VISUAL_SIZE + PADDING) * 3f32, 0f32),
-                    anchor_point - Vec3::new(0f32, (ITEM_VISUAL_SIZE + PADDING) * 2f32, 0f32),
-                    anchor_point - Vec3::new(0f32, ITEM_VISUAL_SIZE + PADDING, 0f32),
-                    anchor_point,
-                ],
+                positions: positions_from_anchor_point(anchor_point),
             },
         ))
         .insert(RandomDeterministic::new_from_seed(0));
+}
+
+fn positions_from_anchor_point(anchor_point: Vec3) -> Vec<Vec3> {
+    vec![
+        anchor_point - Vec3::new(0f32, (ITEM_VISUAL_SIZE + PADDING) * 5f32, 0f32),
+        anchor_point - Vec3::new(0f32, (ITEM_VISUAL_SIZE + PADDING) * 4f32, 0f32),
+        anchor_point - Vec3::new(0f32, (ITEM_VISUAL_SIZE + PADDING) * 3f32, 0f32),
+        anchor_point - Vec3::new(0f32, (ITEM_VISUAL_SIZE + PADDING) * 2f32, 0f32),
+        anchor_point - Vec3::new(0f32, ITEM_VISUAL_SIZE + PADDING, 0f32),
+        anchor_point,
+    ]
+}
+
+pub(crate) fn update_anchor_position(
+    window_size: ResMut<WindowSize>,
+    mut q_inventory: Query<&mut Inventory<Building>>,
+) {
+    let anchor_point: Vec3 = Vec3::new(
+        -window_size.size.x / 2f32 + ITEM_VISUAL_SIZE / 2f32 + PADDING,
+        -window_size.size.y / 2f32 + (ITEM_VISUAL_SIZE + PADDING) * 5.5f32 + PADDING,
+        0f32,
+    );
+    q_inventory.for_each_mut(|mut inventory| {
+        inventory.positions = positions_from_anchor_point(anchor_point);
+    });
 }
 
 #[derive(Component, Clone, Copy, Hash, Eq, PartialEq)]

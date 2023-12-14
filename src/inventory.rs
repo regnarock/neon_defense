@@ -43,7 +43,7 @@ pub struct Inventory<IT: Component + ItemSpriteBuilder> {
     /// entities contained here have a MarkerItem component, it handles logic
     /// their rendering is created via item_create_visual
     pub items: VecDeque<Entity>,
-    positions: Vec<Vec3>,
+    pub positions: Vec<Vec3>,
 
     _item_type: PhantomData<IT>,
 }

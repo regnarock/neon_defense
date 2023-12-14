@@ -1,7 +1,7 @@
 use std::{f32::consts::FRAC_PI_2, time::Duration};
 
 use crate::{
-    buildings::{self, BuildingSpawner},
+    buildings::{self, BuildingInventory},
     bullet::SpawnBullet,
     enemy::Enemy,
     grid::HexGrid,
@@ -62,10 +62,11 @@ pub struct SpawnTurret {
 
 impl EntityCommand for SpawnTurret {
     fn apply(self, id: Entity, world: &mut World) {
-        // attach building to the turret
-        let _building = world.resource_scope(|world, mut building_spawner: Mut<BuildingSpawner>| {
-            building_spawner.get_next_building(world)
-        });
+        // TODO: attach building to the turret
+        let _building =
+            world.resource_scope(|world, mut building_inventory: Mut<BuildingInventory>| {
+                building_inventory.next(world)
+            });
 
         let texture = world.resource_scope(|_, asset_server: Mut<AssetServer>| {
             asset_server.load("textures/DifferentTurrets/Turret01.png")
