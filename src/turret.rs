@@ -4,7 +4,7 @@ use crate::{
     buildings::{self},
     bullet::SpawnBullet,
     enemy::Enemy,
-    grid::{HexGrid},
+    grid::HexGrid,
     primitives::{
         target::{SourceWithTargetAccessor, Target},
         view::{
@@ -66,20 +66,26 @@ pub struct SpawnTurret {
     pub at_hex: Entity,
 }
 
+type InventoryState<'w, 'q> = (
+    Query<
+        'w,
+        'q,
+        (
+            &'w mut RandomDeterministic,
+            &'w mut crate::inventory::Inventory<buildings::Building>,
+        ),
+    >,
+    Query<'w, 'q, &'w buildings::Building>,
+);
+
 impl EntityCommand for SpawnTurret {
     fn apply(self, id: Entity, world: &mut World) {
-        let mut state: SystemState<(
-            Query<(
-                &mut RandomDeterministic,
-                &mut crate::inventory::Inventory<buildings::ItemType>,
-            )>,
-            Query<&buildings::ItemType>,
-        )> = SystemState::new(world);
+        let mut state: SystemState<InventoryState> = SystemState::new(world);
 
         let mut new_item = || {
             let (mut q_inventory, q_items) = state.get_mut(world);
 
-            let (_rng, mut inventory) = q_inventory.single_mut();
+            let (mut rng, mut inventory) = q_inventory.single_mut();
 
             let Some(first_item) = inventory.items.front().cloned() else {
                 return None;
@@ -92,19 +98,18 @@ impl EntityCommand for SpawnTurret {
             // TODO: pay "price" ?
             inventory.items.pop_front();
 
-            /*
-            let new_item = buildings::get_random_item(&mut rng);
-            let new_item = world.spawn(new_item).id();*/
+            let new_item = buildings::get_random_building(&mut rng);
+            let _new_item = world.spawn(new_item).id();
             Some((first_item, first_item))
         };
 
-        let Some((item_built, _new_item)) = new_item() else {
+        let Some((item_built, new_item)) = new_item() else {
             return;
         };
         // TODO: reuse that entity to merge it with turret entity ?
         world.despawn(item_built);
         let (mut q_inventory, _q_items) = state.get_mut(world);
-        let (_rng, _inventory) = q_inventory.single_mut();
+        let (_rng, mut inventory) = q_inventory.single_mut();
 
         inventory.items.push_back(new_item);
 

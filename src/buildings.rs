@@ -1,4 +1,6 @@
-use crate::inventory::{self, Inventory};
+use crate::inventory::SpawnInventory;
+use crate::inventory::{self};
+use crate::random::RandomDeterministic;
 use bevy::ecs::system::EntityCommand;
 use bevy::math::vec3;
 use bevy::prelude::*;
@@ -13,16 +15,16 @@ pub struct Plugin;
 
 impl bevy::prelude::Plugin for Plugin {
     fn build(&self, app: &mut App) {
-        app.add_plugins(inventory::InventoryPlugin::<ItemType>::default());
+        app.add_plugins(inventory::InventoryPlugin::<Building>::default());
         app.add_systems(Startup, (create_assets, spawn_layout).chain());
     }
 }
 
 #[derive(Resource)]
 pub struct VisualAssets {
-    pub mesh_def: HashMap<MeshType, Mesh2dHandle>,
-    pub size_def: HashMap<SizeType, f32>,
-    pub color_def: HashMap<ColorType, Handle<ColorMaterial>>,
+    pub mesh_def: HashMap<BuildingMesh, Mesh2dHandle>,
+    pub size_def: HashMap<BuildingSize, f32>,
+    pub color_def: HashMap<BuildingColor, Handle<ColorMaterial>>,
 }
 
 pub(crate) fn create_assets(
@@ -33,7 +35,7 @@ pub(crate) fn create_assets(
     commands.insert_resource(VisualAssets {
         mesh_def: [
             (
-                MeshType::Triangle,
+                BuildingMesh::Triangle,
                 meshes
                     .add(
                         Mesh::new(PrimitiveTopology::TriangleList)
@@ -46,36 +48,36 @@ pub(crate) fn create_assets(
                     .into(),
             ),
             (
-                MeshType::Circle,
+                BuildingMesh::Circle,
                 meshes.add(Mesh::from(shape::Circle::default())).into(),
             ),
             (
-                MeshType::Quad,
+                BuildingMesh::Quad,
                 meshes.add(Mesh::from(shape::Quad::default())).into(),
             ),
         ]
         .into(),
         size_def: [
-            (SizeType::Big, 1f32),
-            (SizeType::Medium, 0.75f32),
-            (SizeType::Small, 0.5f32),
+            (BuildingSize::Big, 1f32),
+            (BuildingSize::Medium, 0.75f32),
+            (BuildingSize::Small, 0.5f32),
         ]
         .into(),
         color_def: [
             (
-                ColorType::Black,
+                BuildingColor::Black,
                 materials.add(ColorMaterial::from(Color::BLACK)),
             ),
             (
-                ColorType::White,
+                BuildingColor::White,
                 materials.add(ColorMaterial::from(Color::WHITE)),
             ),
             (
-                ColorType::Pink,
+                BuildingColor::Pink,
                 materials.add(ColorMaterial::from(Color::PINK)),
             ),
             (
-                ColorType::Blue,
+                BuildingColor::Blue,
                 materials.add(ColorMaterial::from(Color::BLUE)),
             ),
         ]
@@ -88,112 +90,114 @@ const ITEM_VISUAL_SIZE: f32 = 64f32;
 pub(crate) fn spawn_layout(mut commands: Commands) {
     let mut rng = crate::random::RandomDeterministic::new_from_seed(0);
     let inventory = vec![
-        commands.spawn(get_random_item(&mut rng)).id(),
-        commands.spawn(get_random_item(&mut rng)).id(),
-        commands.spawn(get_random_item(&mut rng)).id(),
-        commands.spawn(get_random_item(&mut rng)).id(),
-        commands.spawn(get_random_item(&mut rng)).id(),
-        commands.spawn(get_random_item(&mut rng)).id(),
-    ]
-    .into();
-    commands.spawn((
-        Inventory::<ItemType> {
-            items: inventory,
-            ..default()
-        },
-        rng,
-        inventory::InventoryVisualDef {
-            positions: vec![
-                vec3(-350f32, 0f32, 0f32),
-                vec3(-350f32, ITEM_VISUAL_SIZE + 10f32, 0f32),
-                vec3(-350f32, (ITEM_VISUAL_SIZE + 10f32) * 2f32, 0f32),
-                vec3(-350f32, (ITEM_VISUAL_SIZE + 10f32) * 3f32, 0f32),
-                vec3(-350f32, (ITEM_VISUAL_SIZE + 10f32) * 4f32, 0f32),
-                vec3(-350f32, (ITEM_VISUAL_SIZE + 10f32) * 5f32, 0f32),
-            ],
-        },
-    ));
+        commands.spawn(get_random_building(&mut rng)).id(),
+        commands.spawn(get_random_building(&mut rng)).id(),
+        commands.spawn(get_random_building(&mut rng)).id(),
+        commands.spawn(get_random_building(&mut rng)).id(),
+        commands.spawn(get_random_building(&mut rng)).id(),
+        commands.spawn(get_random_building(&mut rng)).id(),
+    ];
+    commands
+        .spawn_empty()
+        .add(SpawnInventory::<Building>::new(
+            inventory,
+            inventory::InventoryConfiguration {
+                positions: vec![
+                    vec3(-350f32, 0f32, 0f32),
+                    vec3(-350f32, ITEM_VISUAL_SIZE + 10f32, 0f32),
+                    vec3(-350f32, (ITEM_VISUAL_SIZE + 10f32) * 2f32, 0f32),
+                    vec3(-350f32, (ITEM_VISUAL_SIZE + 10f32) * 3f32, 0f32),
+                    vec3(-350f32, (ITEM_VISUAL_SIZE + 10f32) * 4f32, 0f32),
+                    vec3(-350f32, (ITEM_VISUAL_SIZE + 10f32) * 5f32, 0f32),
+                ],
+            },
+        ))
+        .insert(RandomDeterministic::new_from_seed(0));
 }
 
 #[derive(Component, Clone, Copy, Hash, Eq, PartialEq)]
-pub struct ItemType(MeshType, SizeType, ColorType);
+pub struct Building {
+    mesh: BuildingMesh,
+    size: BuildingSize,
+    color: BuildingColor,
+}
 
 #[derive(Clone, Copy, Hash, Eq, PartialEq)]
-pub enum MeshType {
+pub enum BuildingMesh {
     Triangle,
     Circle,
     Quad,
 }
 #[derive(Clone, Copy, Hash, Eq, PartialEq)]
-pub enum SizeType {
+pub enum BuildingSize {
     Small,
     Medium,
     Big,
 }
 #[derive(Clone, Copy, Hash, Eq, PartialEq)]
-pub enum ColorType {
+pub enum BuildingColor {
     Black,
     White,
     Pink,
     Blue,
 }
 
-impl inventory::CommandVisualBuilder for ItemType {
-    type C = CreateItemDefVisual;
-    fn command_to_create_visual(&self) -> Self::C {
-        CreateItemDefVisual { item_type: *self }
+impl inventory::ItemSpriteBuilder for Building {
+    type C = BuildingItemSpriteBuilder;
+    fn build_sprite(&self) -> Self::C {
+        BuildingItemSpriteBuilder { building: *self }
     }
 }
 
-pub struct CreateItemDefVisual {
-    pub item_type: ItemType,
+pub struct BuildingItemSpriteBuilder {
+    pub building: Building,
 }
 
-impl EntityCommand for CreateItemDefVisual {
+impl EntityCommand for BuildingItemSpriteBuilder {
     fn apply(self, id: Entity, world: &mut World) {
         let assets = world.get_resource::<VisualAssets>().unwrap();
         let visual = MaterialMesh2dBundle {
-            mesh: assets.mesh_def[&self.item_type.0].clone(),
+            mesh: assets.mesh_def[&self.building.mesh].clone(),
             transform: Transform::default().with_scale(Vec3::splat(
-                ITEM_VISUAL_SIZE * assets.size_def[&self.item_type.1],
+                ITEM_VISUAL_SIZE * assets.size_def[&self.building.size],
             )),
-            material: assets.color_def[&self.item_type.2].clone(),
+            material: assets.color_def[&self.building.color].clone(),
             ..default()
         };
         world.entity_mut(id).insert(visual);
     }
 }
 
-pub fn get_random_item(rng: &mut crate::random::RandomDeterministic) -> ItemType {
+pub fn get_random_building(rng: &mut crate::random::RandomDeterministic) -> Building {
     let choices_mesh = [
-        (MeshType::Triangle, 2),
-        (MeshType::Circle, 2),
-        (MeshType::Quad, 2),
+        (BuildingMesh::Triangle, 2),
+        (BuildingMesh::Circle, 2),
+        (BuildingMesh::Quad, 2),
     ];
     let choices_size = [
-        (SizeType::Big, 1),
-        (SizeType::Medium, 2),
-        (SizeType::Small, 1),
+        (BuildingSize::Big, 1),
+        (BuildingSize::Medium, 2),
+        (BuildingSize::Small, 1),
     ];
     let choices_color = [
-        (ColorType::Black, 5),
-        (ColorType::White, 5),
-        (ColorType::Pink, 1),
-        (ColorType::Blue, 1),
+        (BuildingColor::Black, 5),
+        (BuildingColor::White, 5),
+        (BuildingColor::Pink, 1),
+        (BuildingColor::Blue, 1),
     ];
-    let item_type = ItemType(
-        choices_mesh
+    let building = Building {
+        mesh: choices_mesh
             .choose_weighted(&mut rng.random, |i| i.1)
             .unwrap()
             .0,
-        choices_size
+        size: choices_size
             .choose_weighted(&mut rng.random, |i| i.1)
             .unwrap()
             .0,
-        choices_color
+        color: choices_color
             .choose_weighted(&mut rng.random, |i| i.1)
             .unwrap()
             .0,
-    );
-    item_type
+    };
+    building
 }

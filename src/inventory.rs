@@ -3,11 +3,12 @@ use bevy::prelude::*;
 use std::collections::VecDeque;
 use std::marker::PhantomData;
 
-pub struct InventoryPlugin<IT: Component + CommandVisualBuilder> {
+/// This plugin handles the creation of Items in the inventory
+pub struct InventoryPlugin<IT: Component + ItemSpriteBuilder> {
     _item_type: PhantomData<IT>,
 }
 
-impl<IT: Component + CommandVisualBuilder> Default for InventoryPlugin<IT> {
+impl<IT: Component + ItemSpriteBuilder> Default for InventoryPlugin<IT> {
     fn default() -> Self {
         Self {
             _item_type: Default::default(),
@@ -15,82 +16,108 @@ impl<IT: Component + CommandVisualBuilder> Default for InventoryPlugin<IT> {
     }
 }
 
-impl<IT: Component + CommandVisualBuilder> Plugin for InventoryPlugin<IT> {
+impl<IT: Component + ItemSpriteBuilder> Plugin for InventoryPlugin<IT> {
     fn build(&self, app: &mut App) {
         app.add_systems(
             PostUpdate,
             (
-                item_create_visual::<IT>,
+                item_create_sprite::<IT>,
                 apply_deferred,
-                item_reposition::<IT>,
+                redraw_inventory_on_change::<IT>,
             )
                 .chain(),
         );
     }
 }
 
-pub trait CommandVisualBuilder {
+pub trait ItemSpriteBuilder {
     type C: EntityCommand;
-    fn command_to_create_visual(&self) -> Self::C;
+    fn build_sprite(&self) -> Self::C;
 }
 
 #[derive(Component)]
-pub struct MarkerItemVisual;
+struct MarkerItemSpriteBuilt;
 
 #[derive(Component)]
-pub struct Inventory<IT: Component + CommandVisualBuilder> {
+pub struct Inventory<IT: Component + ItemSpriteBuilder> {
     /// entities contained here have a MarkerItem component, it handles logic
     /// their rendering is created via item_create_visual
     pub items: VecDeque<Entity>,
-    pub _item_type: PhantomData<IT>,
+    positions: Vec<Vec3>,
+
+    _item_type: PhantomData<IT>,
 }
 
-impl<IT: Component + CommandVisualBuilder> Default for Inventory<IT> {
-    fn default() -> Self {
+pub struct SpawnInventory<IT: Component + ItemSpriteBuilder> {
+    items: Vec<Entity>,
+    configuration: InventoryConfiguration,
+
+    _item_type: PhantomData<IT>,
+}
+
+impl<IT> SpawnInventory<IT>
+where
+    IT: Component + ItemSpriteBuilder,
+{
+    pub fn new(items: Vec<Entity>, configuration: InventoryConfiguration) -> Self {
         Self {
-            items: Default::default(),
+            items,
+            configuration,
             _item_type: Default::default(),
         }
     }
 }
 
-#[derive(Component)]
-pub struct InventoryVisualDef {
+/// Configuration for the inventory
+///   positions: Vec<Vec3> - positions of the items in the inventory
+/// TODO: should be relative to the inventory entity/transform
+pub struct InventoryConfiguration {
     pub positions: Vec<Vec3>,
 }
 
-fn item_create_visual<IT: Component + CommandVisualBuilder>(
+impl<IT> EntityCommand for SpawnInventory<IT>
+where
+    IT: Component + ItemSpriteBuilder,
+{
+    fn apply(self, id: Entity, world: &mut World) {
+        world.entity_mut(id).insert((Inventory::<IT> {
+            items: self.items.into_iter().collect(),
+            positions: self.configuration.positions,
+            _item_type: self._item_type,
+        },));
+    }
+}
+
+fn item_create_sprite<IT: Component + ItemSpriteBuilder>(
     mut commands: Commands,
-    inventory: Query<(&Inventory<IT>, &InventoryVisualDef), Changed<Inventory<IT>>>,
-    items_without_visual: Query<(Entity, &IT), Without<MarkerItemVisual>>,
+    inventory: Query<&Inventory<IT>, Changed<Inventory<IT>>>,
+    items_without_visual: Query<(Entity, &IT), Without<MarkerItemSpriteBuilt>>,
 ) {
-    for (inventory, visual_def) in inventory.iter() {
-        for item in inventory.items.iter().take(visual_def.positions.len()) {
-            let Ok(item) = items_without_visual.get(*item) else {
-                continue;
-            };
-            let mut c = commands.entity(item.0);
-            c.add(item.1.command_to_create_visual())
-                .insert(MarkerItemVisual);
+    for inventory in inventory.iter() {
+        for item in inventory.items.iter().take(inventory.positions.len()) {
+            if let Ok((entity, item)) = items_without_visual.get(*item) {
+                let mut c = commands.entity(entity);
+                c.add(item.build_sprite()).insert(MarkerItemSpriteBuilt);
+            }
         }
     }
 }
-fn item_reposition<IT: Component + CommandVisualBuilder>(
-    inventory: Query<(&Inventory<IT>, &InventoryVisualDef), Changed<Inventory<IT>>>,
-    items_with_visual: Query<(Entity, &IT), With<MarkerItemVisual>>,
-    mut q_transform: Query<&mut Transform>,
+
+fn redraw_inventory_on_change<IT: Component + ItemSpriteBuilder>(
+    inventory: Query<&Inventory<IT>, Changed<Inventory<IT>>>,
+    mut items_with_visual: Query<&mut Transform, (With<MarkerItemSpriteBuilt>, With<IT>)>,
 ) {
-    for (inventory, visual_def) in inventory.iter() {
-        for (i, item) in inventory
+    for inventory in inventory.iter() {
+        for (i, &item) in inventory
             .items
             .iter()
-            .take(visual_def.positions.len())
+            .take(inventory.positions.len())
             .enumerate()
         {
-            let Ok(item) = items_with_visual.get(*item) else {
-                continue;
-            };
-            q_transform.get_mut(item.0).unwrap().translation = visual_def.positions[i];
+            if let Ok(mut transform) = items_with_visual.get_mut(item) {
+                //TODO: should be relative to the inventory entity/transform
+                transform.translation = inventory.positions[i];
+            }
         }
     }
 }
