@@ -2,6 +2,7 @@ use crate::inventory::{self};
 use crate::inventory::{Inventory, SpawnInventory};
 use crate::random::RandomDeterministic;
 use crate::window::WindowSize;
+use crate::GameState;
 use bevy::ecs::system::{EntityCommand, SystemParam, SystemState};
 
 use bevy::prelude::*;
@@ -18,8 +19,16 @@ impl bevy::prelude::Plugin for Plugin {
     fn build(&self, app: &mut App) {
         app.add_plugins(inventory::InventoryPlugin::<Building>::default())
             .init_resource::<BuildingInventory>()
-            .add_systems(Startup, (create_assets, spawn_layout).chain())
-            .add_systems(Update, update_anchor_position);
+            .add_systems(
+                OnEnter(GameState::Playing),
+                (create_assets, spawn_layout).chain(),
+            )
+            .add_systems(
+                Update,
+                update_anchor_position
+                    .run_if(resource_changed::<WindowSize>())
+                    .run_if(in_state(GameState::Playing)),
+            );
     }
 }
 
