@@ -1,7 +1,7 @@
 use std::{f32::consts::FRAC_PI_2, time::Duration};
 
 use crate::{
-    buildings::{self},
+    buildings::{self, BuildingSpawner},
     bullet::SpawnBullet,
     enemy::Enemy,
     grid::HexGrid,
@@ -11,15 +11,9 @@ use crate::{
             auto_remove_target_when_out_of_range, scan_for_targets_in_range, EnterViewEvent, View,
         },
     },
-    random::RandomDeterministic,
     GameState,
 };
-use bevy::{
-    ecs::system::{EntityCommand, SystemState},
-    math::Vec3,
-    prelude::*,
-    sprite::SpriteBundle,
-};
+use bevy::{ecs::system::EntityCommand, math::Vec3, prelude::*, sprite::SpriteBundle};
 use bevy_easings::{Ease, EaseFunction};
 
 pub struct TurretPlugin;
@@ -66,46 +60,12 @@ pub struct SpawnTurret {
     pub at_hex: Entity,
 }
 
-type InventoryState<'w, 'q> = (
-    Query<
-        'w,
-        'q,
-        (
-            &'w mut RandomDeterministic,
-            &'w mut crate::inventory::Inventory<buildings::Building>,
-        ),
-    >,
-    Query<'w, 'q, &'w buildings::Building>,
-);
-
 impl EntityCommand for SpawnTurret {
     fn apply(self, id: Entity, world: &mut World) {
-        let mut state: SystemState<InventoryState> = SystemState::new(world);
-
-        let (mut q_inventory, q_items) = state.get_mut(world);
-
-        let (mut rng, mut inventory) = q_inventory.single_mut();
-
-        let Some(first_item) = inventory.items.front().cloned() else {
-            return;
-        };
-        let Ok(_item_to_build) = q_items.get(first_item) else {
-            return;
-        };
-        // TODO: check if we can build item_to_build (cooldown, space available, currency, ...)
-        // TODO: send an event if not possible.
-        // TODO: pay "price" ?
-        inventory.items.pop_front();
-
-        let new_item = buildings::get_random_building(&mut rng);
-        let new_item = world.spawn(new_item).id();
-
-        // TODO: reuse that entity to merge it with turret entity ?
-        world.despawn(first_item);
-        let (mut q_inventory, _q_items) = state.get_mut(world);
-        let (_rng, mut inventory) = q_inventory.single_mut();
-
-        inventory.items.push_back(new_item);
+        // attach building to the turret
+        let _building = world.resource_scope(|world, mut building_spawner: Mut<BuildingSpawner>| {
+            building_spawner.get_next_building(world)
+        });
 
         let texture = world.resource_scope(|_, asset_server: Mut<AssetServer>| {
             asset_server.load("textures/DifferentTurrets/Turret01.png")

@@ -1,7 +1,7 @@
 use crate::inventory::SpawnInventory;
 use crate::inventory::{self};
 use crate::random::RandomDeterministic;
-use bevy::ecs::system::EntityCommand;
+use bevy::ecs::system::{EntityCommand, SystemParam, SystemState};
 use bevy::math::vec3;
 use bevy::prelude::*;
 use bevy::render::mesh::Indices;
@@ -15,8 +15,65 @@ pub struct Plugin;
 
 impl bevy::prelude::Plugin for Plugin {
     fn build(&self, app: &mut App) {
-        app.add_plugins(inventory::InventoryPlugin::<Building>::default());
-        app.add_systems(Startup, (create_assets, spawn_layout).chain());
+        app.add_plugins(inventory::InventoryPlugin::<Building>::default())
+            .init_resource::<BuildingSpawner>()
+            .add_systems(Startup, (create_assets, spawn_layout).chain());
+    }
+}
+
+#[derive(Resource)]
+pub struct BuildingSpawner {
+    pub(crate) state: SystemState<GetNextBuildingParams<'static, 'static>>,
+}
+
+#[derive(SystemParam)]
+pub(crate) struct GetNextBuildingParams<'w, 's> {
+    command: Commands<'w, 's>,
+    q_inventory: Query<
+        'w,
+        's,
+        (
+            &'static mut RandomDeterministic,
+            &'static mut crate::inventory::Inventory<Building>,
+        ),
+    >,
+    q_buildings: Query<'w, 's, &'static Building>,
+}
+
+impl FromWorld for BuildingSpawner {
+    fn from_world(world: &mut World) -> Self {
+        BuildingSpawner {
+            state: SystemState::new(world),
+        }
+    }
+}
+
+impl BuildingSpawner {
+    pub fn get_next_building(&mut self, world: &mut World) -> Option<Building> {
+        let mut params = self.state.get_mut(world);
+        let (mut rng, mut inventory) = params.q_inventory.single_mut();
+
+        let Some(first_item) = inventory.items.front().cloned() else {
+            return None;
+        };
+        let Ok(_item_to_build) = params.q_buildings.get(first_item) else {
+            return None;
+        };
+        // TODO: check if we can build item_to_build (cooldown, space available, currency, ...)
+        // TODO: send an event if not possible.
+        // TODO: pay "price" ?
+        inventory.items.pop_front();
+
+        let new_building = get_random_building(&mut rng);
+        let new_item = params.command.spawn(new_building).id();
+
+        inventory.items.push_back(new_item);
+
+        // TODO: reuse that entity to merge it with turret entity ?
+        world.despawn(first_item);
+
+        self.state.apply(world);
+        Some(new_building)
     }
 }
 
