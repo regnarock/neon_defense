@@ -1,8 +1,9 @@
 use crate::inventory::SpawnInventory;
 use crate::inventory::{self};
 use crate::random::RandomDeterministic;
+use crate::window::WindowSize;
 use bevy::ecs::system::{EntityCommand, SystemParam, SystemState};
-use bevy::math::vec3;
+
 use bevy::prelude::*;
 use bevy::render::mesh::Indices;
 use bevy::render::render_resource::PrimitiveTopology;
@@ -143,8 +144,9 @@ pub(crate) fn create_assets(
 }
 
 const ITEM_VISUAL_SIZE: f32 = 64f32;
+const PADDING: f32 = 10f32;
 
-pub(crate) fn spawn_layout(mut commands: Commands) {
+pub(crate) fn spawn_layout(mut commands: Commands, window_size: ResMut<WindowSize>) {
     let mut rng = crate::random::RandomDeterministic::new_from_seed(0);
     let inventory = vec![
         commands.spawn(get_random_building(&mut rng)).id(),
@@ -154,18 +156,23 @@ pub(crate) fn spawn_layout(mut commands: Commands) {
         commands.spawn(get_random_building(&mut rng)).id(),
         commands.spawn(get_random_building(&mut rng)).id(),
     ];
+    let anchor_point = Vec2::new(
+        -window_size.size.x / 2f32 + ITEM_VISUAL_SIZE / 2f32 + PADDING,
+        -window_size.size.y / 2f32 + (ITEM_VISUAL_SIZE + PADDING) * 5.5f32 + PADDING,
+    )
+    .extend(0f32);
     commands
         .spawn_empty()
         .add(SpawnInventory::<Building>::new(
             inventory,
             inventory::InventoryConfiguration {
                 positions: vec![
-                    vec3(-350f32, 0f32, 0f32),
-                    vec3(-350f32, ITEM_VISUAL_SIZE + 10f32, 0f32),
-                    vec3(-350f32, (ITEM_VISUAL_SIZE + 10f32) * 2f32, 0f32),
-                    vec3(-350f32, (ITEM_VISUAL_SIZE + 10f32) * 3f32, 0f32),
-                    vec3(-350f32, (ITEM_VISUAL_SIZE + 10f32) * 4f32, 0f32),
-                    vec3(-350f32, (ITEM_VISUAL_SIZE + 10f32) * 5f32, 0f32),
+                    anchor_point - Vec3::new(0f32, (ITEM_VISUAL_SIZE + PADDING) * 5f32, 0f32),
+                    anchor_point - Vec3::new(0f32, (ITEM_VISUAL_SIZE + PADDING) * 4f32, 0f32),
+                    anchor_point - Vec3::new(0f32, (ITEM_VISUAL_SIZE + PADDING) * 3f32, 0f32),
+                    anchor_point - Vec3::new(0f32, (ITEM_VISUAL_SIZE + PADDING) * 2f32, 0f32),
+                    anchor_point - Vec3::new(0f32, ITEM_VISUAL_SIZE + PADDING, 0f32),
+                    anchor_point,
                 ],
             },
         ))
