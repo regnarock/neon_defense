@@ -99,7 +99,7 @@ impl EntityCommand for SpawnTurret {
                 View::new(2. * hex_radius),
             ))
             .id();
-        let mut q_event: SystemState<(EventWriter<EventSpawnedTower>)> = SystemState::new(world);
+        let mut q_event: SystemState<EventWriter<EventSpawnedTower>> = SystemState::new(world);
 
         let mut event_writer = q_event.get_mut(world);
         event_writer.send(EventSpawnedTower(spawned_turret));

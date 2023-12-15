@@ -99,7 +99,7 @@ impl Command for SpawnEnemy {
 
         world.insert_resource(EnemyAnimation(textures));
 
-        let mut q_event: SystemState<(EventWriter<EventSpawnedEnemy>)> = SystemState::new(world);
+        let mut q_event: SystemState<EventWriter<EventSpawnedEnemy>> = SystemState::new(world);
 
         let mut event_writer = q_event.get_mut(world);
         event_writer.send(EventSpawnedEnemy(spawned_enemy));

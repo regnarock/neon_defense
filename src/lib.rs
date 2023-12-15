@@ -25,9 +25,10 @@ use crate::turret::TurretPlugin;
 
 use actions::cursor::CursorPlugin;
 use bevy::app::App;
-use bevy::diagnostic::{FrameTimeDiagnosticsPlugin, LogDiagnosticsPlugin};
+
 use bevy::prelude::*;
 use bevy_mod_picking::DefaultPickingPlugins;
+use bevy_vector_shapes::Shape2dPlugin;
 use bullet::BulletPlugin;
 use crystal::CrystalPlugin;
 use grid::GridPlugin;
@@ -49,6 +50,7 @@ impl Plugin for GamePlugin {
         app.add_state::<GameState>().add_plugins((
             LoadingPlugin,
             GameWindowPlugin,
+            Shape2dPlugin::default(),
             MenuPlugin,
             ActionsPlugin,
             InternalAudioPlugin,

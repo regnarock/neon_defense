@@ -121,6 +121,7 @@ fn update_distances(
     grid: Res<HexGrid>,
     mut hexes: Query<(&mut HexCell, &Handle<HexMaterial>)>,
     mut materials: ResMut<Assets<HexMaterial>>,
+    mut colored: Local<bool>,
 ) {
     let center = Hex::ZERO;
     let mut queue = vec![center];
@@ -149,18 +150,21 @@ fn update_distances(
                         processed.insert(neighbor);
                         next_queue.push(neighbor);
                     }
-                    // debug purposes only
-                    let v = 1.0;
-                    let material = materials.get_mut(hex_material).unwrap();
-                    material.color.x = v;
-                    material.color.y = v;
-                    material.color.z = v;
+                    // TODO: debug purposes only, find a better way to color the field
+                    if !*colored {
+                        let v = dist as f32 / MAP_RADIUS as f32;
+                        let material = materials.get_mut(hex_material).unwrap();
+                        material.color.x = v;
+                        material.color.y = v;
+                        material.color.z = v;
+                    }
                 }
             }
         }
         queue = next_queue;
         dist += 1;
     }
+    *colored = true;
 }
 
 fn update_unconstructible_hexes(
