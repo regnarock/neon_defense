@@ -1,14 +1,18 @@
 mod actions;
 mod audio;
 mod board;
+mod buildings;
 mod bullet;
 mod crystal;
 mod enemy;
 mod grid;
+mod inventory;
 mod loading;
 mod menu;
 mod primitives;
+mod random;
 mod turret;
+mod window;
 
 use crate::actions::ActionsPlugin;
 use crate::audio::InternalAudioPlugin;
@@ -25,6 +29,7 @@ use bullet::BulletPlugin;
 use crystal::CrystalPlugin;
 use grid::GridPlugin;
 use primitives::PrimitivesPlugin;
+use window::GameWindowPlugin;
 
 #[derive(States, Default, Clone, Eq, PartialEq, Debug, Hash)]
 pub enum GameState {
@@ -52,6 +57,7 @@ impl Plugin for GamePlugin {
             DefaultPickingPlugins,
             CrystalPlugin,
             PrimitivesPlugin,
+            GameWindowPlugin,
         ));
 
         #[cfg(debug_assertions)]

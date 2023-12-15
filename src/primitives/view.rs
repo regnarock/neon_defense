@@ -140,7 +140,7 @@ pub fn auto_remove_target_when_out_of_range<S, T>(
     }
 }
 
-pub fn debug_range(mut gizmos: Gizmos, views: Query<(&View, &Transform)>) {
+pub fn _debug_range(mut gizmos: Gizmos, views: Query<(&View, &Transform)>) {
     for (view, transform) in &views {
         gizmos.circle_2d(transform.translation.xy(), view.range, Color::LIME_GREEN);
     }

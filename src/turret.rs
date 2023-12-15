@@ -1,6 +1,7 @@
 use std::{f32::consts::FRAC_PI_2, time::Duration};
 
 use crate::{
+    buildings::{self, BuildingInventory},
     bullet::SpawnBullet,
     enemy::Enemy,
     grid::HexGrid,
@@ -19,6 +20,7 @@ pub struct TurretPlugin;
 
 impl Plugin for TurretPlugin {
     fn build(&self, app: &mut App) {
+        app.add_plugins(buildings::Plugin);
         app.add_systems(
             Update,
             (
@@ -27,7 +29,7 @@ impl Plugin for TurretPlugin {
                 process_enemy_enter_range,
                 process_enemy_exit_range,
                 animate_targeting,
-                //auto_fire,
+                auto_fire,
             )
                 .run_if(in_state(GameState::Playing)),
         );
@@ -60,6 +62,12 @@ pub struct SpawnTurret {
 
 impl EntityCommand for SpawnTurret {
     fn apply(self, id: Entity, world: &mut World) {
+        // TODO: attach building to the turret
+        let _building =
+            world.resource_scope(|world, mut building_inventory: Mut<BuildingInventory>| {
+                building_inventory.next(world)
+            });
+
         let texture = world.resource_scope(|_, asset_server: Mut<AssetServer>| {
             asset_server.load("textures/DifferentTurrets/Turret01.png")
         });
