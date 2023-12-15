@@ -2,6 +2,7 @@ use bevy::prelude::*;
 use bevy_vector_shapes::prelude::*;
 
 use crate::window::WindowSize;
+use crate::MarkerGameStatePlaying;
 use crate::{enemy::EventSpawnedEnemy, turret::EventSpawnedTower, GameState};
 
 pub struct OverloadPlugin;
@@ -18,7 +19,7 @@ impl Plugin for OverloadPlugin {
 }
 
 fn setup(mut commands: Commands) {
-    commands.spawn(Overload(0.5f32));
+    commands.spawn((Overload(0.5f32), MarkerGameStatePlaying));
 }
 
 /// Basically the HP bar, but it decreases naturally over time

@@ -33,6 +33,7 @@ impl Plugin for GridPlugin {
                 },
                 setup,
             )
+            .add_systems(OnExit(GameState::Playing), unsetup)
             .add_systems(OnEnter(GameState::Playing), update_distances)
             .add_systems(
                 Update,
@@ -102,6 +103,9 @@ fn setup(mut commands: Commands, mut meshes: ResMut<Assets<Mesh>>) {
         bounds,
     };
     commands.insert_resource(grid);
+}
+fn unsetup(mut commands: Commands) {
+    commands.remove_resource::<HexGrid>();
 }
 
 /// Compute a bevy mesh from the layout

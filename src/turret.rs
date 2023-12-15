@@ -11,7 +11,7 @@ use crate::{
             auto_remove_target_when_out_of_range, scan_for_targets_in_range, EnterViewEvent, View,
         },
     },
-    GameState,
+    GameState, MarkerGameStatePlaying,
 };
 use bevy::{
     ecs::system::{EntityCommand, SystemState},
@@ -97,6 +97,7 @@ impl EntityCommand for SpawnTurret {
                 Name::new("Turret"),
                 AutoGun::new(1.),
                 View::new(2. * hex_radius),
+                MarkerGameStatePlaying,
             ))
             .id();
         let mut q_event: SystemState<EventWriter<EventSpawnedTower>> = SystemState::new(world);

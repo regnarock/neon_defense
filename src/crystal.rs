@@ -6,7 +6,7 @@ use bevy::{
     transform::components::Transform,
 };
 
-use crate::GameState;
+use crate::{GameState, MarkerGameStatePlaying};
 
 pub struct CrystalPlugin;
 
@@ -28,5 +28,6 @@ pub fn setup(mut commands: Commands, asset_server: Res<AssetServer>) {
         },
         Crystal,
         Name::new("Crystal"),
+        MarkerGameStatePlaying,
     ));
 }

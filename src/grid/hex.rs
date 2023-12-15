@@ -14,7 +14,7 @@ use bevy_mod_picking::{
 };
 use hexx::Hex;
 
-use crate::{enemy::SpawnEnemy, turret::SpawnTurret};
+use crate::{enemy::SpawnEnemy, turret::SpawnTurret, MarkerGameStatePlaying};
 
 use super::HexGrid;
 
@@ -71,6 +71,7 @@ impl EntityCommand for SpawnHex {
             On::<Pointer<Over>>::run(select_hex),
             On::<Pointer<Out>>::run(deselect_hex),
             On::<Pointer<Click>>::send_event::<HexClicked>(),
+            MarkerGameStatePlaying,
         ));
     }
 }

@@ -2,7 +2,7 @@ use crate::inventory::{self};
 use crate::inventory::{Inventory, SpawnInventory};
 use crate::random::RandomDeterministic;
 use crate::window::WindowSize;
-use crate::GameState;
+use crate::{GameState, MarkerGameStatePlaying};
 use bevy::ecs::system::{EntityCommand, SystemParam, SystemState};
 
 use bevy::prelude::*;
@@ -257,7 +257,10 @@ impl EntityCommand for BuildingItemSpriteBuilder {
             material: assets.color_def[&self.building.color].clone(),
             ..default()
         };
-        world.entity_mut(id).insert(visual);
+        world
+            .entity_mut(id)
+            .insert(visual)
+            .insert(MarkerGameStatePlaying);
     }
 }
 

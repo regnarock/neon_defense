@@ -7,7 +7,7 @@ use crate::{
         movable::{move_towards_target, AutoMovable},
         target::{face_target, AutoLookAtTarget, OnTargetDespawned, Target},
     },
-    GameState,
+    GameState, MarkerGameStatePlaying,
 };
 
 pub struct BulletPlugin;
@@ -59,6 +59,7 @@ impl Command for SpawnBullet {
             },
             AutoLookAtTarget,
             Damage::new(self.damage),
+            MarkerGameStatePlaying,
         ));
     }
 }

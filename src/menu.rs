@@ -18,9 +18,9 @@ impl Plugin for MenuPlugin {
 }
 
 #[derive(Resource)]
-struct ButtonColors {
-    normal: Color,
-    hovered: Color,
+pub struct ButtonColors {
+    pub normal: Color,
+    pub hovered: Color,
 }
 
 impl Default for ButtonColors {
