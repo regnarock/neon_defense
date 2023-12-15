@@ -33,7 +33,7 @@ fn start_audio(mut commands: Commands, audio_assets: Res<AudioAssets>, audio: Re
     commands.insert_resource(FlyingAudio(handle));
 }
 
-fn control_flying_sound(
+fn _control_flying_sound(
     actions: Res<Actions>,
     audio: Res<FlyingAudio>,
     mut audio_instances: ResMut<Assets<AudioInstance>>,

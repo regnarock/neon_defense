@@ -3,8 +3,6 @@ use bevy::prelude::*;
 pub mod cursor;
 mod game_control;
 
-pub const FOLLOW_EPSILON: f32 = 5.;
-
 pub struct ActionsPlugin;
 
 // This plugin listens for keyboard input and converts the input into Actions

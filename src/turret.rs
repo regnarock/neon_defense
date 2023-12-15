@@ -29,7 +29,7 @@ impl Plugin for TurretPlugin {
                 process_enemy_enter_range,
                 process_enemy_exit_range,
                 animate_targeting,
-                //auto_fire,
+                auto_fire,
             )
                 .run_if(in_state(GameState::Playing)),
         );

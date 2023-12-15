@@ -2,7 +2,7 @@ use bevy::prelude::*;
 use rand::prelude::*;
 use rand_chacha::ChaCha20Rng;
 
-
+#[allow(dead_code)]
 #[derive(Component)]
 pub struct RandomDeterministic {
     pub random: ChaCha20Rng,
@@ -23,10 +23,10 @@ impl RandomDeterministic {
             seed,
         }
     }
-    pub fn reset(&mut self) {
+    pub fn _reset(&mut self) {
         *self = Self::new_from_seed(self.seed);
     }
-    pub fn get_seed(&self) -> u64 {
+    pub fn _get_seed(&self) -> u64 {
         self.seed
     }
 }

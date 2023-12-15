@@ -1,5 +1,6 @@
 use bevy::prelude::{Input, KeyCode, Res};
 
+#[allow(dead_code)]
 pub enum GameControl {
     Up,
     Down,
