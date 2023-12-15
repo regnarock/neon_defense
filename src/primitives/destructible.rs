@@ -43,7 +43,6 @@ pub fn apply_damage(
             if distance < destructible.hitbox {
                 destructible.health -= damage.0;
                 commands.entity(dmg_entity).despawn();
-                println!("Enemy health: {}", destructible.health);
             }
         }
     }

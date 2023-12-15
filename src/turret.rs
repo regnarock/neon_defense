@@ -13,7 +13,12 @@ use crate::{
     },
     GameState,
 };
-use bevy::{ecs::system::EntityCommand, math::Vec3, prelude::*, sprite::SpriteBundle};
+use bevy::{
+    ecs::system::{EntityCommand, SystemState},
+    math::Vec3,
+    prelude::*,
+    sprite::SpriteBundle,
+};
 use bevy_easings::{Ease, EaseFunction};
 
 pub struct TurretPlugin;
@@ -21,6 +26,7 @@ pub struct TurretPlugin;
 impl Plugin for TurretPlugin {
     fn build(&self, app: &mut App) {
         app.add_plugins(buildings::Plugin);
+        app.add_event::<EventSpawnedTower>();
         app.add_systems(
             Update,
             (
@@ -40,6 +46,9 @@ impl Plugin for TurretPlugin {
 pub struct Turret {
     pub parent_hex: Entity,
 }
+
+#[derive(Event)]
+pub struct EventSpawnedTower(pub Entity);
 
 #[derive(Component)]
 pub struct AutoGun {
@@ -73,20 +82,27 @@ impl EntityCommand for SpawnTurret {
         });
         let hex_grid = world.resource::<HexGrid>();
         let hex_radius: f32 = hex_grid.layout.hex_size.length();
-        world.entity_mut(id).insert((
-            SpriteBundle {
-                transform: Transform::from_xyz(self.position.x, self.position.y, 0.)
-                    .with_scale(Vec3::new(0.5, 0.5, 1.)),
-                texture,
-                ..Default::default()
-            },
-            Turret {
-                parent_hex: self.at_hex,
-            },
-            Name::new("Turret"),
-            AutoGun::new(1.),
-            View::new(2. * hex_radius),
-        ));
+        let spawned_turret = world
+            .entity_mut(id)
+            .insert((
+                SpriteBundle {
+                    transform: Transform::from_xyz(self.position.x, self.position.y, 0.)
+                        .with_scale(Vec3::new(0.5, 0.5, 1.)),
+                    texture,
+                    ..Default::default()
+                },
+                Turret {
+                    parent_hex: self.at_hex,
+                },
+                Name::new("Turret"),
+                AutoGun::new(1.),
+                View::new(2. * hex_radius),
+            ))
+            .id();
+        let mut q_event: SystemState<EventWriter<EventSpawnedTower>> = SystemState::new(world);
+
+        let mut event_writer = q_event.get_mut(world);
+        event_writer.send(EventSpawnedTower(spawned_turret));
     }
 }
 

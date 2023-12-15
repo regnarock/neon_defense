@@ -60,12 +60,12 @@ rand_chacha = "0.3"
 winit = { version = "0.28", default-features = false }
 image = { version = "0.24", default-features = false }
 bevy_easings = "0.12.2"
-bevy_sprite_animation = "0.4.0"
 bevy_mod_picking = "0.17.0"
 bytemuck = "1.14.0"
 bevy_eventlistener = "0.6.0"
 hexx = "0.11.0"
 anyhow = "1.0.75"
+bevy_vector_shapes = "0.6"
 
 [build-dependencies]
 embed-resource = "1.4"
