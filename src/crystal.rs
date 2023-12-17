@@ -16,7 +16,7 @@ impl Plugin for CrystalPlugin {
     }
 }
 
-#[derive(Component, Debug)]
+#[derive(Reflect, Component, Debug)]
 pub struct Crystal;
 
 pub fn setup(mut commands: Commands, asset_server: Res<AssetServer>) {

@@ -52,7 +52,7 @@ impl Plugin for EnemyPlugin {
     }
 }
 
-#[derive(Component)]
+#[derive(Reflect, Component)]
 pub struct Enemy;
 
 #[derive(Resource)]

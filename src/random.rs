@@ -5,8 +5,14 @@ use rand_chacha::ChaCha20Rng;
 #[allow(dead_code)]
 #[derive(Component)]
 pub struct RandomDeterministic {
+    // TO support reflect, we need https://github.com/bevyengine/bevy/pull/7575
+    //#[reflect(skip_serializing)]
+    //#[reflect(default = "get_default_random")]
     pub random: ChaCha20Rng,
     seed: u64,
+}
+fn get_default_random() -> ChaCha20Rng {
+    ChaCha20Rng::seed_from_u64(0)
 }
 
 impl Default for RandomDeterministic {

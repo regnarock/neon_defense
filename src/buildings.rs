@@ -180,6 +180,7 @@ pub(crate) fn spawn_layout(mut commands: Commands, window_size: ResMut<WindowSiz
                 positions: positions_from_anchor_point(anchor_point),
             },
         ))
+        .insert(MarkerGameStatePlaying)
         .insert(RandomDeterministic::new_from_seed(0));
 }
 
@@ -208,26 +209,26 @@ pub(crate) fn update_anchor_position(
     });
 }
 
-#[derive(Component, Clone, Copy, Hash, Eq, PartialEq)]
+#[derive(Reflect, Component, Clone, Copy, Hash, Eq, PartialEq)]
 pub struct Building {
     mesh: BuildingMesh,
     size: BuildingSize,
     color: BuildingColor,
 }
 
-#[derive(Clone, Copy, Hash, Eq, PartialEq)]
+#[derive(Reflect, Clone, Copy, Hash, Eq, PartialEq)]
 pub enum BuildingMesh {
     Triangle,
     Circle,
     Quad,
 }
-#[derive(Clone, Copy, Hash, Eq, PartialEq)]
+#[derive(Reflect, Clone, Copy, Hash, Eq, PartialEq)]
 pub enum BuildingSize {
     Small,
     Medium,
     Big,
 }
-#[derive(Clone, Copy, Hash, Eq, PartialEq)]
+#[derive(Reflect, Clone, Copy, Hash, Eq, PartialEq)]
 pub enum BuildingColor {
     Black,
     White,

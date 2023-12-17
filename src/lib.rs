@@ -28,6 +28,7 @@ use actions::cursor::CursorPlugin;
 use bevy::app::App;
 
 use bevy::prelude::*;
+use bevy_inspector_egui::quick::WorldInspectorPlugin;
 use bevy_mod_picking::DefaultPickingPlugins;
 use bevy_vector_shapes::Shape2dPlugin;
 use bullet::BulletPlugin;
@@ -46,7 +47,7 @@ pub enum GameState {
 
 pub struct GamePlugin;
 
-#[derive(Component)]
+#[derive(Reflect, Component)]
 pub struct MarkerGameStatePlaying;
 
 impl Plugin for GamePlugin {
@@ -70,7 +71,7 @@ impl Plugin for GamePlugin {
                 PrimitivesPlugin,
                 OverloadPlugin,
             ))
-            .add_plugins(menu_playing::MenuPlayingPlugin)
+            .add_plugins((menu_playing::MenuPlayingPlugin, WorldInspectorPlugin::new()))
             .add_systems(
                 OnExit(GameState::Playing),
                 primitives::ecs_extensions::despawn_entities::<MarkerGameStatePlaying>,

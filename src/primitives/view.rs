@@ -17,7 +17,7 @@ impl Plugin for ViewPlugin {
     }
 }
 
-#[derive(Component, Debug)]
+#[derive(Reflect, Component, Debug)]
 pub struct View {
     range: f32,
 }

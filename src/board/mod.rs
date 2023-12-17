@@ -11,9 +11,7 @@ use bevy::{
 };
 use bevy_mod_picking::prelude::*;
 
-use crate::{
-    actions::cursor::CursorScreenPos, enemy::SpawnEnemy, GameState, MarkerGameStatePlaying,
-};
+use crate::{actions::cursor::CursorScreenPos, enemy::SpawnEnemy};
 
 use self::{
     image::BoardRenderImage,
@@ -27,7 +25,7 @@ impl Plugin for BoardPlugin {
         app.init_resource::<CursorPosOnBoard>()
             .add_systems(Startup, setup_board)
             // TODO: uncomment once self PR has been merged
-            .add_systems(OnEnter(GameState::Playing), setup_board)
+            //.add_systems(OnEnter(GameState::Playing), setup_board)
             .add_plugins(ExtractResourcePlugin::<BoardRenderImage>::default())
             .add_plugins(ExtractResourcePlugin::<CursorPosOnBoard>::default());
     }
@@ -62,7 +60,6 @@ pub fn setup_board(mut commands: Commands, images: ResMut<Assets<Image>>) {
         PickableBundle::default(),
         On::<Pointer<Move>>::run(update_pos_on_board),
         On::<Pointer<Click>>::run(spawn_enemy_on_click),
-        MarkerGameStatePlaying,
     ));
 
     info!("Board setup complete");

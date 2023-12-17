@@ -25,7 +25,7 @@ impl Plugin for BulletPlugin {
     }
 }
 
-#[derive(Component)]
+#[derive(Reflect, Component)]
 pub struct Bullet;
 
 // Command to spawn a bullet

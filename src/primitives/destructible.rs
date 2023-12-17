@@ -15,13 +15,13 @@ impl Plugin for DestructiblePlugin {
     }
 }
 
-#[derive(Component)]
+#[derive(Reflect, Component)]
 pub struct Destructible {
     pub health: f32,
     pub hitbox: f32,
 }
 
-#[derive(Component)]
+#[derive(Reflect, Component)]
 pub struct Damage(f32);
 
 impl Damage {

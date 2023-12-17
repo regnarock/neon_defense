@@ -42,7 +42,7 @@ impl Plugin for TurretPlugin {
     }
 }
 
-#[derive(Component)]
+#[derive(Reflect, Component)]
 pub struct Turret {
     pub parent_hex: Entity,
 }
@@ -50,7 +50,7 @@ pub struct Turret {
 #[derive(Event)]
 pub struct EventSpawnedTower(pub Entity);
 
-#[derive(Component)]
+#[derive(Reflect, Component)]
 pub struct AutoGun {
     next_shot: Timer,
 }

@@ -146,9 +146,11 @@ pub fn on_click(
                             position: transform.translation.xy(),
                             at_hex: click.target,
                         })
+                        .insert(MarkerGameStatePlaying)
                         .id();
                     commands
                         .entity(click.target)
+                        .insert(MarkerGameStatePlaying)
                         .add(UpdateHexContent { content: turret_id });
                 }
                 _ => {}
