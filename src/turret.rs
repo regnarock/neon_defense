@@ -25,7 +25,7 @@ pub struct TurretPlugin;
 
 impl Plugin for TurretPlugin {
     fn build(&self, app: &mut App) {
-        app.add_plugins(buildings::Plugin);
+        app.add_plugins(buildings::BuildingsPlugin);
         app.add_event::<EventSpawnedTower>();
         app.add_systems(
             Update,
@@ -163,7 +163,7 @@ pub fn auto_fire(
             let spaw_bullet = SpawnBullet {
                 position: transform.translation,
                 velocity: 200.,
-                damage: 10.,
+                damage: 1.,
                 target: target.entity,
             };
             commands.add(spaw_bullet);

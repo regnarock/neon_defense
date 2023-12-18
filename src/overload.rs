@@ -8,6 +8,8 @@ pub struct OverloadPlugin;
 
 impl Plugin for OverloadPlugin {
     fn build(&self, app: &mut App) {
+        app.add_event::<OverloadDepleted>();
+
         app.add_systems(Update, draw_ui);
         app.add_systems(Update, update_overload);
         app.add_systems(Update, react_to_spawned_enemy);
@@ -27,6 +29,11 @@ fn setup(mut commands: Commands) {
 ///   always between 0 and 1
 #[derive(Component, Reflect, Debug)]
 pub struct Overload(pub f32);
+
+const OVERLOAD_DEPLETED_THRESHOLD: f32 = 0.001;
+
+#[derive(Event)]
+pub struct OverloadDepleted;
 
 trait Lerp {
     fn lerp_to(&self, rhs: &Color, gradient: f32) -> Color;
@@ -87,12 +94,19 @@ fn draw_ui(mut painter: ShapePainter, q_overload: Query<&Overload>, window_size:
     draw_overload_bar(&mut painter, overload.0);
 }
 
-fn update_overload(time: Res<Time>, mut q_overload: Query<&mut Overload>) {
+fn update_overload(
+    time: Res<Time>,
+    mut q_overload: Query<&mut Overload>,
+    mut event_writer: EventWriter<OverloadDepleted>,
+) {
     let Ok(mut overload) = q_overload.get_single_mut() else {
         return;
     };
     //dbg!(&overload);
     overload.0 = (overload.0 - 0.03 * time.delta_seconds()).clamp(0.0, 1.0);
+    if overload.0 < OVERLOAD_DEPLETED_THRESHOLD {
+        event_writer.send(OverloadDepleted);
+    }
 }
 
 fn react_to_spawned_enemy(
