@@ -1,0 +1,1 @@
+**Neon Defense** is an innovative twist on the classic tower defense genre, combining strategic planning with real-time decision-making and rogue-like progression. As the player embodies an AI tasked with preserving a technological system, they must balance their need for energy against the risks of inviting too much danger too fast.

@@ -1,0 +1,37 @@
+{
+	"nodes":[
+		{"id":"5665ce9d10c050e8","type":"text","text":"GDD - Neon Defense\n","x":-122,"y":-57,"width":250,"height":60,"color":"4"},
+		{"id":"76a1af53031090bb","type":"text","text":"Overview\n","x":-122,"y":160,"width":250,"height":60},
+		{"id":"5a4d3a70c415c790","type":"text","text":"Technical","x":-610,"y":-100,"width":250,"height":60},
+		{"id":"db7ac3f68a39b556","type":"file","file":"GDD/Technicals/Platforms.md","x":-1020,"y":-186,"width":209,"height":232},
+		{"id":"77ec1b4305d80571","type":"file","file":"GDD/Overview/Game concept.md","x":-800,"y":440,"width":588,"height":260},
+		{"id":"e3ff223d0be914b5","type":"text","text":"Core Gameplay Mechanics","x":260,"y":300,"width":250,"height":60},
+		{"id":"47be84fa2213bdfc","type":"text","text":"Energy management","x":-20,"y":570,"width":250,"height":60},
+		{"id":"768f3f414a9406c4","type":"text","text":"Rogue-like randomisation of towers & enemies","x":320,"y":570,"width":250,"height":60},
+		{"id":"ab39bc662e5e5f3f","type":"text","text":"Threat level manipulation","x":660,"y":570,"width":250,"height":60},
+		{"id":"3b8c02786efb0dd2","type":"text","text":"Maze building","x":120,"y":740,"width":250,"height":60},
+		{"id":"052c6129e119970d","type":"text","text":"Puzzle-like placement of towers","x":120,"y":900,"width":250,"height":60},
+		{"id":"f3d5e834b4c47c86","type":"text","text":"Loose if it reaches 0","x":-160,"y":740,"width":250,"height":60},
+		{"id":"f826b1516a682124","x":585,"y":142,"width":250,"height":60,"color":"2","type":"text","text":"Gameplay Loop\n"},
+		{"id":"f7d2f8cb35369ad5","x":1094,"y":5,"width":266,"height":95,"type":"text","text":"No skip\nFocus on maze solving\n"},
+		{"id":"4f2d81fc091dddbe","x":1096,"y":142,"width":250,"height":90,"type":"text","text":"With skip\nFocus on slot machine game with action"},
+		{"id":"cc26c8018201ab31","x":1096,"y":-100,"width":250,"height":60,"color":"4","type":"text","text":"1- Skip as cooldown + reward"}
+	],
+	"edges":[
+		{"id":"bffb68ec96016268","fromNode":"5665ce9d10c050e8","fromSide":"bottom","toNode":"76a1af53031090bb","toSide":"top"},
+		{"id":"42a90828c8336d9f","fromNode":"76a1af53031090bb","fromSide":"bottom","toNode":"77ec1b4305d80571","toSide":"top"},
+		{"id":"3c42877008ddfe24","fromNode":"5665ce9d10c050e8","fromSide":"left","toNode":"5a4d3a70c415c790","toSide":"right"},
+		{"id":"b81db520db774cba","fromNode":"5a4d3a70c415c790","fromSide":"left","toNode":"db7ac3f68a39b556","toSide":"right"},
+		{"id":"24bab0db88c0fe0d","fromNode":"76a1af53031090bb","fromSide":"bottom","toNode":"e3ff223d0be914b5","toSide":"left"},
+		{"id":"2e64a9c3784b4a52","fromNode":"e3ff223d0be914b5","fromSide":"bottom","toNode":"47be84fa2213bdfc","toSide":"top"},
+		{"id":"2b32d22eabce2076","fromNode":"e3ff223d0be914b5","fromSide":"bottom","toNode":"768f3f414a9406c4","toSide":"top"},
+		{"id":"a563ed2690471cb0","fromNode":"e3ff223d0be914b5","fromSide":"bottom","toNode":"ab39bc662e5e5f3f","toSide":"top"},
+		{"id":"2fc7bd2cb01d4855","fromNode":"e3ff223d0be914b5","fromSide":"bottom","toNode":"3b8c02786efb0dd2","toSide":"top"},
+		{"id":"29094b7204c44408","fromNode":"3b8c02786efb0dd2","fromSide":"bottom","toNode":"052c6129e119970d","toSide":"top"},
+		{"id":"8dbe780d903fc640","fromNode":"47be84fa2213bdfc","fromSide":"bottom","toNode":"f3d5e834b4c47c86","toSide":"top"},
+		{"id":"1d28e30a9ba4868a","fromNode":"76a1af53031090bb","fromSide":"right","toNode":"f826b1516a682124","toSide":"left"},
+		{"id":"5f0f19718133cabf","fromNode":"f826b1516a682124","fromSide":"right","toNode":"f7d2f8cb35369ad5","toSide":"left"},
+		{"id":"aa8d987b04ce9c23","fromNode":"f826b1516a682124","fromSide":"right","toNode":"4f2d81fc091dddbe","toSide":"left"},
+		{"id":"6f382e1f4dde8f2d","fromNode":"f826b1516a682124","fromSide":"right","toNode":"cc26c8018201ab31","toSide":"left"}
+	]
+}
