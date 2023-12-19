@@ -76,7 +76,10 @@ impl BuildingInventory {
         inventory.items.pop_front();
 
         let new_building = get_random_building(&mut rng);
-        let new_item = params.command.spawn(new_building).id();
+        let new_item = params
+            .command
+            .spawn((new_building, MarkerGameStatePlaying))
+            .id();
 
         inventory.items.push_back(new_item);
 
@@ -158,14 +161,17 @@ const PADDING: f32 = 10f32;
 
 pub(crate) fn spawn_layout(mut commands: Commands, window_size: ResMut<WindowSize>) {
     let mut rng = crate::random::RandomDeterministic::new_from_seed(0);
-    let inventory = vec![
-        commands.spawn(get_random_building(&mut rng)).id(),
-        commands.spawn(get_random_building(&mut rng)).id(),
-        commands.spawn(get_random_building(&mut rng)).id(),
-        commands.spawn(get_random_building(&mut rng)).id(),
-        commands.spawn(get_random_building(&mut rng)).id(),
-        commands.spawn(get_random_building(&mut rng)).id(),
-    ];
+    let inventory = {
+        let mut inventory = vec![];
+        for _ in 0..6 {
+            inventory.push(
+                commands
+                    .spawn((get_random_building(&mut rng), MarkerGameStatePlaying))
+                    .id(),
+            );
+        }
+        inventory
+    };
     let anchor_point = Vec3::new(
         -window_size.size.x / 2f32 + ITEM_VISUAL_SIZE / 2f32 + PADDING,
         -window_size.size.y / 2f32 + (ITEM_VISUAL_SIZE + PADDING) * 5.5f32 + PADDING,
