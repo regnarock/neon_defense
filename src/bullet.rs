@@ -1,4 +1,5 @@
 use bevy::{ecs::system::Command, prelude::*};
+use bevy_mod_picking::picking_core::Pickable;
 
 use crate::{
     enemy::Enemy,
@@ -59,6 +60,7 @@ impl Command for SpawnBullet {
             },
             AutoLookAtTarget,
             Damage::new(self.damage),
+            Pickable::IGNORE,
         ));
     }
 }

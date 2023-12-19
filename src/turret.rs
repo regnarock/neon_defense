@@ -20,6 +20,7 @@ use bevy::{
     sprite::SpriteBundle,
 };
 use bevy_easings::{Ease, EaseFunction};
+use bevy_mod_picking::picking_core::Pickable;
 
 pub struct TurretPlugin;
 
@@ -97,6 +98,7 @@ impl EntityCommand for SpawnTurret {
                 Name::new("Turret"),
                 AutoGun::new(1.),
                 View::new(2. * hex_radius),
+                Pickable::IGNORE,
             ))
             .id();
         let mut q_event: SystemState<EventWriter<EventSpawnedTower>> = SystemState::new(world);
