@@ -71,7 +71,7 @@ impl Plugin for GamePlugin {
                 PrimitivesPlugin,
                 OverloadPlugin,
             ))
-            .add_plugins((menu_playing::MenuPlayingPlugin, WorldInspectorPlugin::new()))
+            //.add_plugins((menu_playing::MenuPlayingPlugin, WorldInspectorPlugin::new()))
             .add_systems(
                 OnExit(GameState::Playing),
                 primitives::ecs_extensions::despawn_entities::<MarkerGameStatePlaying>,
