@@ -114,7 +114,5 @@ fn react_to_spawned_tower(
     let Ok(mut overload) = q_overload.get_single_mut() else {
         return;
     };
-    for _e in event.read() {
-        overload.0 = (overload.0 - 0.1).clamp(0.0, 1.0);
-    }
+    // TODO: particles or smth ?
 }

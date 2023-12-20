@@ -72,10 +72,13 @@ pub struct SpawnTurret {
 impl EntityCommand for SpawnTurret {
     fn apply(self, id: Entity, world: &mut World) {
         // TODO: attach building to the turret
-        let _building =
+        let Some(_building) =
             world.resource_scope(|world, mut building_inventory: Mut<BuildingInventory>| {
                 building_inventory.next(world)
-            });
+            })
+        else {
+            return;
+        };
 
         let texture = world.resource_scope(|_, asset_server: Mut<AssetServer>| {
             asset_server.load("textures/DifferentTurrets/Turret01.png")
