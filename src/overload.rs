@@ -18,7 +18,7 @@ impl Plugin for OverloadPlugin {
 }
 
 fn setup(mut commands: Commands) {
-    commands.spawn(Overload(0.5f32));
+    commands.spawn(Overload::new(0.5f32));
 }
 
 /// Basically the HP bar, but it decreases naturally over time
@@ -26,7 +26,33 @@ fn setup(mut commands: Commands) {
 ///   and decreases when towers are built
 ///   always between 0 and 1
 #[derive(Component, Reflect, Debug)]
-pub struct Overload(pub f32);
+pub struct Overload {
+    value: f32,
+}
+
+impl Overload {
+    pub fn new(value: f32) -> Self {
+        Self { value }
+    }
+
+    pub fn value(&self) -> f32 {
+        self.value
+    }
+
+    pub fn try_decrease(&mut self, amount: f32) -> Option<()> {
+        if self.value >= amount {
+            self.value -= amount;
+            Some(())
+        } else {
+            None
+        }
+    }
+
+    pub fn increase(&mut self, amount: f32) {
+        // TODO: send event when overload is gained above 1.0, for supercharged
+        self.value = (self.value + amount).clamp(0.0, 1.0);
+    }
+}
 
 trait Lerp {
     fn lerp_to(&self, rhs: &Color, gradient: f32) -> Color;
@@ -84,15 +110,15 @@ fn draw_ui(mut painter: ShapePainter, q_overload: Query<&Overload>, window_size:
     painter.translate(Vec3::Y * window_size.size.y / 2.0);
     painter.scale(Vec3::ONE * 300.0);
 
-    draw_overload_bar(&mut painter, overload.0);
+    draw_overload_bar(&mut painter, overload.value());
 }
 
 fn update_overload(time: Res<Time>, mut q_overload: Query<&mut Overload>) {
     let Ok(mut overload) = q_overload.get_single_mut() else {
         return;
     };
-    //dbg!(&overload);
-    overload.0 = (overload.0 - 0.03 * time.delta_seconds()).clamp(0.0, 1.0);
+    overload.try_decrease(0.03 * time.delta_seconds());
+    // TODO: send OverloadDepleted event if None
 }
 
 fn react_to_spawned_enemy(
@@ -103,18 +129,16 @@ fn react_to_spawned_enemy(
         return;
     };
     for _e in event.read() {
-        overload.0 = (overload.0 + 0.1).clamp(0.0, 1.0);
+        overload.increase(0.1);
     }
 }
 
 fn react_to_spawned_tower(
-    mut event: EventReader<EventSpawnedTower>,
+    _event: EventReader<EventSpawnedTower>,
     mut q_overload: Query<&mut Overload>,
 ) {
-    let Ok(mut overload) = q_overload.get_single_mut() else {
+    let Ok(_overload) = q_overload.get_single_mut() else {
         return;
     };
-    for _e in event.read() {
-        overload.0 = (overload.0 - 0.1).clamp(0.0, 1.0);
-    }
+    // TODO: particles or smth ?
 }

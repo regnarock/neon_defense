@@ -1,5 +1,6 @@
 use crate::inventory::{self};
 use crate::inventory::{Inventory, SpawnInventory};
+use crate::overload::Overload;
 use crate::random::RandomDeterministic;
 use crate::window::WindowSize;
 use crate::GameState;
@@ -48,6 +49,7 @@ pub(crate) struct GetNextBuildingParams<'w, 's> {
             &'static mut crate::inventory::Inventory<Building>,
         ),
     >,
+    q_overload: Query<'w, 's, &'static mut Overload>,
     q_buildings: Query<'w, 's, &'static Building>,
 }
 
@@ -70,9 +72,12 @@ impl BuildingInventory {
         let Ok(_item_to_build) = params.q_buildings.get(first_item) else {
             return None;
         };
-        // TODO: check if we can build item_to_build (cooldown, space available, currency, ...)
+
+        let mut overload = params.q_overload.single_mut();
+        // TODO: make the amount of overload spent configurable/dependant on the building.
+        overload.try_decrease(0.1);
         // TODO: send an event if not possible.
-        // TODO: pay "price" ?
+
         inventory.items.pop_front();
 
         let new_building = get_random_building(&mut rng);
