@@ -73,15 +73,10 @@ impl BuildingInventory {
             return None;
         };
 
-        // TODO: check if we can build item_to_build (cooldown, space available, currency, ...)
-        // TODO: send an event if not possible.
-
         let mut overload = params.q_overload.single_mut();
-        if overload.0 < 0.1 {
-            // TODO: send not enough overload event
-            return None;
-        }
-        overload.0 -= 0.1;
+        // TODO: make the amount of overload spent configurable/dependant on the building.
+        overload.try_decrease(0.1);
+        // TODO: send an event if not possible.
 
         inventory.items.pop_front();
 
