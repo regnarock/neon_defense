@@ -82,6 +82,10 @@ impl EntityCommand for SpawnTurret {
         });
         let hex_grid = world.resource::<HexGrid>();
         let hex_radius: f32 = hex_grid.layout.hex_size.length();
+        let name = format!(
+            "Turret[{:?}]",
+            hex_grid.layout.world_pos_to_hex(self.position)
+        );
         let spawned_turret = world
             .entity_mut(id)
             .insert((
@@ -94,7 +98,7 @@ impl EntityCommand for SpawnTurret {
                 Turret {
                     parent_hex: self.at_hex,
                 },
-                Name::new("Turret"),
+                Name::new(name),
                 AutoGun::new(1.),
                 View::new(2. * hex_radius),
                 MarkerGameStatePlaying,

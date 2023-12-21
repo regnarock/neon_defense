@@ -15,7 +15,7 @@ use bevy::{
 
 use hexx::{Hex, HexBounds, HexLayout, PlaneMeshBuilder, Vec2};
 
-use crate::{GameState, MarkerGameStatePlaying};
+use crate::GameState;
 
 pub use self::hex::HexCell;
 use self::hex::{on_click, HexClicked, HexMaterial, NonConstructible, SpawnHex};
@@ -93,6 +93,7 @@ fn setup(mut commands: Commands, mut meshes: ResMut<Assets<Mesh>>) {
                     hex,
                     mesh: mesh.clone(),
                 })
+                .insert(Name::new(format!("Hex[{:?}]", hex)))
                 .id();
             (hex, entity)
         })
