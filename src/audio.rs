@@ -11,31 +11,26 @@ impl Plugin for InternalAudioPlugin {
     fn build(&self, app: &mut App) {
         app.add_plugins(AudioPlugin)
             .add_systems(OnEnter(GameState::Playing), start_audio);
-        // .add_systems(
-        //     Update,
-        //     control_flying_sound
-        //         .after(set_movement_actions)
-        //         .run_if(in_state(GameState::Playing)),
-        // )
+        //.add_systems(Update, explosion_sound))
     }
 }
 
 #[derive(Resource)]
-struct FlyingAudio(Handle<AudioInstance>);
+struct ExplosionAudio(Handle<AudioInstance>);
 
 fn start_audio(mut commands: Commands, audio_assets: Res<AudioAssets>, audio: Res<Audio>) {
     audio.pause();
     let handle = audio
-        .play(audio_assets.flying.clone())
+        .play(audio_assets.crystal_explosion.clone())
         .looped()
         .with_volume(0.3)
         .handle();
-    commands.insert_resource(FlyingAudio(handle));
+    commands.insert_resource(ExplosionAudio(handle));
 }
 
-fn _control_flying_sound(
+fn explosion_sound(
     actions: Res<Actions>,
-    audio: Res<FlyingAudio>,
+    audio: Res<ExplosionAudio>,
     mut audio_instances: ResMut<Assets<AudioInstance>>,
 ) {
     if let Some(instance) = audio_instances.get_mut(&audio.0) {
