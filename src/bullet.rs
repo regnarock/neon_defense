@@ -1,7 +1,7 @@
 use bevy::{ecs::system::Command, prelude::*};
 
 use crate::{
-    enemy::Enemy,
+    enemies::enemy::Enemy,
     primitives::{
         destructible::Damage,
         movable::{move_towards_target, AutoMovable},

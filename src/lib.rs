@@ -1,10 +1,9 @@
 mod actions;
 mod audio;
-mod board;
 mod buildings;
 mod bullet;
 mod crystal;
-mod enemy;
+mod enemies;
 mod grid;
 mod inventory;
 mod loading;
@@ -17,7 +16,6 @@ mod window;
 
 use crate::actions::ActionsPlugin;
 use crate::audio::InternalAudioPlugin;
-use crate::enemy::EnemyPlugin;
 use crate::loading::LoadingPlugin;
 use crate::menu::MenuPlugin;
 use crate::overload::OverloadPlugin;
@@ -31,6 +29,7 @@ use bevy_mod_picking::DefaultPickingPlugins;
 use bevy_vector_shapes::Shape2dPlugin;
 use bullet::BulletPlugin;
 use crystal::CrystalPlugin;
+use enemies::EnemiesPlugin;
 use grid::GridPlugin;
 use primitives::PrimitivesPlugin;
 use window::GameWindowPlugin;
@@ -54,16 +53,18 @@ impl Plugin for GamePlugin {
             MenuPlugin,
             ActionsPlugin,
             InternalAudioPlugin,
-            TurretPlugin,
-            EnemyPlugin,
-            BulletPlugin,
-            GridPlugin,
             // TODO: remove and replace usage with bevy_mod_picking::PickingPlugin
             CursorPlugin,
             DefaultPickingPlugins,
-            CrystalPlugin,
             PrimitivesPlugin,
-            OverloadPlugin,
+            (
+                CrystalPlugin,
+                TurretPlugin,
+                EnemiesPlugin,
+                BulletPlugin,
+                GridPlugin,
+                OverloadPlugin,
+            ),
         ));
 
         #[cfg(debug_assertions)]

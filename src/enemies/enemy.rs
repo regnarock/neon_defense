@@ -1,16 +1,13 @@
-use std::time::Duration;
-
 use crate::{
     grid::{HexCell, HexGrid},
     primitives::{
         destructible::Destructible,
-        movable::{move_towards_target, AutoMovable},
+        movable::AutoMovable,
         target::{
-            face_target, AutoLookAtTarget, OnTargetDespawned, SourceWithTargetAccessor,
-            SrcWithoutTargetQuery, Target,
+            AutoLookAtTarget, OnTargetDespawned, SourceWithTargetAccessor, SrcWithoutTargetQuery,
+            Target,
         },
     },
-    GameState,
 };
 
 use bevy::{
@@ -18,91 +15,72 @@ use bevy::{
     math::Vec3,
     prelude::*,
     sprite::SpriteBundle,
-    time::common_conditions::on_timer,
 };
 use rand::{seq::SliceRandom, thread_rng};
-
-pub struct EnemyPlugin;
-
-// TODO: make this a config resource
-const FIXED_TIMESTEP: f32 = 0.1;
-const TARGET_REACHED_EPSILON: f32 = 1.5;
-
-impl Plugin for EnemyPlugin {
-    fn build(&self, app: &mut App) {
-        app.add_event::<EventSpawnedEnemy>();
-        app.add_systems(
-            Update,
-            (
-                face_target::<Enemy, HexCell, 0>,
-                move_towards_target::<Enemy, HexCell>,
-                move_towards_center,
-                remove_reached_target,
-            )
-                .run_if(in_state(GameState::Playing)),
-        )
-        .add_systems(
-            FixedUpdate,
-            (animate.run_if(
-                on_timer(Duration::from_secs_f32(FIXED_TIMESTEP))
-                    .and_then(resource_exists::<EnemyAnimation>()),
-            ))
-            .run_if(in_state(GameState::Playing)),
-        );
-    }
-}
 
 #[derive(Component)]
 pub struct Enemy;
 
-#[derive(Resource)]
-pub struct EnemyAnimation(Vec<Handle<Image>>);
+#[derive(Copy, Clone, Debug, PartialEq, Eq)]
+pub enum EnemyDef {
+    Ship01,
+}
 
 #[derive(Event)]
 pub struct EventSpawnedEnemy(pub Entity);
 
+#[derive(Resource)]
+pub struct EnemyAnimation(Vec<Handle<Image>>);
+
 pub struct SpawnEnemy {
     pub position: Vec2,
+    pub enemy_def: EnemyDef,
 }
 
 impl Command for SpawnEnemy {
     fn apply(self, world: &mut World) {
-        let mut textures: Vec<Handle<Image>> = Vec::new();
-        // TODO: make this a resource
-        for i in 0..9 {
-            let path = format!("textures/Ship_01/AnimIdle/ship01P000{}.png", i);
-            world.resource_scope(|_world, asset_server: Mut<AssetServer>| {
-                textures.push(asset_server.load(path));
-            });
+        match self.enemy_def {
+            EnemyDef::Ship01 => {
+                let mut textures: Vec<Handle<Image>> = Vec::new();
+                // TODO: make this part of loading step and load dynamically
+                for i in 0..9 {
+                    let path = format!("textures/Ship_01/AnimIdle/ship01P000{}.png", i);
+                    world.resource_scope(|_world, asset_server: Mut<AssetServer>| {
+                        textures.push(asset_server.load(path));
+                    });
+                }
+
+                let spawned_enemy = world
+                    .spawn((
+                        SpriteBundle {
+                            transform: Transform::from_xyz(self.position.x, self.position.y, 0.0)
+                                .with_scale(Vec3::new(1.8, 1.8, 1.)),
+                            texture: textures[0].clone(),
+                            ..Default::default()
+                        },
+                        Destructible {
+                            health: 20.,
+                            hitbox: 10.,
+                        },
+                        AutoMovable {
+                            // FIXME: when velocity is too high, the enemy can go through the target
+                            velocity: 20.,
+                            follow_grid: true,
+                        },
+                        Enemy,
+                    ))
+                    .id();
+
+                world.insert_resource(EnemyAnimation(textures));
+
+                let mut q_event: SystemState<EventWriter<EventSpawnedEnemy>> =
+                    SystemState::new(world);
+
+                let mut event_writer = q_event.get_mut(world);
+                event_writer.send(EventSpawnedEnemy(spawned_enemy));
+            }
+            _ => panic!("Unknown enemy def"),
         }
-
-        let spawned_enemy = world
-            .spawn((
-                SpriteBundle {
-                    transform: Transform::from_xyz(self.position.x, self.position.y, 0.0)
-                        .with_scale(Vec3::new(1.8, 1.8, 1.)),
-                    texture: textures[0].clone(),
-                    ..Default::default()
-                },
-                Enemy,
-                Destructible {
-                    health: 20.,
-                    hitbox: 10.,
-                },
-                AutoMovable {
-                    // FIXME: when velocity is too high, the enemy can go through the target
-                    velocity: 20.,
-                    follow_grid: true,
-                },
-            ))
-            .id();
-
-        world.insert_resource(EnemyAnimation(textures));
-
-        let mut q_event: SystemState<EventWriter<EventSpawnedEnemy>> = SystemState::new(world);
-
-        let mut event_writer = q_event.get_mut(world);
-        event_writer.send(EventSpawnedEnemy(spawned_enemy));
     }
 }
 
@@ -153,6 +131,8 @@ pub fn move_towards_center(
         }
     }
 }
+
+const TARGET_REACHED_EPSILON: f32 = 1.5;
 
 pub fn remove_reached_target(
     mut commands: Commands,

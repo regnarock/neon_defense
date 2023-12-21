@@ -3,7 +3,7 @@ use std::{f32::consts::FRAC_PI_2, time::Duration};
 use crate::{
     buildings::{self, BuildingInventory},
     bullet::SpawnBullet,
-    enemy::Enemy,
+    enemies::enemy::Enemy,
     grid::HexGrid,
     primitives::{
         target::{SourceWithTargetAccessor, Target},

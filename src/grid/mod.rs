@@ -73,6 +73,11 @@ struct GridFlush;
 #[derive(Debug, Hash, PartialEq, Eq, Clone, SystemSet)]
 struct GridUpdate;
 
+#[derive(Resource, Debug)]
+pub struct HexMeshResource {
+    pub mesh: Handle<Mesh>,
+}
+
 fn setup(mut commands: Commands, mut meshes: ResMut<Assets<Mesh>>) {
     let layout = HexLayout {
         hex_size: HEX_SIZE,
@@ -102,6 +107,7 @@ fn setup(mut commands: Commands, mut meshes: ResMut<Assets<Mesh>>) {
         bounds,
     };
     commands.insert_resource(grid);
+    commands.insert_resource(HexMeshResource { mesh });
 }
 
 /// Compute a bevy mesh from the layout

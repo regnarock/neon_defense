@@ -17,7 +17,7 @@ pub struct Plugin;
 
 impl bevy::prelude::Plugin for Plugin {
     fn build(&self, app: &mut App) {
-        app.add_plugins(inventory::InventoryPlugin::<Building>::default())
+        app.add_plugins(inventory::InventoryPlugin::<BuildingDef>::default())
             .init_resource::<BuildingInventory>()
             .add_systems(
                 OnEnter(GameState::Playing),
@@ -45,10 +45,10 @@ pub(crate) struct GetNextBuildingParams<'w, 's> {
         's,
         (
             &'static mut RandomDeterministic,
-            &'static mut crate::inventory::Inventory<Building>,
+            &'static mut crate::inventory::Inventory<BuildingDef>,
         ),
     >,
-    q_buildings: Query<'w, 's, &'static Building>,
+    q_buildings: Query<'w, 's, &'static BuildingDef>,
 }
 
 impl FromWorld for BuildingInventory {
@@ -60,7 +60,7 @@ impl FromWorld for BuildingInventory {
 }
 
 impl BuildingInventory {
-    pub fn next(&mut self, world: &mut World) -> Option<Building> {
+    pub fn next(&mut self, world: &mut World) -> Option<BuildingDef> {
         let mut params = self.state.get_mut(world);
         let (mut rng, mut inventory) = params.q_inventory.single_mut();
 
@@ -174,7 +174,7 @@ pub(crate) fn spawn_layout(mut commands: Commands, window_size: ResMut<WindowSiz
 
     commands
         .spawn_empty()
-        .add(SpawnInventory::<Building>::new(
+        .add(SpawnInventory::<BuildingDef>::new(
             inventory,
             inventory::InventoryConfiguration {
                 positions: positions_from_anchor_point(anchor_point),
@@ -196,7 +196,7 @@ fn positions_from_anchor_point(anchor_point: Vec3) -> Vec<Vec3> {
 
 pub(crate) fn update_anchor_position(
     window_size: ResMut<WindowSize>,
-    mut q_inventory: Query<&mut Inventory<Building>>,
+    mut q_inventory: Query<&mut Inventory<BuildingDef>>,
 ) {
     let anchor_point: Vec3 = Vec3::new(
         -window_size.size.x / 2f32 + ITEM_VISUAL_SIZE / 2f32 + PADDING,
@@ -209,7 +209,7 @@ pub(crate) fn update_anchor_position(
 }
 
 #[derive(Component, Clone, Copy, Hash, Eq, PartialEq)]
-pub struct Building {
+pub struct BuildingDef {
     mesh: BuildingMesh,
     size: BuildingSize,
     color: BuildingColor,
@@ -235,7 +235,7 @@ pub enum BuildingColor {
     Blue,
 }
 
-impl inventory::ItemSpriteBuilder for Building {
+impl inventory::ItemSpriteBuilder for BuildingDef {
     type C = BuildingItemSpriteBuilder;
     fn build_sprite(&self) -> Self::C {
         BuildingItemSpriteBuilder { building: *self }
@@ -243,7 +243,7 @@ impl inventory::ItemSpriteBuilder for Building {
 }
 
 pub struct BuildingItemSpriteBuilder {
-    pub building: Building,
+    pub building: BuildingDef,
 }
 
 impl EntityCommand for BuildingItemSpriteBuilder {
@@ -261,7 +261,7 @@ impl EntityCommand for BuildingItemSpriteBuilder {
     }
 }
 
-pub fn get_random_building(rng: &mut crate::random::RandomDeterministic) -> Building {
+pub fn get_random_building(rng: &mut crate::random::RandomDeterministic) -> BuildingDef {
     let choices_mesh = [
         (BuildingMesh::Triangle, 2),
         (BuildingMesh::Circle, 2),
@@ -278,7 +278,7 @@ pub fn get_random_building(rng: &mut crate::random::RandomDeterministic) -> Buil
         (BuildingColor::Pink, 1),
         (BuildingColor::Blue, 1),
     ];
-    let building = Building {
+    let building = BuildingDef {
         mesh: choices_mesh
             .choose_weighted(&mut rng.random, |i| i.1)
             .unwrap()

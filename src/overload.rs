@@ -1,8 +1,9 @@
 use bevy::prelude::*;
 use bevy_vector_shapes::prelude::*;
 
-use crate::window::WindowSize;
-use crate::{enemy::EventSpawnedEnemy, turret::EventSpawnedTower, GameState};
+use crate::{
+    enemies::enemy::EventSpawnedEnemy, turret::EventSpawnedTower, window::WindowSize, GameState,
+};
 
 pub struct OverloadPlugin;
 

@@ -14,7 +14,7 @@ use bevy_mod_picking::{
 };
 use hexx::Hex;
 
-use crate::{enemy::SpawnEnemy, turret::SpawnTurret};
+use crate::{enemies::enemy::SpawnEnemy, enemies::portals::SpawnPortal, turret::SpawnTurret};
 
 use super::HexGrid;
 
@@ -134,8 +134,12 @@ pub fn on_click(
         if let Ok(transform) = hexes.get(click.target) {
             match click.event.button {
                 PointerButton::Secondary => {
-                    commands.add(SpawnEnemy {
+                    // TODO: allow configuration of different portals (portals/enemies inventory)
+                    commands.add(SpawnPortal {
                         position: transform.translation.xy(),
+                        spawn_n_times: 10,
+                        delay_s: 3.0,
+                        enemy_def: crate::enemies::enemy::EnemyDef::Ship01,
                     });
                 }
                 PointerButton::Primary => {
