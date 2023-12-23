@@ -1,13 +1,17 @@
+use bevy::math::vec2;
 use bevy::prelude::*;
+use bevy_easings::{custom_ease_system, CustomComponentEase, EaseFunction, EasingType};
 use bevy_vector_shapes::prelude::*;
 
 use crate::window::WindowSize;
+use crate::MarkerGameStatePlaying;
 use crate::{enemy::EventSpawnedEnemy, turret::EventSpawnedTower, GameState};
 
 pub struct OverloadPlugin;
 
 impl Plugin for OverloadPlugin {
     fn build(&self, app: &mut App) {
+        app.add_systems(Update, custom_ease_system::<OverloadPosition>);
         app.add_systems(Update, draw_ui);
         app.add_systems(Update, update_overload);
         app.add_systems(Update, react_to_spawned_enemy);
@@ -17,8 +21,30 @@ impl Plugin for OverloadPlugin {
     }
 }
 
+#[derive(Component, Default)]
+struct OverloadPosition(Vec2);
+
+impl bevy_easings::Lerp for OverloadPosition {
+    type Scalar = f32;
+
+    fn lerp(&self, other: &Self, scalar: &Self::Scalar) -> Self {
+        OverloadPosition(self.0.lerp(other.0, *scalar))
+    }
+}
+
 fn setup(mut commands: Commands) {
-    commands.spawn(Overload(0.5f32));
+    commands.spawn((
+        Overload(0.5f32),
+        OverloadPosition(vec2(0f32, 100f32)),
+        OverloadPosition(vec2(0f32, 100f32)).ease_to(
+            OverloadPosition(vec2(0f32, 0f32)),
+            EaseFunction::QuadraticIn,
+            EasingType::Once {
+                duration: std::time::Duration::from_secs_f32(0.5f32),
+            },
+        ),
+        MarkerGameStatePlaying,
+    ));
 }
 
 /// Basically the HP bar, but it decreases naturally over time
@@ -76,12 +102,18 @@ fn draw_overload_bar(painter: &mut ShapePainter, hp: f32) {
     painter.rect(Vec2::new(width, min_width));
 }
 
-fn draw_ui(mut painter: ShapePainter, q_overload: Query<&Overload>, window_size: Res<WindowSize>) {
-    let Ok(overload) = q_overload.get_single() else {
+fn draw_ui(
+    mut painter: ShapePainter,
+    q_overload: Query<(&Overload, &OverloadPosition)>,
+    window_size: Res<WindowSize>,
+) {
+    let Ok((overload, position)) = q_overload.get_single() else {
         return;
     };
     // translate to the center-top of the screen
     painter.translate(Vec3::Y * window_size.size.y / 2.0);
+    info!("{:?}", position.0);
+    painter.translate(position.0.extend(0f32));
     painter.scale(Vec3::ONE * 300.0);
 
     draw_overload_bar(&mut painter, overload.0);
@@ -91,7 +123,6 @@ fn update_overload(time: Res<Time>, mut q_overload: Query<&mut Overload>) {
     let Ok(mut overload) = q_overload.get_single_mut() else {
         return;
     };
-    //dbg!(&overload);
     overload.0 = (overload.0 - 0.03 * time.delta_seconds()).clamp(0.0, 1.0);
 }
 

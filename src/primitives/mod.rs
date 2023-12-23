@@ -1,6 +1,7 @@
 use bevy::prelude::*;
 
 pub mod destructible;
+pub mod ecs_extensions;
 pub mod movable;
 pub mod target;
 pub mod view;

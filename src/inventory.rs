@@ -35,16 +35,16 @@ pub trait ItemSpriteBuilder {
     fn build_sprite(&self) -> Self::C;
 }
 
-#[derive(Component)]
+#[derive(Reflect, Component)]
 struct MarkerItemSpriteBuilt;
 
-#[derive(Component)]
+#[derive(Reflect, Component)]
 pub struct Inventory<IT: Component + ItemSpriteBuilder> {
     /// entities contained here have a MarkerItem component, it handles logic
     /// their rendering is created via item_create_visual
     pub items: VecDeque<Entity>,
     pub positions: Vec<Vec3>,
-
+    #[reflect(ignore)]
     _item_type: PhantomData<IT>,
 }
 

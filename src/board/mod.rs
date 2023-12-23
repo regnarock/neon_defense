@@ -11,7 +11,7 @@ use bevy::{
 };
 use bevy_mod_picking::prelude::*;
 
-use crate::{actions::cursor::CursorScreenPos, enemy::SpawnEnemy, GameState};
+use crate::{actions::cursor::CursorScreenPos, enemy::SpawnEnemy};
 
 use self::{
     image::BoardRenderImage,
@@ -25,7 +25,7 @@ impl Plugin for BoardPlugin {
         app.init_resource::<CursorPosOnBoard>()
             .add_systems(Startup, setup_board)
             // TODO: uncomment once self PR has been merged
-            .add_systems(OnEnter(GameState::Playing), setup_board)
+            //.add_systems(OnEnter(GameState::Playing), setup_board)
             .add_plugins(ExtractResourcePlugin::<BoardRenderImage>::default())
             .add_plugins(ExtractResourcePlugin::<CursorPosOnBoard>::default());
     }

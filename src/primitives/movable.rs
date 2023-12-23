@@ -5,7 +5,7 @@ use bevy::{
 
 use crate::primitives::target::{Target, TargetQuery};
 
-#[derive(Component)]
+#[derive(Reflect, Component)]
 pub struct AutoMovable {
     pub velocity: f32,
     pub follow_grid: bool,

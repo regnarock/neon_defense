@@ -1,16 +1,20 @@
+use std::time::Duration;
+
 use crate::inventory::{self};
 use crate::inventory::{Inventory, SpawnInventory};
 use crate::random::RandomDeterministic;
 use crate::window::WindowSize;
-use crate::GameState;
+use crate::{GameState, MarkerGameStatePlaying};
 use bevy::ecs::system::{EntityCommand, SystemParam, SystemState};
 
+use bevy::math::vec3;
 use bevy::prelude::*;
 use bevy::render::mesh::Indices;
 use bevy::render::render_resource::PrimitiveTopology;
 use bevy::sprite::MaterialMesh2dBundle;
 use bevy::sprite::Mesh2dHandle;
 use bevy::utils::HashMap;
+use bevy_easings::{Ease, EaseFunction, EasingType};
 use rand::seq::SliceRandom;
 
 pub struct Plugin;
@@ -76,7 +80,10 @@ impl BuildingInventory {
         inventory.items.pop_front();
 
         let new_building = get_random_building(&mut rng);
-        let new_item = params.command.spawn(new_building).id();
+        let new_item = params
+            .command
+            .spawn((new_building, MarkerGameStatePlaying))
+            .id();
 
         inventory.items.push_back(new_item);
 
@@ -158,14 +165,17 @@ const PADDING: f32 = 10f32;
 
 pub(crate) fn spawn_layout(mut commands: Commands, window_size: ResMut<WindowSize>) {
     let mut rng = crate::random::RandomDeterministic::new_from_seed(0);
-    let inventory = vec![
-        commands.spawn(get_random_building(&mut rng)).id(),
-        commands.spawn(get_random_building(&mut rng)).id(),
-        commands.spawn(get_random_building(&mut rng)).id(),
-        commands.spawn(get_random_building(&mut rng)).id(),
-        commands.spawn(get_random_building(&mut rng)).id(),
-        commands.spawn(get_random_building(&mut rng)).id(),
-    ];
+    let inventory = {
+        let mut inventory = vec![];
+        for _ in 0..6 {
+            inventory.push(
+                commands
+                    .spawn((get_random_building(&mut rng), MarkerGameStatePlaying))
+                    .id(),
+            );
+        }
+        inventory
+    };
     let anchor_point = Vec3::new(
         -window_size.size.x / 2f32 + ITEM_VISUAL_SIZE / 2f32 + PADDING,
         -window_size.size.y / 2f32 + (ITEM_VISUAL_SIZE + PADDING) * 5.5f32 + PADDING,
@@ -180,6 +190,15 @@ pub(crate) fn spawn_layout(mut commands: Commands, window_size: ResMut<WindowSiz
                 positions: positions_from_anchor_point(anchor_point),
             },
         ))
+        .insert(SpatialBundle::default())
+        .insert(Transform::from_translation(vec3(-100.0, 0.0, 0.0)).ease_to(
+            Transform::from_translation(vec3(0.0, 0.0, 0.0)),
+            EaseFunction::QuadraticIn,
+            EasingType::Once {
+                duration: Duration::from_secs_f32(0.5f32),
+            },
+        ))
+        .insert(MarkerGameStatePlaying)
         .insert(RandomDeterministic::new_from_seed(0));
 }
 
@@ -208,26 +227,26 @@ pub(crate) fn update_anchor_position(
     });
 }
 
-#[derive(Component, Clone, Copy, Hash, Eq, PartialEq)]
+#[derive(Reflect, Component, Clone, Copy, Hash, Eq, PartialEq)]
 pub struct Building {
     mesh: BuildingMesh,
     size: BuildingSize,
     color: BuildingColor,
 }
 
-#[derive(Clone, Copy, Hash, Eq, PartialEq)]
+#[derive(Reflect, Clone, Copy, Hash, Eq, PartialEq)]
 pub enum BuildingMesh {
     Triangle,
     Circle,
     Quad,
 }
-#[derive(Clone, Copy, Hash, Eq, PartialEq)]
+#[derive(Reflect, Clone, Copy, Hash, Eq, PartialEq)]
 pub enum BuildingSize {
     Small,
     Medium,
     Big,
 }
-#[derive(Clone, Copy, Hash, Eq, PartialEq)]
+#[derive(Reflect, Clone, Copy, Hash, Eq, PartialEq)]
 pub enum BuildingColor {
     Black,
     White,
@@ -257,7 +276,14 @@ impl EntityCommand for BuildingItemSpriteBuilder {
             material: assets.color_def[&self.building.color].clone(),
             ..default()
         };
-        world.entity_mut(id).insert(visual);
+        let mut q_inventory: SystemState<Query<Entity, With<Inventory<Building>>>> =
+            SystemState::new(world);
+        let inventory_entity = q_inventory.get_mut(world).single();
+        world
+            .entity_mut(id)
+            .set_parent(inventory_entity)
+            .insert(visual)
+            .insert(MarkerGameStatePlaying);
     }
 }
 

@@ -14,7 +14,7 @@ impl Plugin for CursorPlugin {
 pub struct CursorScreenPos(pub Vec2);
 
 /// Used to help identify our main camera
-#[derive(Component)]
+#[derive(Reflect, Component)]
 pub struct MainCamera;
 
 fn setup_cursor(mut commands: Commands) {

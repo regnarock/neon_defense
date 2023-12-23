@@ -33,6 +33,7 @@ impl Plugin for GridPlugin {
                 },
                 setup,
             )
+            .add_systems(OnExit(GameState::Playing), unsetup)
             .add_systems(OnEnter(GameState::Playing), update_distances)
             .add_systems(
                 Update,
@@ -92,6 +93,7 @@ fn setup(mut commands: Commands, mut meshes: ResMut<Assets<Mesh>>) {
                     hex,
                     mesh: mesh.clone(),
                 })
+                .insert(Name::new(format!("Hex[{:?}]", hex)))
                 .id();
             (hex, entity)
         })
@@ -102,6 +104,10 @@ fn setup(mut commands: Commands, mut meshes: ResMut<Assets<Mesh>>) {
         bounds,
     };
     commands.insert_resource(grid);
+}
+
+fn unsetup(mut commands: Commands) {
+    commands.remove_resource::<HexGrid>();
 }
 
 /// Compute a bevy mesh from the layout
@@ -121,7 +127,6 @@ fn update_distances(
     grid: Res<HexGrid>,
     mut hexes: Query<(&mut HexCell, &Handle<HexMaterial>)>,
     mut materials: ResMut<Assets<HexMaterial>>,
-    mut colored: Local<bool>,
 ) {
     let center = Hex::ZERO;
     let mut queue = vec![center];
@@ -150,21 +155,17 @@ fn update_distances(
                         processed.insert(neighbor);
                         next_queue.push(neighbor);
                     }
-                    // TODO: debug purposes only, find a better way to color the field
-                    if !*colored {
-                        let v = dist as f32 / MAP_RADIUS as f32;
-                        let material = materials.get_mut(hex_material).unwrap();
-                        material.color.x = v;
-                        material.color.y = v;
-                        material.color.z = v;
-                    }
+                    let v = dist as f32 / (MAP_RADIUS * 2) as f32;
+                    let material = materials.get_mut(hex_material).unwrap();
+                    material.color.x = v;
+                    material.color.y = v;
+                    material.color.z = v;
                 }
             }
         }
         queue = next_queue;
         dist += 1;
     }
-    *colored = true;
 }
 
 fn update_unconstructible_hexes(

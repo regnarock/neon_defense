@@ -10,7 +10,7 @@ use crate::{
             SrcWithoutTargetQuery, Target,
         },
     },
-    GameState,
+    GameState, MarkerGameStatePlaying,
 };
 
 use bevy::{
@@ -52,7 +52,7 @@ impl Plugin for EnemyPlugin {
     }
 }
 
-#[derive(Component)]
+#[derive(Reflect, Component)]
 pub struct Enemy;
 
 #[derive(Resource)]
@@ -94,6 +94,7 @@ impl Command for SpawnEnemy {
                     velocity: 20.,
                     follow_grid: true,
                 },
+                MarkerGameStatePlaying,
             ))
             .id();
 

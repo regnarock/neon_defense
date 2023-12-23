@@ -19,7 +19,7 @@ impl Plugin for TargetPlugin {
     }
 }
 
-#[derive(Component, Debug)]
+#[derive(Reflect, Component, Debug)]
 pub struct Target {
     pub entity: Entity,
     callback_on_despawn: OnTargetDespawned,
@@ -44,14 +44,14 @@ impl Default for Target {
 }
 
 // TODO: replace with a system that reacts to an event of target despawned
-#[derive(Debug)]
+#[derive(Reflect, Debug)]
 pub enum OnTargetDespawned {
     DoNothing,
     DespawnSelf,
     //Custom(BoxedSystem<In = (Commands)>),
 }
 
-#[derive(Component)]
+#[derive(Reflect, Component)]
 pub struct AutoLookAtTarget;
 
 #[derive(WorldQuery)]

@@ -11,7 +11,7 @@ use crate::{
             auto_remove_target_when_out_of_range, scan_for_targets_in_range, EnterViewEvent, View,
         },
     },
-    GameState,
+    GameState, MarkerGameStatePlaying,
 };
 use bevy::{
     ecs::system::{EntityCommand, SystemState},
@@ -42,7 +42,7 @@ impl Plugin for TurretPlugin {
     }
 }
 
-#[derive(Component)]
+#[derive(Reflect, Component)]
 pub struct Turret {
     pub parent_hex: Entity,
 }
@@ -50,7 +50,7 @@ pub struct Turret {
 #[derive(Event)]
 pub struct EventSpawnedTower(pub Entity);
 
-#[derive(Component)]
+#[derive(Reflect, Component)]
 pub struct AutoGun {
     next_shot: Timer,
 }
@@ -82,6 +82,10 @@ impl EntityCommand for SpawnTurret {
         });
         let hex_grid = world.resource::<HexGrid>();
         let hex_radius: f32 = hex_grid.layout.hex_size.length();
+        let name = format!(
+            "Turret[{:?}]",
+            hex_grid.layout.world_pos_to_hex(self.position)
+        );
         let spawned_turret = world
             .entity_mut(id)
             .insert((
@@ -94,9 +98,10 @@ impl EntityCommand for SpawnTurret {
                 Turret {
                     parent_hex: self.at_hex,
                 },
-                Name::new("Turret"),
+                Name::new(name),
                 AutoGun::new(1.),
                 View::new(2. * hex_radius),
+                MarkerGameStatePlaying,
             ))
             .id();
         let mut q_event: SystemState<EventWriter<EventSpawnedTower>> = SystemState::new(world);
