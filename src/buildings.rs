@@ -13,9 +13,9 @@ use bevy::sprite::Mesh2dHandle;
 use bevy::utils::HashMap;
 use rand::seq::SliceRandom;
 
-pub struct Plugin;
+pub struct BuildingsPlugin;
 
-impl bevy::prelude::Plugin for Plugin {
+impl Plugin for BuildingsPlugin {
     fn build(&self, app: &mut App) {
         app.add_plugins(inventory::InventoryPlugin::<Building>::default())
             .init_resource::<BuildingInventory>()

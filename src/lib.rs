@@ -5,6 +5,7 @@ mod buildings;
 mod bullet;
 mod crystal;
 mod enemy;
+mod game_over;
 mod grid;
 mod inventory;
 mod loading;
@@ -31,6 +32,7 @@ use bevy_mod_picking::DefaultPickingPlugins;
 use bevy_vector_shapes::Shape2dPlugin;
 use bullet::BulletPlugin;
 use crystal::CrystalPlugin;
+use game_over::GameOverPlugin;
 use grid::GridPlugin;
 use primitives::PrimitivesPlugin;
 use window::GameWindowPlugin;
@@ -48,22 +50,25 @@ pub struct GamePlugin;
 impl Plugin for GamePlugin {
     fn build(&self, app: &mut App) {
         app.add_state::<GameState>().add_plugins((
-            LoadingPlugin,
-            GameWindowPlugin,
-            Shape2dPlugin::default(),
+            (
+                LoadingPlugin,
+                GameWindowPlugin,
+                Shape2dPlugin::default(),
+                DefaultPickingPlugins,
+                InternalAudioPlugin,
+            ),
             MenuPlugin,
             ActionsPlugin,
-            InternalAudioPlugin,
             TurretPlugin,
             EnemyPlugin,
             BulletPlugin,
             GridPlugin,
             // TODO: remove and replace usage with bevy_mod_picking::PickingPlugin
             CursorPlugin,
-            DefaultPickingPlugins,
             CrystalPlugin,
             PrimitivesPlugin,
             OverloadPlugin,
+            GameOverPlugin,
         ));
 
         #[cfg(debug_assertions)]
