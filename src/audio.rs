@@ -1,4 +1,5 @@
-use crate::actions::Actions;
+use crate::crystal::CrystalTouched;
+
 use crate::loading::AudioAssets;
 use crate::GameState;
 use bevy::prelude::*;
@@ -10,7 +11,13 @@ pub struct InternalAudioPlugin;
 impl Plugin for InternalAudioPlugin {
     fn build(&self, app: &mut App) {
         app.add_plugins(AudioPlugin)
-            .add_systems(OnEnter(GameState::Playing), start_audio);
+            .add_systems(OnEnter(GameState::Playing), start_audio)
+            .add_systems(
+                Update,
+                explosion_sound.run_if(
+                    resource_exists::<ExplosionAudio>().and_then(in_state(GameState::Playing)),
+                ),
+            );
         //.add_systems(Update, explosion_sound))
     }
 }
@@ -22,30 +29,22 @@ fn start_audio(mut commands: Commands, audio_assets: Res<AudioAssets>, audio: Re
     audio.pause();
     let handle = audio
         .play(audio_assets.crystal_explosion.clone())
-        .looped()
+        // TODO: make this configurable
         .with_volume(0.3)
         .handle();
     commands.insert_resource(ExplosionAudio(handle));
 }
 
 fn explosion_sound(
-    actions: Res<Actions>,
+    q_game_over: Query<Entity, Added<CrystalTouched>>,
     audio: Res<ExplosionAudio>,
     mut audio_instances: ResMut<Assets<AudioInstance>>,
 ) {
-    if let Some(instance) = audio_instances.get_mut(&audio.0) {
-        match instance.state() {
-            PlaybackState::Paused { .. } => {
-                if actions.player_movement.is_some() {
-                    instance.resume(AudioTween::default());
-                }
-            }
-            PlaybackState::Playing { .. } => {
-                if actions.player_movement.is_none() {
-                    instance.pause(AudioTween::default());
-                }
-            }
-            _ => {}
+    if !q_game_over.is_empty() {
+        if let Some(instance) = audio_instances.get_mut(&audio.0) {
+            debug!("BANG!");
+            instance.seek_to(0.0);
+            instance.resume(AudioTween::default());
         }
     }
 }

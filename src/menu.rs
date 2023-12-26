@@ -33,6 +33,7 @@ impl Default for ButtonColors {
 }
 
 fn setup_menu(mut commands: Commands, button_colors: Res<ButtonColors>) {
+    info!("Displaying game menu");
     commands
         .spawn(ButtonBundle {
             style: Style {

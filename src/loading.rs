@@ -14,7 +14,13 @@ impl Plugin for LoadingPlugin {
             LoadingState::new(GameState::Loading).continue_to_state(GameState::Menu),
         )
         .add_collection_to_loading_state::<_, AudioAssets>(GameState::Loading)
-        .add_collection_to_loading_state::<_, TextureAssets>(GameState::Loading);
+        .add_collection_to_loading_state::<_, TextureAssets>(GameState::Loading)
+        .add_systems(OnEnter(GameState::Loading), || info!("entering loading"))
+        .add_systems(
+            Update,
+            (|| info!("loading...")).run_if(in_state(GameState::Loading)),
+        )
+        .add_systems(OnExit(GameState::Loading), || info!("exiting loading"));
     }
 }
 
