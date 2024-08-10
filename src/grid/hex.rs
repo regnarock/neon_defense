@@ -130,11 +130,12 @@ impl From<ListenerInput<Pointer<Click>>> for HexClicked {
 pub fn on_click(
     mut commands: Commands,
     mut clicks: EventReader<HexClicked>,
-    hexes: Query<&Transform, Without<NonConstructible>>,
+    hexes: Query<(&Transform, &Handle<HexMaterial>), Without<NonConstructible>>,
+    mut materials: ResMut<Assets<HexMaterial>>,
     _grid: Res<HexGrid>,
 ) {
     for click in clicks.read() {
-        if let Ok(transform) = hexes.get(click.target) {
+        if let Ok((transform, material)) = hexes.get(click.target) {
             match click.event.button {
                 PointerButton::Secondary => {
                     commands.add(SpawnEnemy {
@@ -152,6 +153,8 @@ pub fn on_click(
                     commands
                         .entity(click.target)
                         .add(UpdateHexContent { content: turret_id });
+                    // we can now unselect the hex as it's necesseraly occupied now
+                    materials.get_mut(material).unwrap().is_selected = 0.;
                 }
                 _ => {}
             }
