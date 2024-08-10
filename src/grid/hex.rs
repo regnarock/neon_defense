@@ -136,6 +136,9 @@ pub fn on_click(
 ) {
     for click in clicks.read() {
         if let Ok((transform, material)) = hexes.get(click.target) {
+            if materials.get_mut(material).unwrap().is_selected == 0. {
+                return;
+            }
             match click.event.button {
                 PointerButton::Secondary => {
                     commands.add(SpawnEnemy {
