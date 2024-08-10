@@ -91,11 +91,14 @@ impl EntityCommand for UpdateHexContent {
 
 pub fn select_hex(
     event: Listener<Pointer<Over>>,
-    mut hexes: Query<&Handle<HexMaterial>>,
+    mut hexes: Query<(&Handle<HexMaterial>, &HexCell)>,
     mut materials: ResMut<Assets<HexMaterial>>,
 ) {
-    if let Ok(hex_material) = hexes.get_mut(event.target) {
-        materials.get_mut(hex_material).unwrap().is_selected = 1.;
+    if let Ok((material, hex)) = hexes.get_mut(event.target) {
+        // don't select if the hex right under the cursor is occupied
+        if hex.content.is_none() {
+            materials.get_mut(material).unwrap().is_selected = 1.;
+        }
     }
 }
 
