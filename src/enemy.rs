@@ -86,7 +86,7 @@ impl Command for SpawnEnemy {
                 },
                 Enemy,
                 Destructible {
-                    health: 20.,
+                    health: 2.,
                     hitbox: 10.,
                 },
                 AutoMovable {
