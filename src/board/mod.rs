@@ -79,7 +79,7 @@ pub fn spawn_enemy_on_click(
 #[derive(Resource, Default, ExtractResource, Clone)]
 pub struct CursorPosOnBoard {
     pub position: Vec2,
-    pub is_pressed: bool,
+    // pub is_pressed: bool,
 }
 
 pub fn update_pos_on_board(

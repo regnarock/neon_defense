@@ -5,7 +5,7 @@ pub struct CursorPlugin;
 impl Plugin for CursorPlugin {
     fn build(&self, app: &mut App) {
         app.add_systems(Startup, setup_cursor)
-            .add_systems(Update, my_cursor_system);
+            .add_systems(Update, update_cursor_screen_pos);
     }
 }
 
@@ -17,13 +17,13 @@ pub struct CursorScreenPos(pub Vec2);
 #[derive(Component)]
 pub struct MainCamera;
 
+/// /!\ TODO: move main game camera spawn to a better place
 fn setup_cursor(mut commands: Commands) {
-    // TODO: maybe move to a better place?
     commands.spawn((Camera2dBundle::default(), MainCamera, Fxaa::default()));
     commands.init_resource::<CursorScreenPos>();
 }
 
-fn my_cursor_system(
+fn update_cursor_screen_pos(
     mut mycoords: ResMut<CursorScreenPos>,
     // query to get the window (so we can read the current cursor position)
     q_window: Query<&Window, With<PrimaryWindow>>,
