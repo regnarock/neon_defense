@@ -5,6 +5,7 @@ use bevy::{
     sprite::SpriteBundle,
     transform::components::Transform,
 };
+use bevy_mod_picking::picking_core::Pickable;
 
 use crate::{enemy::Enemy, GameState};
 
@@ -34,6 +35,7 @@ pub fn setup(mut commands: Commands, asset_server: Res<AssetServer>) {
         },
         Crystal,
         Name::new("Crystal"),
+        Pickable::IGNORE,
     ));
 }
 
