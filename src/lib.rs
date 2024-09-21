@@ -1,10 +1,7 @@
 mod actions;
 mod audio;
-mod board;
 mod buildings;
-mod bullet;
-mod crystal;
-mod enemy;
+mod entities;
 mod game_over;
 mod grid;
 mod inventory;
@@ -13,27 +10,21 @@ mod menu;
 mod overload;
 mod primitives;
 mod random;
-mod turret;
 mod window;
 
-use crate::actions::ActionsPlugin;
-use crate::audio::InternalAudioPlugin;
-use crate::enemy::EnemyPlugin;
-use crate::loading::LoadingPlugin;
-use crate::menu::MenuPlugin;
-use crate::overload::OverloadPlugin;
-use crate::turret::TurretPlugin;
-
 use actions::cursor::CursorPlugin;
-use bevy::app::App;
-
 use bevy::prelude::*;
 use bevy_mod_picking::DefaultPickingPlugins;
 use bevy_vector_shapes::Shape2dPlugin;
-use bullet::BulletPlugin;
-use crystal::CrystalPlugin;
+
+use actions::ActionsPlugin;
+use audio::InternalAudioPlugin;
+use entities::EntityPlugin;
 use game_over::GameOverPlugin;
 use grid::GridPlugin;
+use loading::LoadingPlugin;
+use menu::MenuPlugin;
+use overload::OverloadPlugin;
 use primitives::PrimitivesPlugin;
 use window::GameWindowPlugin;
 
@@ -59,13 +50,10 @@ impl Plugin for GamePlugin {
             ),
             MenuPlugin,
             ActionsPlugin,
-            TurretPlugin,
-            EnemyPlugin,
-            BulletPlugin,
+            EntityPlugin,
             GridPlugin,
             // TODO: remove and replace usage with bevy_mod_picking::PickingPlugin
             CursorPlugin,
-            CrystalPlugin,
             PrimitivesPlugin,
             OverloadPlugin,
             GameOverPlugin,

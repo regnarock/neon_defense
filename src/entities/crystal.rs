@@ -6,9 +6,9 @@ use bevy::{
     transform::components::Transform,
 };
 
-use crate::{enemy::Enemy, GameState};
+use crate::{entities::enemy::Enemy, GameState};
 
-pub struct CrystalPlugin;
+pub(super) struct CrystalPlugin;
 
 impl Plugin for CrystalPlugin {
     fn build(&self, app: &mut App) {

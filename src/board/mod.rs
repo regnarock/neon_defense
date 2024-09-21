@@ -11,7 +11,7 @@ use bevy::{
 };
 use bevy_mod_picking::prelude::*;
 
-use crate::{actions::cursor::CursorScreenPos, enemy::SpawnEnemy, GameState};
+use crate::{actions::cursor::CursorScreenPos, enemy::SpawnEnemyCmd, GameState};
 
 use self::{
     image::BoardRenderImage,
@@ -71,7 +71,7 @@ pub fn spawn_enemy_on_click(
     _click: Listener<Pointer<Click>>,
     mycoords: Res<CursorScreenPos>,
 ) {
-    commands.add(SpawnEnemy {
+    commands.add(SpawnEnemyCmd {
         position: mycoords.0,
     });
 }

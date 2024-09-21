@@ -1,6 +1,6 @@
 use bevy::prelude::*;
 
-use crate::{crystal::CrystalTouched, overload::OverloadDepleted};
+use crate::{entities::crystal::CrystalTouched, overload::OverloadDepleted};
 
 pub struct GameOverPlugin;
 

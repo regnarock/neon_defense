@@ -61,7 +61,8 @@ where
     S: Component,
     T: Component,
 {
-    pub transform: &'static mut Transform,
+    pub global_transform: &'static mut GlobalTransform,
+    pub local_transform: &'static mut Transform,
     pub target: &'static Target,
     pub entity: Entity,
     __filter: (With<S>, Without<T>),
@@ -74,7 +75,8 @@ where
     S: Component,
     T: Component,
 {
-    pub transform: &'static Transform,
+    pub global_transform: &'static GlobalTransform,
+    pub local_transform: &'static Transform,
     pub entity: Entity,
     __filter: (With<S>, Without<T>, Without<Target>),
 }
@@ -87,6 +89,7 @@ where
     T: Component,
 {
     pub transform: &'static Transform,
+    pub global_transform: &'static GlobalTransform,
     pub entity: Entity,
     __filter: (With<T>, Without<S>),
 }
@@ -119,9 +122,9 @@ where
 {
     for mut source in params.srcs_query.iter_mut() {
         if let Ok(target) = params.targets_query.get(source.target.entity) {
-            let direction = target.transform.translation - source.transform.translation;
+            let direction = target.transform.translation - source.global_transform.translation();
             let angle = direction.y.atan2(direction.x) + PI_2_OFFSET as f32 * FRAC_PI_2;
-            source.transform.rotation = Quat::from_rotation_z(angle);
+            source.local_transform.rotation = Quat::from_rotation_z(angle);
         }
     }
 }

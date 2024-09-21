@@ -95,7 +95,8 @@ pub fn scan_for_targets_in_range<S, T>(
         for target in &accessor.targets_query {
             let distance = src
                 .subquery
-                .transform
+                .global_transform
+                .compute_transform()
                 .translation
                 .distance(target.transform.translation);
             if distance < nearest_distance {
@@ -127,7 +128,8 @@ pub fn auto_remove_target_when_out_of_range<S, T>(
         if let Ok(target) = accessor.targets_query.get(src.subquery.target.entity) {
             let distance = src
                 .subquery
-                .transform
+                .global_transform
+                .compute_transform()
                 .translation
                 .distance(target.transform.translation);
             if distance > src.view.range {

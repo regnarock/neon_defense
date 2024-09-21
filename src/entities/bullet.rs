@@ -1,7 +1,7 @@
 use bevy::{ecs::system::Command, prelude::*};
 
 use crate::{
-    enemy::Enemy,
+    entities::enemy::Enemy,
     primitives::{
         destructible::Damage,
         movable::{move_towards_target, AutoMovable},
@@ -10,7 +10,7 @@ use crate::{
     GameState,
 };
 
-pub struct BulletPlugin;
+pub(super) struct BulletPlugin;
 
 impl Plugin for BulletPlugin {
     fn build(&self, app: &mut bevy::prelude::App) {

@@ -22,7 +22,7 @@ use bevy::{
 };
 use rand::{seq::SliceRandom, thread_rng};
 
-pub struct EnemyPlugin;
+pub(super) struct EnemyPlugin;
 
 // TODO: make this a config resource
 const FIXED_TIMESTEP: f32 = 0.1;
@@ -61,11 +61,11 @@ pub struct EnemyAnimation(Vec<Handle<Image>>);
 #[derive(Event)]
 pub struct EventSpawnedEnemy(pub Entity);
 
-pub struct SpawnEnemy {
+pub struct SpawnEnemyCmd {
     pub position: Vec2,
 }
 
-impl Command for SpawnEnemy {
+impl Command for SpawnEnemyCmd {
     fn apply(self, world: &mut World) {
         let mut textures: Vec<Handle<Image>> = Vec::new();
         // TODO: make this a resource
@@ -132,24 +132,24 @@ pub fn move_towards_center(
     for enemy in &mut enemies {
         let mut all_neighbors = grid
             .layout
-            .world_pos_to_hex(enemy.transform.translation.xy())
+            .world_pos_to_hex(enemy.global_transform.compute_transform().translation.xy())
             .all_neighbors();
         all_neighbors.shuffle(&mut thread_rng());
         let target_position = all_neighbors
             .iter()
             .filter_map(|hex| {
-                grid.entities
-                    .get(hex)
+                grid.hex_to_entity(hex)
                     .and_then(|e| hexes.get(*e).ok().map(|cell| (hex, cell.dist)))
             })
             .min_by(|(_, dist1), (_, dist2)| dist1.cmp(dist2));
 
         if let Some((target_hex, _dist)) = target_position {
-            let hex_entity = grid.entities[target_hex];
-            commands.entity(enemy.entity).insert((
-                Target::new(hex_entity, OnTargetDespawned::DoNothing),
-                AutoLookAtTarget,
-            ));
+            if let Some(hex_entity) = grid.hex_to_entity(target_hex) {
+                commands.entity(enemy.entity).insert((
+                    Target::new(*hex_entity, OnTargetDespawned::DoNothing),
+                    AutoLookAtTarget,
+                ));
+            }
         }
     }
 }
@@ -163,7 +163,7 @@ pub fn remove_reached_target(
             let distance = target
                 .transform
                 .translation
-                .distance(enemy.transform.translation);
+                .distance(enemy.global_transform.translation());
             if distance <= TARGET_REACHED_EPSILON {
                 commands.entity(enemy.entity).remove::<Target>();
             }

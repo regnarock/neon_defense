@@ -8,24 +8,13 @@ use bevy_eventlistener::{
     callbacks::{Listener, ListenerInput},
     event_listener::On,
 };
-use bevy_mod_picking::{
-    events::{Click, Out, Over, Pointer},
-    pointer::PointerButton,
-};
+use bevy_mod_picking::events::{Click, Out, Over, Pointer};
 use hexx::Hex;
-
-use crate::{enemy::SpawnEnemy, turret::SpawnTurret};
-
-use super::HexGrid;
 
 #[derive(Debug, Default, Component)]
 pub struct HexCell {
     pub dist: u32,
-    pub content: Option<Entity>,
 }
-
-#[derive(Debug, Default, Component)]
-pub struct NonConstructible;
 
 #[derive(Asset, TypePath, AsBindGroup, Debug, Clone)]
 pub struct HexMaterial {
@@ -41,13 +30,13 @@ impl Material2d for HexMaterial {
     }
 }
 
-pub struct SpawnHex {
+pub struct SpawnHexCmd {
     pub position: Vec2,
     pub hex: Hex,
     pub mesh: Handle<Mesh>,
 }
 
-impl EntityCommand for SpawnHex {
+impl EntityCommand for SpawnHexCmd {
     fn apply(self, id: Entity, world: &mut World) {
         let color = Color::rgb(5.0, 0., 0.);
         let asset = HexMaterial {
@@ -64,10 +53,7 @@ impl EntityCommand for SpawnHex {
                 transform: Transform::from_xyz(self.position.x, self.position.y, -1.0),
                 ..default()
             },
-            HexCell {
-                dist: 0,
-                content: None,
-            },
+            HexCell { dist: 0 },
             On::<Pointer<Over>>::run(select_hex),
             On::<Pointer<Out>>::run(deselect_hex),
             On::<Pointer<Click>>::send_event::<HexClicked>(),
@@ -75,28 +61,16 @@ impl EntityCommand for SpawnHex {
     }
 }
 
-pub struct UpdateHexContent {
-    pub content: Entity,
-}
-
-impl EntityCommand for UpdateHexContent {
-    fn apply(self, id: Entity, world: &mut World) {
-        let mut entity_mut = world.entity_mut(id);
-        let mut cell = entity_mut.get_mut::<HexCell>().unwrap();
-
-        cell.content = Some(self.content);
-        cell.dist = u32::MAX;
-    }
-}
+pub fn reset_dist_on_content_change() {}
 
 pub fn select_hex(
     event: Listener<Pointer<Over>>,
-    mut hexes: Query<(&Handle<HexMaterial>, &HexCell)>,
+    mut hexes: Query<(&Handle<HexMaterial>, Option<&Children>), With<HexCell>>,
     mut materials: ResMut<Assets<HexMaterial>>,
 ) {
-    if let Ok((material, hex)) = hexes.get_mut(event.target) {
+    if let Ok((material, content)) = hexes.get_mut(event.target) {
         // don't select if the hex right under the cursor is occupied
-        if hex.content.is_none() {
+        if content.is_none() {
             materials.get_mut(material).unwrap().is_selected = 1.;
         }
     }
@@ -124,44 +98,5 @@ impl From<ListenerInput<Pointer<Click>>> for HexClicked {
             event: value.event.clone(),
             target: value.target,
         }
-    }
-}
-
-pub fn on_click(
-    mut commands: Commands,
-    mut clicks: EventReader<HexClicked>,
-    hexes: Query<(&Transform, &Handle<HexMaterial>), Without<NonConstructible>>,
-    mut materials: ResMut<Assets<HexMaterial>>,
-    _grid: Res<HexGrid>,
-) {
-    for click in clicks.read() {
-        if let Ok((transform, material)) = hexes.get(click.target) {
-            if materials.get_mut(material).unwrap().is_selected == 0. {
-                return;
-            }
-            match click.event.button {
-                PointerButton::Secondary => {
-                    commands.add(SpawnEnemy {
-                        position: transform.translation.xy(),
-                    });
-                }
-                PointerButton::Primary => {
-                    let turret_id = commands
-                        .spawn_empty()
-                        .add(SpawnTurret {
-                            position: transform.translation.xy(),
-                            at_hex: click.target,
-                        })
-                        .id();
-                    commands
-                        .entity(click.target)
-                        .add(UpdateHexContent { content: turret_id });
-                    // we can now unselect the hex as it's necesseraly occupied now
-                    materials.get_mut(material).unwrap().is_selected = 0.;
-                }
-                _ => {}
-            }
-        }
-        // TODO: UX: else, means the hex is not constructible. Make it clear to player.
     }
 }

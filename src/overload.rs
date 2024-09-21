@@ -2,7 +2,7 @@ use bevy::prelude::*;
 use bevy_vector_shapes::prelude::*;
 
 use crate::window::WindowSize;
-use crate::{enemy::EventSpawnedEnemy, turret::EventSpawnedTower, GameState};
+use crate::{entities::enemy::EventSpawnedEnemy, entities::turret::EventSpawnedTower, GameState};
 
 pub struct OverloadPlugin;
 
@@ -13,7 +13,7 @@ impl Plugin for OverloadPlugin {
         app.add_systems(Update, draw_ui);
         app.add_systems(Update, update_overload);
         app.add_systems(Update, react_to_spawned_enemy);
-        app.add_systems(Update, react_to_spawned_tower);
+        app.add_systems(Update, spend_overload_on_tower_spawnned);
 
         app.add_systems(OnEnter(GameState::Playing), setup);
     }
@@ -121,7 +121,7 @@ fn react_to_spawned_enemy(
     }
 }
 
-fn react_to_spawned_tower(
+fn spend_overload_on_tower_spawnned(
     mut event: EventReader<EventSpawnedTower>,
     mut q_overload: Query<&mut Overload>,
 ) {
